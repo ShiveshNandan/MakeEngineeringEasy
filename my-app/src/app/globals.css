@@ -4,15 +4,15 @@
 
 @font-face {
   font-family: 'YourFont';
-  src: url('../../public/font/HelveticaNowDisplay-extraBold.woff') format('woff');
+  src: url('../public/font/HelveticaNowDisplay-extraBold.woff') format('woff');
 }
 @font-face {
   font-family: 'YourFontMedium';
-  src: url('../../public/font/HelveticaNowDisplay-Medium.woff') format('woff');
+  src: url('../public/font/HelveticaNowDisplay-Medium.woff') format('woff');
 }
 @font-face {
   font-family: 'YourFontThin';
-  src: url('../../public/font/HelveticaNowDisplay-Thin.woff') format('woff');
+  src: url('../public/font/HelveticaNowDisplay-Thin.woff') format('woff');
 }
 
 :root {

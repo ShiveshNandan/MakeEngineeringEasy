@@ -1,61 +1,23 @@
 import React from 'react'
 import ReviewSection from './reviewSection'
 import Image from 'next/image'
-import door from "../../public/DOOR.png"
-import sit from "../../public/sitting.png"
-import plane from "../../public/Plane 2.png"
-import plane2 from "../../public/Plane 1.png"
-import yellowCard from "../../public/Highlights yellow.png"
-import blueCard from "../../public/Highlights blue.png"
-import purpleCard from "../../public/Highlights purple.png"
-import pyq from "../../public/image 5 (1).png"
-import notes from "../../public/image 6 (1).png"
-import links from "../../public/image 8 (1).png"
-import bulb from "../../public/Bulb.png"
+import door from "../public/DOOR.png"
+import sit from "../public/sitting.png"
+import plane from "../public/Plane 2.png"
+import plane2 from "../public/Plane 1.png"
+import yellowCard from "../public/Highlights yellow.png"
+import blueCard from "../public/Highlights blue.png"
+import purpleCard from "../public/Highlights purple.png"
+import pyq from "../public/image 5 (1).png"
+import notes from "../public/image 6 (1).png"
+import links from "../public/image 8 (1).png"
+import bulb from "../public/Bulb.png"
 
 
 const HeroSection = () => {
 
   return (
     <>
-      {/* <div className="flex w-full h-[90vh] bg-blue-500 overflow-hidden">
-        <div className="flex flex-col mx-auto my-auto w-6/12 max-[800px]:w-full">
-            <h1 className='mx-auto w-9/12 text-xl mb-6'>Hello Amigo,</h1>
-            <h1 className='mx-auto w-9/12 text-2xl'>Unlock the door to <span className='text-green-400 font-bold'>effortless learning </span> and embark on a journey of <span className='text-green-400 font-bold'>academic excellence</span> with us.</h1>
-        </div>
-        <div className='w-6/12 max-[800px]:w-0'>
-        <img className='bg-black w-full h-full' src="" alt="" />
-        </div>
-      </div>
-
-      // ==================what we provide=================== 
-      <div className="flex w-9/12 m-auto my-20 max-[1024px]:w-full max-[800px]:flex-col">
-        <div className="flex flex-col mx-5 text-center px-8 py-5 ">
-          <img src="" alt="gg" className='border' />
-          <h1 className='mt-5 font-bold text-xl text-gray-700'>Past Year Question Papers</h1>
-          <p className='text-sm text-gray-600 py-2'> Access a repository of meticulously compiled PYQs spanning various subjects and educational boards, enabling you to familiarize yourself with exam patterns and prepare effectively.</p>
-        </div>
-        <div className="flex flex-col mx-5 text-center px-8 py-5">
-          <img src="" alt="gg" className='border' />
-          <h1 className='mt-5 font-bold text-xl text-gray-700'>Recomended videos</h1>
-          <p className='text-sm text-gray-600 py-2'>Discover our curated collection of recommended videos for each subject, carefully selected to support your studies. Plus, explore additional related videos we provide to further enrich your learning journey.</p>
-        </div>
-        <div className="flex flex-col mx-5 text-center px-8 py-5">
-          <img src="" alt="gg" className='border' />
-          <h1 className='mt-5 font-bold text-xl text-gray-700'>E-Books</h1>
-          <p className='text-sm text-gray-600 py-2'> Explore our recommended books section, offering curated selections for each subject to enhance your study materials. Additionally, find links to related books that we provide for further reading and in-depth understanding.</p>
-        </div>
-      </div>
-
-      // ============== review carausal ===============
-      <div className="flex flex-col w-9/12 m-auto max-[1024px]:w-full">
-        <ReviewSection/>
-      </div> */}
-
-
-      {/* ============= new section =============== */}
-
-
       <div className='h-[120vh] flex flex-col justify-center bg-[url("../../public/Background.png")]'>
       <Image src={plane2} height={1} width={100000} alt='' className='w-[20vw] absolute mt-[-55vh] '/>
       <div className="flex flex-col text-center mt-[10vh]">

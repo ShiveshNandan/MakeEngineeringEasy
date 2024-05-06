@@ -5,12 +5,12 @@ import HeroSection from './heroSection'
 export default function Home() {
   return (
     <>
-    <div>
-    {/* <div style={{fontFamily : 'YourFontThin'}}> */}
+    {/* <div> */}
+    <div style={{fontFamily : 'YourFontThin'}}>
     <Navbar params = "Home"/>
     </div>
-    <div className={`bg-[#FFFAF5]`}>
-    {/* <div style={{fontFamily : 'YourFont'}} className={`bg-[#FFFAF5]`}> */}
+    {/* <div className={`bg-[#FFFAF5]`}> */}
+    <div style={{fontFamily : 'YourFont'}} className={`bg-[#FFFAF5]`}>
     <HeroSection/>
     </div>
     </>
