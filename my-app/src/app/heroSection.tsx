@@ -73,7 +73,8 @@ const HeroSection = () => {
 
       {/* ================== features section =================== */}
 
-      <div style={{fontFamily : 'YourFontMedium'}} className="flex text-center bg-pink-100 rounded-[70px] justify-center ">
+      <div className="flex text-center bg-pink-100 rounded-[70px] justify-center ">
+      {/* <div style={{fontFamily : 'YourFontMedium'}} className="flex text-center bg-pink-100 rounded-[70px] justify-center "> */}
         <div className="flex flex-col w-10/12 border-4 border-b-0 justify-center border-dashed border-[#c1b9b2] rounded-[70px] my-20 ">
           <h1 className='uppercase text-4xl my-14 text-[#333333] font-bold '>features</h1>
           <div className=" flex justify-between ">

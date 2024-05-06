@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
+/* @font-face {
   font-family: 'YourFont';
   src: url('../../public/font/HelveticaNowDisplay-extraBold.woff') format('woff');
 }
@@ -13,7 +13,7 @@
 @font-face {
   font-family: 'YourFontThin';
   src: url('../../public/font/HelveticaNowDisplay-Thin.woff') format('woff');
-}
+} */
 
 :root {
   --foreground-rgb: 0, 0, 0;
