@@ -5,32 +5,14 @@
 @font-face {
   font-family: 'YourFont';
   src: url('../../public/font/HelveticaNowDisplay-extraBold.woff') format('woff');
-  /* src: url('../../public/font/HelveticaNowDisplay-Black.woff') format('woff'); */
-  /* src: url('../../public/font/HelveticaNowDisplay-Thin.woff') format('woff'); */
-  /* src: url('../../public/font/HelveticaNowDisplay-MedIta.woff') format('woff'); */
-  /* src: url('../../public/font/HelveticaNowDisplay-Medium.woff') format('woff'); */
-       /* url('/fonts/YourFont-Bold.woff') format('woff'); Add more formats if needed */
-  /* You can specify font-weight and font-style if available */
 }
 @font-face {
   font-family: 'YourFontMedium';
-  /* src: url('../../public/font/HelveticaNowDisplay-extraBold.woff') format('woff'); */
-  /* src: url('../../public/font/HelveticaNowDisplay-Black.woff') format('woff'); */
-  /* src: url('../../public/font/HelveticaNowDisplay-Thin.woff') format('woff'); */
-  /* src: url('../../public/font/HelveticaNowDisplay-MedIta.woff') format('woff'); */
   src: url('../../public/font/HelveticaNowDisplay-Medium.woff') format('woff');
-       /* url('/fonts/YourFont-Bold.woff') format('woff'); Add more formats if needed */
-  /* You can specify font-weight and font-style if available */
 }
 @font-face {
   font-family: 'YourFontThin';
-  /* src: url('../../public/font/HelveticaNowDisplay-extraBold.woff') format('woff'); */
-  /* src: url('../../public/font/HelveticaNowDisplay-Black.woff') format('woff'); */
   src: url('../../public/font/HelveticaNowDisplay-Thin.woff') format('woff');
-  /* src: url('../../public/font/HelveticaNowDisplay-MedIta.woff') format('woff'); */
-  /* src: url('../../public/font/HelveticaNowDisplay-Medium.woff') format('woff'); */
-       /* url('/fonts/YourFont-Bold.woff') format('woff'); Add more formats if needed */
-  /* You can specify font-weight and font-style if available */
 }
 
 :root {
