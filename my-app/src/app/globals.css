@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'YourFont';
+  src: url('../../public/font/HelveticaNowDisplay-extraBold.woff') format('woff');
+  /* src: url('../../public/font/HelveticaNowDisplay-Black.woff') format('woff'); */
+  /* src: url('../../public/font/HelveticaNowDisplay-Thin.woff') format('woff'); */
+  /* src: url('../../public/font/HelveticaNowDisplay-MedIta.woff') format('woff'); */
+  /* src: url('../../public/font/HelveticaNowDisplay-Medium.woff') format('woff'); */
+       /* url('/fonts/YourFont-Bold.woff') format('woff'); Add more formats if needed */
+  /* You can specify font-weight and font-style if available */
+}
+@font-face {
+  font-family: 'YourFontMedium';
+  /* src: url('../../public/font/HelveticaNowDisplay-extraBold.woff') format('woff'); */
+  /* src: url('../../public/font/HelveticaNowDisplay-Black.woff') format('woff'); */
+  /* src: url('../../public/font/HelveticaNowDisplay-Thin.woff') format('woff'); */
+  /* src: url('../../public/font/HelveticaNowDisplay-MedIta.woff') format('woff'); */
+  src: url('../../public/font/HelveticaNowDisplay-Medium.woff') format('woff');
+       /* url('/fonts/YourFont-Bold.woff') format('woff'); Add more formats if needed */
+  /* You can specify font-weight and font-style if available */
+}
+@font-face {
+  font-family: 'YourFontThin';
+  /* src: url('../../public/font/HelveticaNowDisplay-extraBold.woff') format('woff'); */
+  /* src: url('../../public/font/HelveticaNowDisplay-Black.woff') format('woff'); */
+  src: url('../../public/font/HelveticaNowDisplay-Thin.woff') format('woff');
+  /* src: url('../../public/font/HelveticaNowDisplay-MedIta.woff') format('woff'); */
+  /* src: url('../../public/font/HelveticaNowDisplay-Medium.woff') format('woff'); */
+       /* url('/fonts/YourFont-Bold.woff') format('woff'); Add more formats if needed */
+  /* You can specify font-weight and font-style if available */
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+/* body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+} */
