@@ -18,7 +18,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <div className='h-[120vh] flex flex-col justify-center bg-[url("../../public/Background.png")]'>
+      <div className='h-[120vh] flex flex-col justify-center bg-[url("../public/Background.png")]'>
       <Image src={plane2} height={1} width={100000} alt='' className='w-[20vw] absolute mt-[-55vh] '/>
       <div className="flex flex-col text-center mt-[10vh]">
       <h1 className='uppercase m-auto text-[4vw] tracking-[0.8px] w-7/12 text-[#333333] leading-[5.5vw] '>
