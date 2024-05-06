@@ -2,19 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @font-face {
+@font-face {
   font-family: 'YourFont';
-  src: url('../public/font/HelveticaNowDisplay-extraBold.woff') ;
+  src: url('./HelveticaNowDisplay-ExtraBold.woff') format('woff');
 }
 @font-face {
   font-family: 'YourFontMedium';
-  src: url('../public/font/HelveticaNowDisplay-Medium.woff');
+  src: url('./HelveticaNowDisplay-Medium.woff') format('woff');
 }
 @font-face {
   font-family: 'YourFontThin';
-  src: url('./public/font/HelveticaNowDisplay-Thin.woff') format('woff');
-  src: url('../public/font/HelveticaNowDisplay-Light.woff2');
-} */
+  /* src: url('./public/font/HelveticaNowDisplay-Thin.woff') format('woff'); */
+  src: url('./HelveticaNowDisplay-Light.woff') format('woff');
+  /* src: url('./HelveticaNowDisplay-Light.woff2') format('woff'); */
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;
