@@ -4,16 +4,16 @@
 
 @font-face {
   font-family: 'YourFont';
-  src: url('./HelveticaNowDisplay-ExtraBold.woff') format('woff');
+  src: url('./fonts/HelveticaNowDisplay-ExtraBold.woff') format('woff');
 }
 @font-face {
   font-family: 'YourFontMedium';
-  src: url('./HelveticaNowDisplay-Medium.woff') format('woff');
+  src: url('./fonts/HelveticaNowDisplay-Medium.woff') format('woff');
 }
 @font-face {
   font-family: 'YourFontThin';
   /* src: url('./public/font/HelveticaNowDisplay-Thin.woff') format('woff'); */
-  src: url('./HelveticaNowDisplay-Light.woff') format('woff');
+  src: url('./fonts/HelveticaNowDisplay-Light.woff') format('woff');
   /* src: url('./HelveticaNowDisplay-Light.woff2') format('woff'); */
 }
 
