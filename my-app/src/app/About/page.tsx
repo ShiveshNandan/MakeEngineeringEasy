@@ -1,5 +1,5 @@
 import React from "react";
-import Team from "./FeedBack";
+// import Team from "./FeedBack";
 import Navbar from "../navbar";
 import Image from "next/image";
 import plane2 from "../../public/Plane 1.png";
