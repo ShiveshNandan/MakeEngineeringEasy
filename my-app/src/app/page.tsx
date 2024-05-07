@@ -9,7 +9,7 @@ export default function Home() {
     <div style={{fontFamily : 'YourFontThin'}}>
     <Navbar params = "Home"/>
     </div>
-    <div style={{fontFamily : 'YourFont'}} className={`bg-[#FFFAF5] `}>
+    <div style={{fontFamily : 'YourFontThin'}} className={`bg-[#FFFAF5] `}>
     <HeroSection/>
     </div>
     </>

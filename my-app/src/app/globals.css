@@ -4,6 +4,10 @@
 
 @font-face {
   font-family: 'YourFont';
+  src: url('./fonts/HelveticaNowDisplay-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'YourFontBold';
   src: url('./fonts/HelveticaNowDisplay-ExtraBold.woff') format('woff');
 }
 @font-face {
@@ -12,8 +16,8 @@
 }
 @font-face {
   font-family: 'YourFontThin';
-  /* src: url('./public/font/HelveticaNowDisplay-Thin.woff') format('woff'); */
   src: url('./fonts/HelveticaNowDisplay-Light.woff') format('woff');
+  /* src: url('./fonts/HelveticaNowDisplay-Light.woff') format('woff'); */
   /* src: url('./HelveticaNowDisplay-Light.woff2') format('woff'); */
 }
 
