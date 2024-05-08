@@ -22,14 +22,14 @@ const page = () => {
 
       <div style={{fontFamily: "yourFont"}} className='flex bg-[url("../public/Background.png")]'>
 
-        <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[40vh] shadow-xl mb-20">
+        <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[42vh] shadow-xl mb-20">
           <div>
             <Image
               src={getinTouch}
               height={1}
               width={100000}
               alt=""
-              className="w-[20vw] mt-[-6vh]"
+              className="w-[auto] h-[10vw] mt-[-6.3vw]  ml-[-1vw]"
             />
           </div>
           <div className="flex">

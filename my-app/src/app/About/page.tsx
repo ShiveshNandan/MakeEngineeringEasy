@@ -26,7 +26,7 @@ const About = () => {
             height={1}
             width={100000}
             alt=""
-            className="w-[20vw] absolute mt-[15vh]"
+            className="w-[20vw] absolute mt-[13vh]"
             // className="w-[20vw] absolute right-0 mt-[60vh]"
           />
           <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[40vh] shadow-xl ">
@@ -36,13 +36,13 @@ const About = () => {
                 height={1}
                 width={100000}
                 alt=""
-                className="w-[20vw] mt-[-6vh]"
+                className="w-[auto] h-[10vw] mt-[-6vw] ml-[-1.3vw]"
               />
             </div>
             <div className="flex">
-              <p className="px-20 pb-10 pt-5 text-2xl text-[#111211] tracking-wide ">
+              <p className="px-[4vw] pb-10 pt-5 text-[1.5vw] text-[#89847f] tracking-wide ">
                 Welcome to{" "}
-                <span className="text-blue-600 font-semibold">
+                <span className="text-[#706d69] font-semibold">
                   Make Engineering Easy
                 </span>
                 , where we are committed to simplifying your academic journey.
@@ -72,13 +72,13 @@ const About = () => {
                 height={1}
                 width={100000}
                 alt=""
-                className="w-[20vw] mt-[-6vh]"
+                className="w-[auto] h-[10vw] mt-[-6.5vw]  ml-[-1vw]"
               />
             </div>
             <div className="flex">
-              <p className="px-20 pb-10 pt-5 text-2xl text-[#111211] tracking-wide ">
+              <p className="px-[4vw] pb-10 pt-5 text-[1.5vw] text-[#89847f] tracking-wide ">
               At{" "}
-          <span className="text-blue-600 font-semibold">
+          <span className="text-[#706d69] font-semibold">
             Make Engineering Easy
           </span>
           , our mission is to empower students with the resources they need to
@@ -107,20 +107,20 @@ const About = () => {
                 height={1}
                 width={100000}
                 alt=""
-                className="w-[20vw] mt-[-6vh]"
+                className="w-[auto] h-[10vw] mt-[-6.5vw] ml-[-1vw] "
               />
             </div>
             <div className="flex flex-col">
-              <p className="px-20 pb-10 pt-5 text-2xl text-[#111211] tracking-wide ">
-              <span className="text-blue-600 font-semibold">
+              <p className="px-[4vw] pb-10 pt-5 text-[1.5vw] text-[#89847f] tracking-wide ">
+              <span className="text-[#706d69] font-semibold">
             Past Year Question Papers (PYQs):
           </span>{" "}
           Access a repository of meticulously compiled PYQs spanning various
           subjects and educational boards, enabling you to familiarize yourself
           with exam patterns and prepare effectively.
         </p>
-              <p className="px-20 pb-10 pt-5 text-2xl text-[#111211] tracking-wide ">
-              <span className="text-blue-600 font-semibold">
+              <p className="px-[4vw] pb-10 pt-5 text-[1.5vw] text-[#89847f] tracking-wide ">
+              <span className="text-[#706d69] font-semibold">
             Comprehensive Study Notes:
           </span>{" "}
           Explore a rich assortment of well-researched study materials created
@@ -128,8 +128,8 @@ const About = () => {
           concepts and facilitate a deeper understanding of your course
           material.
         </p>
-              <p className="px-20 pb-10 pt-5 text-2xl text-[#111211] tracking-wide ">
-              <span className="text-blue-600 font-semibold">Lecture Links:</span>{" "}
+              <p className="px-[4vw] pb-10 pt-5 text-[1.5vw] text-[#89847f] tracking-wide ">
+              <span className="text-[#706d69] font-semibold">Lecture Links:</span>{" "}
           Seamlessly integrate your learning experience with our carefully
           curated collection of lecture links from renowned educators, ensuring
           that you have access to valuable insights and explanations to
@@ -155,21 +155,21 @@ const About = () => {
                 height={1}
                 width={100000}
                 alt=""
-                className="w-[20vw] mt-[-6vh]"
+                className="w-[auto] h-[13vw] mt-[-6.5vw] ml-[-1vw] "
               />
             </div>
             <div className="flex">
-              <p className="px-20 pb-10 pt-5 text-2xl text-[#111211] tracking-wide ">
+              <p className="px-[4vw] pb-10 text-[1.5vw] text-[#89847f] tracking-wide ">
               We are passionate about fostering a learning environment that
           encourages
-          <span className="text-blue-600 font-semibold">
+          <span className="text-[#706d69] font-semibold">
             {" "}
             exploration, critical thinking, and academic excellence.
           </span>{" "}
           Our team is dedicated to continually enriching our platform with
           updated study resources and relevant materials, ensuring that you have
           everything you need to thrive academically. Join us at{" "}
-          <span className="text-blue-600 font-semibold">
+          <span className="text-[#706d69] font-semibold">
             Make Engineering Easy
           </span>{" "}
           and embark on a journey towards effortless learning and academic
@@ -195,7 +195,7 @@ const About = () => {
         </h1>
         <p className="max-[800px]:text-sm">
           Welcome to{" "}
-          <span className="text-blue-600 font-semibold">
+          <span className="text-[#706d69] font-semibold">
             Make Engineering Easy
           </span>
           , where we are committed to simplifying your academic journey. We
@@ -209,7 +209,7 @@ const About = () => {
         </h1>
         <p className="max-[800px]:text-sm">
           At{" "}
-          <span className="text-blue-600 font-semibold">
+          <span className="text-[#706d69] font-semibold">
             Make Engineering Easy
           </span>
           , our mission is to empower students with the resources they need to
@@ -223,7 +223,7 @@ const About = () => {
           What We Offer
         </h1>
         <p className="mt-3 max-[800px]:text-sm">
-          <span className="text-blue-600 font-semibold">
+          <span className="text-[#706d69] font-semibold">
             Past Year Question Papers (PYQs):
           </span>{" "}
           Access a repository of meticulously compiled PYQs spanning various
@@ -231,7 +231,7 @@ const About = () => {
           with exam patterns and prepare effectively.
         </p>
         <p className="mt-3 max-[800px]:text-sm">
-          <span className="text-blue-600 font-semibold">
+          <span className="text-[#706d69] font-semibold">
             Comprehensive Study Notes:
           </span>{" "}
           Explore a rich assortment of well-researched study materials created
@@ -240,7 +240,7 @@ const About = () => {
           material.
         </p>
         <p className="mt-3 max-[800px]:text-sm">
-          <span className="text-blue-600 font-semibold">Lecture Links:</span>{" "}
+          <span className="text-[#706d69] font-semibold">Lecture Links:</span>{" "}
           Seamlessly integrate your learning experience with our carefully
           curated collection of lecture links from renowned educators, ensuring
           that you have access to valuable insights and explanations to
@@ -253,14 +253,14 @@ const About = () => {
         <p className="max-[800px]:text-sm">
           We are passionate about fostering a learning environment that
           encourages
-          <span className="text-blue-600 font-semibold">
+          <span className="text-[#706d69] font-semibold">
             {" "}
             exploration, critical thinking, and academic excellence.
           </span>{" "}
           Our team is dedicated to continually enriching our platform with
           updated study resources and relevant materials, ensuring that you have
           everything you need to thrive academically. Join us at{" "}
-          <span className="text-blue-600 font-semibold">
+          <span className="text-[#706d69] font-semibold">
             Make Engineering Easy
           </span>{" "}
           and embark on a journey towards effortless learning and academic

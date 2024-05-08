@@ -21,10 +21,10 @@ const Footer = () => {
         <Image src={linkedin} height={100} width={100} alt='' className='w-[2vw] mx-4 ' />
         <Image src={x} height={100} width={100} alt='' className='w-[2vw] mx-4 ' />
        </div>
-       <div className="flex justify-center m-auto capitalize py-10">
-        <h1 className='font-bold mx-3' >Designed by Tejasva</h1>
-        <h1 className='font-bold mx-3' >Copyright @ 2024 All rights reserved</h1>
-        <h1 className='font-bold mx-3' >Developed by Shivesh</h1>
+       <div style={{fontFamily: "YourFontThin"}} className="flex justify-center m-auto capitalize py-10">
+        <h1 className='font-bold mx-5' >Designed by Tejasva</h1>
+        <h1 className='font-bold mx-10' >Copyright <span>&copy;</span> 2024 All rights reserved</h1>
+        <h1 className='font-bold mx-5' >Developed by Shivesh</h1>
        </div>
     </div>
   )

@@ -6,6 +6,7 @@
   font-family: 'YourFont';
   src: url('./fonts/HelveticaNowDisplay-Regular.woff') format('woff');
 }
+
 @font-face {
   font-family: 'YourFontBold';
   src: url('./fonts/HelveticaNowDisplay-ExtraBold.woff') format('woff');

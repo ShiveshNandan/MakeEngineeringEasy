@@ -55,7 +55,7 @@ const HeroSection = () => {
               <div className="flex flex-col z-10 mt-10 mb-5">
             <Image src={pyq} height={1} width={100000} alt='' className='w-[10vw]'/>
             <div className="flex flex-col px-7 ">
-            <h1 className='mt-5 text-[2.3vw] leading-[1.1] font-[900] tracking-[0.03vw] '>Past Year Question Papers</h1>
+            <h1  className='mt-5 text-[2.3vw] text-[#1e1c1a] leading-[1.1] font-[700] tracking-[0.03vw] '>Past Year Question Papers</h1>
           <p className=' text-[#766735] py-5 w-12/12 text-[1.35vw] font-[400] tracking-[0.01vw] '> Access a repository of meticulously compiled PYQs spanning various subjects and educational boards, enabling you to familiarize yourself with exam patterns and prepare effectively.</p>
               </div>
               </div>
@@ -68,7 +68,7 @@ const HeroSection = () => {
               <div className="flex flex-col z-10 mt-10 mb-5">
             <Image src={notes} height={1} width={100000} alt='' className='w-[10vw]'/>
             <div className="flex flex-col px-7 ">
-            <h1 className='mt-5 text-[#dcecff] w-10/12 text-[2.3vw] leading-[1.1] font-[600] tracking-[0.08vw] '>Comprehensive Study Notes</h1>
+            <h1 style={{fontFamily : 'YourFontThin'}} className='mt-5 text-[#dcecff] w-10/12 text-[2.3vw] leading-[1.1] font-[900] tracking-[0.08vw] '>Comprehensive Study Notes</h1>
           <p className='text-[#e1efffdc] py-5 w-12/12 text-[1.35vw] font-[200] tracking-[0.02vw] '>Explore a rich assortment of well-researched study materials created by our team of experienced educators, designed to simplify complex concepts and facilitate a deeper understanding of your course material.</p>
               </div>
               </div>
@@ -80,7 +80,7 @@ const HeroSection = () => {
               <div className="flex flex-col z-10 mt-10 mb-5">
             <Image src={links} height={1} width={100000} alt='' className='w-[10vw]'/>
             <div className="flex flex-col px-7 ">
-            <h1 className='mt-5 text-[2.3vw] leading-[1.1] w-10/12 font-[900] tracking-[0.05vw]'>Curated Lecture Links</h1>
+            <h1  className='mt-5 text-[2.3vw] leading-[1.1] w-10/12 font-[700] tracking-[0.05vw]'>Curated Lecture Links</h1>
           <p className='text-[#735176] py-5 w-12/12 text-[1.35vw] font-[400]'> Seamlessly integrate your learning experience with our carefully curated collection of lecture links from renowned educators, ensuring that you have access to valuable insights and explanations to supplement your studies.</p>
               </div>
               </div>
