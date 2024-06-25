@@ -31,7 +31,7 @@ const Navbar = (params:any) => {
   return (
     <>
     
-    <div style={{fontFamily : 'YourFontThin'}} className={`${isVisible ? "bg-[#FFFAF5]" : ""} z-[100] flex w-full justify-evenly fixed items-center pt-8 pb-3`}>
+    <div style={{fontFamily : 'YourFontThin'}} className={`${isVisible ? "bg-[#FFFAF5] dark:bg-[#191817]" : "backdrop-blur-[8px]"} z-[100] flex w-full justify-evenly fixed items-center pt-8 pb-3 tracking-[1px]`}>
         <h1 onClick={() => {router.push("/") , setselected("Home")}} className={`${selected === "Home" ? "text-blue-600 font-extrabold " : "font-[500]"} capitalize mx-5 hover:cursor-pointer transition-all duration-300`}>home</h1>
         <h1 onClick={() => {router.push("/Course") , setselected("Courses")}} className={`${selected === "Courses" ? "text-blue-600 font-extrabold" : "font-[500]"} capitalize mx-5 hover:cursor-pointer transition-all duration-300`}>courses</h1>
 

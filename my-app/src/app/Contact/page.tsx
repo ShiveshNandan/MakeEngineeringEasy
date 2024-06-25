@@ -17,12 +17,12 @@ const page = () => {
         height={1}
         width={100000}
         alt=""
-        className="w-[20vw] absolute mt-[15vh] "
+        className="w-[20vw] absolute mt-[15vh] dark:invert "
       />
 
-      <div style={{fontFamily: "yourFont"}} className='flex bg-[url("../public/Background.png")]'>
+      <div style={{fontFamily: "yourFont"}} className='flex bg-[url("../public/Background.png")] dark:bg-[url("../public/Background_dark.png")]'>
 
-        <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[42vh] shadow-xl mb-20">
+        <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[42vh] shadow-xl mb-20 dark:bg-[#242424] dark:drop ">
           <div>
             <Image
               src={getinTouch}

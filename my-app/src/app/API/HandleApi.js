@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const URL = "https://main-project-4ph5.vercel.app/" 
+const URL = process.env.NEXT_PUBLIC_URL 
 
 const allCourses = async (setCourses) => {
     try {
