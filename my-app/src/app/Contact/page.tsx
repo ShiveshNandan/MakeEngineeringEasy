@@ -5,10 +5,13 @@ import plane2 from "../../public/Plane 1.png";
 import getinTouch from "../../public/get in touch.png";
 import contactIllus from "../../public/contact illustration.png";
 import Image from "next/image";
+import Sidebar from "../Sidebar";
+import A from "../../public/Bulb.png"
 
 const page = () => {
   return (
     <>
+    <Sidebar/>
     <div style={{fontFamily: "yourFontThin"}}>
       <Navbar params="Contact" />
     </div>
@@ -37,15 +40,18 @@ const page = () => {
               <input
                 type="text"
                 className="w-full px-2 py-2 border-2 rounded border-[#3333] my-3 "
+                placeholder="Full Name"
               />
               <input
                 type="email"
                 className="w-full px-2 py-2 border-2 rounded border-[#3333] my-3 "
+                placeholder="Email Address"
               />
               <textarea
                 id="w3review"
                 className="w-full border-2 border-[#3333] rounded-lg px-2 py-2 my-3 resize-none "
                 rows={9}
+                placeholder={`Message`}
                 
               ></textarea>
               <div className="flex justify-end w-full mx-auto my-4">

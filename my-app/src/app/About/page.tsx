@@ -10,12 +10,14 @@ import offer from "../../public/whatoffer.png";
 import commitment from "../../public/commitment.png";
 import Footer from "../footer";
 import { useTheme } from "next-themes";
+import Sidebar from "../Sidebar";
 
 const About = () => {
   // const {theme} = useTheme
   // console.log("themes " , theme)
   return (
     <>
+    <Sidebar/>
       <div style={{ fontFamily: "yourFontThin" }}>
         <Navbar params="About" />
       </div>

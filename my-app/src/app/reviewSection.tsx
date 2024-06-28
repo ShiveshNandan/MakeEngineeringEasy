@@ -65,7 +65,7 @@ const reviewSection = () => {
   return (
     <>
 <h1 style={{fontFamily : "YourFontBold"}} className='uppercase text-4xl my-[10vh] text-[#333931] dark:text-[#FFFFFF]'>Testimonials</h1>
-<div style={{fontFamily : "YourFont"}} className="relative">
+<div style={{fontFamily : "YourFont"}} className="relative z-10">
   
       <div className="flex w-12/12 overflow-x-hidden m-auto pt-10">
         <div className="flex transition-all duration-500 ease-in-out" style={{ transform: `translateX(-${activeIndex*25}%)` }}> 

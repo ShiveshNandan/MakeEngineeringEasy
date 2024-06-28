@@ -15,6 +15,7 @@ import notes from "../public/image 6 (1).png"
 import links from "../public/image 8 (1).png"
 import bulb from "../public/Bulb.png"
 import { useTheme } from "next-themes"
+import Sidebar from './Sidebar'
 
 
 const HeroSection = () => {
@@ -39,6 +40,9 @@ const HeroSection = () => {
         </div>
       </div>
       <Image src={plane} height={1} width={100000} alt='' className='w-[20vw] absolute right-0 mt-[60vh] dark:invert'/>
+      </div>
+      <div className=''>
+      <Sidebar/>
       </div>
 
 

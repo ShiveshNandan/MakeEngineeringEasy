@@ -27,7 +27,6 @@ const Footer = () => {
         <h1 className='font-bold mx-10' >Copyright <span>&copy;</span> 2024 All rights reserved</h1>
         <h1 className='font-bold mx-5' >Developed by Shivesh</h1>
        </div>
-       <ChangeTheme/>
     </div>
   )
 }
