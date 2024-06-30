@@ -1,19 +1,13 @@
+"use client"
 import React from "react";
-// import Team from "./FeedBack";
-import Navbar from "../navbar";
+import Navbar from "../../components/navbar";
 import Image from "next/image";
-import plane2 from "../../public/Plane 1.png";
-import plane from "../../public/Plane 2.png";
-import about from "../../public/aboutus.png";
-import mission from "../../public/ourmission.png";
-import offer from "../../public/whatoffer.png";
-import commitment from "../../public/commitment.png";
-import Footer from "../footer";
+import Footer from "../../components/footer";
 import { useTheme } from "next-themes";
-import Sidebar from "../Sidebar";
+import Sidebar from "../../components/Sidebar";
 
 const About = () => {
-  // const {theme} = useTheme
+  const {theme} = useTheme()
   // console.log("themes " , theme)
   return (
     <>
@@ -23,26 +17,35 @@ const About = () => {
       </div>
       <div
         style={{ fontFamily: "yourFont" }}
-        className='flex flex-col bg-[url("../public/Background.png")] dark:bg-[url("../public/Background_dark.png")]'
+        className='flex flex-col bg-[#FFFAF5] dark:bg-[#191817] bg-[url("../../public/Background.png")] dark:bg-[url("../public/Background_dark.png")]'
       >
         <div className="flex">
           <Image
-            src={plane2}
+            src={'/Plane 1.png'}
             height={1}
             width={100000}
             alt=""
             className="w-[20vw] absolute mt-[13vh] dark:invert"
-            // className="w-[20vw] absolute right-0 mt-[60vh]"
           />
           <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[40vh] shadow-xl dark:bg-[#242424]">
             <div>
-              <Image
-                src={'/aboutus.png'}
+            {theme === 'light' ? 
+          <Image
+          src={'/aboutus.png'}
+          height={1}
+          width={100000}
+          alt=""
+          className="w-[auto] h-[10vw] mt-[-6vw] ml-[-1.3vw]"
+        />
+          :
+          <Image
+                src={'/aboutus_dark.png'}
                 height={1}
                 width={100000}
                 alt=""
                 className="w-[auto] h-[10vw] mt-[-6vw] ml-[-1.3vw]"
               />
+         }
             </div>
             <div className="flex">
               <p className="px-[4vw] pb-10 pt-5 text-[1.5vw] text-[#89847f] tracking-wide dark:text-[#dbdbdb]">
@@ -63,22 +66,32 @@ const About = () => {
 
         <div className="flex">
           <Image
-            src={plane}
+            src={'/Plane 2.png'}
             height={1}
             width={100000}
             alt=""
-            // className="w-[20vw] absolute mt-[15vh]"
             className="w-[20vw] absolute right-0 mt-[6vh] dark:invert"
           />
           <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[40vh] shadow-xl dark:bg-[#242424]">
             <div>
-              <Image
-                src={mission}
+            {theme === 'light' ? 
+          <Image
+          src={'/ourmission.png'}
+          height={1}
+          width={100000}
+          alt=""
+          className="w-[auto] h-[10vw] mt-[-6.5vw]  ml-[-1vw]"
+        />
+          :
+          <Image
+                src={'/ourmission_dark.png'}
                 height={1}
                 width={100000}
                 alt=""
                 className="w-[auto] h-[10vw] mt-[-6.5vw]  ml-[-1vw]"
               />
+         }
+
             </div>
             <div className="flex">
               <p className="px-[4vw] pb-10 pt-5 text-[1.5vw] text-[#89847f] tracking-wide dark:text-[#dbdbdb]">
@@ -98,7 +111,7 @@ const About = () => {
 
         <div className="flex">
           <Image
-            src={plane2}
+            src={'/Plane 1.png'}
             height={1}
             width={100000}
             alt=""
@@ -107,13 +120,24 @@ const About = () => {
           />
           <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[40vh] shadow-xl dark:bg-[#242424]">
             <div>
-              <Image
-                src={offer}
+            {theme === 'light' ? 
+          <Image
+          src={'/whatoffer.png'}
+          height={1}
+          width={100000}
+          alt=""
+          className="w-[auto] h-[10vw] mt-[-6.5vw] ml-[-1vw] "
+        />
+          :
+          <Image
+                src={'/whatoffer_dark.png'}
                 height={1}
                 width={100000}
                 alt=""
                 className="w-[auto] h-[10vw] mt-[-6.5vw] ml-[-1vw] "
               />
+         }
+
             </div>
             <div className="flex flex-col">
               <p className="px-[4vw] pb-10 pt-5 text-[1.5vw] text-[#89847f] tracking-wide dark:text-[#dbdbdb]">
@@ -146,7 +170,7 @@ const About = () => {
 
         <div className="flex">
           <Image
-            src={plane}
+            src={'/Plane 2.png'}
             height={1}
             width={100000}
             alt=""
@@ -155,13 +179,25 @@ const About = () => {
           />
           <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[40vh] shadow-xl mb-20 dark:bg-[#242424]">
             <div>
-              <Image
-                src={commitment}
+
+            {theme === 'light' ? 
+          <Image
+          src={'/commitment.png'}
+          height={1}
+          width={100000}
+          alt=""
+          className="w-[auto] h-[13vw] mt-[-6.5vw] ml-[-1vw] "
+        />
+          :
+          <Image
+                src={'/commitment_dark.png'}
                 height={1}
                 width={100000}
                 alt=""
                 className="w-[auto] h-[13vw] mt-[-6.5vw] ml-[-1vw] "
               />
+         }
+
             </div>
             <div className="flex">
               <p className="px-[4vw] pb-10 text-[1.5vw] text-[#89847f] tracking-wide dark:text-[#dbdbdb]">

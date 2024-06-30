@@ -1,11 +1,9 @@
-import Image from 'next/image'
-import Navbar from './navbar'
-import HeroSection from './heroSection'
+'use client'
+import Navbar from '../components/navbar'
+import HeroSection from '../components/heroSection'
 
 
 export default function Home() {
-
-  console.log( process.env.NEXT_PUBLIC_DB_HOST);
 
   return (
     <>

@@ -1,7 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import profile from "../public/image 10.png"
 
 
 
@@ -75,7 +74,7 @@ const reviewSection = () => {
             <div key={index} onClick={() => handleDotClick(index)}  className="flex flex-col translate-x-[30vw] cursor-pointer">
               <div style={{background : `${index === activeIndex ?  `${slide.bg}` : " #ffffff "}`, border : ` ${index === activeIndex ?  `4px solid ${slide.Border}` : `2px solid ${slide.Border}`}`}}  className={` ${index === activeIndex ? " scale-[1.1] " : ""} flex w-[35.3vw] h-[20vw] mx-10 transition-all duration-500 ease-in-out my-10 bg-blue-200 border-4 rounded-3xl flex-col `}>
                 <div className='mt-[-6vh]'>
-                <Image src={profile} width={100} height={100} alt='' style={{background : `${index === activeIndex ?  `white` : "white"}`, border : `${index === activeIndex ?  `4px solid ${slide.profileBorder}` : `2px solid ${slide.profileBorder}`}`}} className={`' rounded-full w-[100px] h-[100px] m-auto '`}/>
+                <Image src={'/image 10.png'} width={100} height={100} alt='' style={{background : `${index === activeIndex ?  `white` : "white"}`, border : `${index === activeIndex ?  `4px solid ${slide.profileBorder}` : `2px solid ${slide.profileBorder}`}`}} className={`' rounded-full w-[100px] h-[100px] m-auto '`}/>
                 </div>
                 <div className='flex flex-col w-10/12 m-auto text-xl '>
                   

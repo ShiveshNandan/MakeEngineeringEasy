@@ -1,5 +1,5 @@
 "use client";
-import Navbar from "@/app/navbar";
+import Navbar from "@/components/navbar";
 import React, { useEffect, useState } from "react";
 import { allCourses } from "@/app/API/HandleApi";
 import Loading from "@/app/Course/Loading";

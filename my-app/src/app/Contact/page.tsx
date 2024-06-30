@@ -1,14 +1,13 @@
+"use client"
 import React from "react";
-import Navbar from "../navbar";
-import Footer from "../footer";
-import plane2 from "../../public/Plane 1.png";
-import getinTouch from "../../public/get in touch.png";
-import contactIllus from "../../public/contact illustration.png";
+import Navbar from "../../components/navbar";
+import Footer from "../../components/footer";
 import Image from "next/image";
-import Sidebar from "../Sidebar";
-import A from "../../public/Bulb.png"
+import Sidebar from "../../components/Sidebar";
+import { useTheme } from "next-themes";
 
 const page = () => {
+  const {theme} = useTheme()
   return (
     <>
     <Sidebar/>
@@ -16,24 +15,34 @@ const page = () => {
       <Navbar params="Contact" />
     </div>
       <Image
-        src={plane2}
+        src={'/Plane 1.png'}
         height={1}
         width={100000}
         alt=""
         className="w-[20vw] absolute mt-[15vh] dark:invert "
       />
 
-      <div style={{fontFamily: "yourFont"}} className='flex bg-[url("../public/Background.png")] dark:bg-[url("../public/Background_dark.png")]'>
+      <div style={{fontFamily: "yourFont"}} className='flex bg-[#FFFAF5] dark:bg-[#191817] bg-[url("../../public/Background.png")] dark:bg-[url("../../public/Background_dark.png")] drop'>
 
-        <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[42vh] shadow-xl mb-20 dark:bg-[#242424] dark:drop ">
+        <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[42vh] shadow-xl mb-20 dark:bg-[#242424] ">
           <div>
-            <Image
-              src={getinTouch}
+             {theme === 'light' ? 
+          <Image
+          src={'/get in touch.png'}
+          height={1}
+          width={100000}
+          alt=""
+          className="w-[auto] h-[10vw] mt-[-6.3vw]  ml-[-1vw]"
+        />
+          :
+          <Image
+              src={'/get in touch_dark.png'}
               height={1}
               width={100000}
               alt=""
               className="w-[auto] h-[10vw] mt-[-6.3vw]  ml-[-1vw]"
             />
+         }
           </div>
           <div className="flex">
             <div className="flex flex-col w-9/12 pl-[3.5vw] py-10">
@@ -62,7 +71,7 @@ const page = () => {
             </div>
             <div className="mx-auto">
               <Image
-                src={contactIllus}
+                src={'/contact illustration.png'}
                 height={10000}
                 width={100000}
                 alt=""

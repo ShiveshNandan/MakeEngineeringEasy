@@ -1,5 +1,4 @@
 import React from 'react'
-import loadimg from "../../public/loading.gif"
 import Image from 'next/image'
 
 const loader = () => {
@@ -7,7 +6,7 @@ const loader = () => {
     <div className='flex h-screen'>
       <p className='flex w-fit my-auto mx-auto flex-col text-center justify-center '>
         <div className="flex justify-center my-1">
-      <Image src={loadimg} alt="ss" height={0} width={30} className=''/>
+      <Image src={'/loading.gif'} alt="ss" height={0} width={30} className=''/>
         </div>
       Loading
       </p>
