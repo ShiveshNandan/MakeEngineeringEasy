@@ -7,14 +7,16 @@ import Image from "next/image";
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useGlobalState } from '@/components/GlobalVariableProvider';
 
 const LoginPage = () => {
-  const [loggedInUser, setLoggedInUser] = useState<any>(null);
+  const { globalState, setGlobalState } = useGlobalState();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [Signup, setSignup] = useState(false)
-  const [errors, seterrors] = useState("")
+  // const [errors, errors = ] = useState("")
+  let errors : string | null = null;
   const router = useRouter();
 
 
@@ -23,8 +25,8 @@ const LoginPage = () => {
 
   useEffect(() => {
     async function getUser() {
-      setLoggedInUser(await account.get());
-      console.log("loggedin user :", loggedInUser);
+      setGlobalState(await account.get());
+      console.log("loggedin user :", useGlobalState);
     }
     getUser();
   }, []);
@@ -32,18 +34,20 @@ const LoginPage = () => {
   const login = async (email: any, password: any) => {
     try {
       const session = await account.createEmailPasswordSession(email, password);
-      setLoggedInUser(await account.get());
+      setGlobalState(await account.get());
       console.log("session :", session);
     } catch (error:any) {
 
       alert(error.message)
 
       if (error.message.includes("Invalid `email` param")) {
-        seterrors("Enter a valid email address");
+        errors = ("Enter a valid email address");
       } else if (error.message.includes("Invalid `password` param")) {
-        seterrors("Password is wrong");
+        errors = ("Password is wrong");
+      } else if (error.message.includes("Invalid credentials.")) {
+        errors = ("Email and Password is wrong");
       }else{
-        seterrors("Enter Credentials");
+        errors = ("Enter Credentials");
       }
       toast.error(`${errors}`,{theme: "dark"})
     }
@@ -57,11 +61,15 @@ const LoginPage = () => {
       // console.log("error register: ", error);
       alert(error.message)
       if (error.message.includes("Invalid `email` param")) {
-        seterrors("Enter a valid email address");
-      } else if (error.message.includes("Invalid `passward` param")) {
-        seterrors("Password is wrong");
+        errors = ("Enter a valid email address");
+      } else if (error.message.includes("Invalid `password` param")) {
+        errors = ("Enter a Password");
+      }else if (error.message.includes("Invalid `name` param")) {
+        errors = ("Enter Username");
+      }else if (error.message.includes("A user with the same id, email, or phone already exists in this project.")) {
+        errors = ("Email Already used");
       }else{
-        seterrors("Unexpected Error Occured. Please try after Sometime" !);
+        errors = ("Unexpected Error Occured. Please try after Sometime" !);
       }
       toast.error(`${errors}`,{theme: "dark"})
     }
@@ -73,19 +81,19 @@ const LoginPage = () => {
 
   const logout = async () => {
     await account.deleteSession("current");
-    setLoggedInUser(null);
+    setGlobalState(null);
   };
 
-  if (loggedInUser) {
+  if (globalState) {
     const handlePush = () => {
-    if (loggedInUser) {
+    if (globalState) {
     router.push("/Login")
     }
     handlePush()
     }
     return (
       <div>
-        <p>Logged in as {(loggedInUser.name)}</p>
+        <p onClick={() => {router.push("/")}}>Logged in as {(globalState.name)}</p>
         <button type="button" onClick={logout}>
           Logout
         </button>

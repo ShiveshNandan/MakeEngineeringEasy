@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/Shadcn components/theme-provider'
-import { useTheme } from 'next-themes'
+import { GlobalStateProvider } from '@/components/GlobalVariableProvider';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,7 +25,9 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <GlobalStateProvider>
             {children}
+            </GlobalStateProvider>
           </ThemeProvider>
         </body>
       </html>

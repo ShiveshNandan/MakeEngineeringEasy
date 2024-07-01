@@ -3,20 +3,17 @@ import {useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { account, ID } from "@/components/appwrite";
 import "./navStyle.css"
+import { useGlobalState } from '@/components/GlobalVariableProvider';
+
+
 
 const Navbar = (params:any) => {
-  const [loggedInUser, setLoggedInUser] = useState<any>(null);
+  const { globalState, setGlobalState } = useGlobalState();
   const [selected, setselected] = useState(params.params)
   const router = useRouter()
   console.log(selected)
   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    async function getit() {
-      setLoggedInUser(await account.get())
-    }     
-    getit()
-  }, [])
   
   useEffect(() => {
     const handleScroll = () => {
@@ -51,7 +48,7 @@ const Navbar = (params:any) => {
         <h1 onClick={() => {router.push("/") , setselected("Home")}} style={{fontFamily : 'YourFontMedium'}} className={`mx-5 hover:cursor-pointer transition-all duration-300 capitalize font-bold text-[1.4rem] tracking-[0.5px]`} >make engineering <span className='block-inline text-[#ffaa2b] '> easy</span></h1>
 
         <h1 onClick={() => {router.push("/About"), setselected("About")}} className={`${selected === "About" ? "text-blue-600 font-extrabold" : "font-[500]"} capitalize mx-5 hover:cursor-pointer transition-all duration-300`}>About</h1>
-        <h1 onClick={() => {router.push("/Login") , setselected("LogIn")}} className={`${selected === "LogIn" ? "text-blue-600 font-extrabold" : "font-[500]"} capitalize mx-5 hover:cursor-pointer transition-all duration-300`}>{loggedInUser ? "Profile" : "LogIn"}</h1>
+        <h1 onClick={() => {router.push("/Login") , setselected("LogIn")}} className={`${selected === "LogIn" ? "text-blue-600 font-extrabold" : "font-[500]"} capitalize mx-5 hover:cursor-pointer transition-all duration-300`}>{globalState ? "Profile" : "LogIn"}</h1>
       </div>
       
     </>
