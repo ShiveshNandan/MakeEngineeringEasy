@@ -1,23 +1,32 @@
-import React from "react";
+'use client'
+import React, { useState } from "react";
 import Navbar from "@/components/navbar";
 import { useGlobalState } from "@/components/GlobalVariableProvider";
-import { useRouter } from "next/navigation";
 import { account, ID } from "@/components/appwrite";
 import Image from "next/image";
 import Sidebar from "@/components/Sidebar";
+import Loading from "@/app/Course/Loading";
 
-const ProfilePage = () => {
-  const router = useRouter();
+const Profile = () => {
   const { globalState, setGlobalState } = useGlobalState();
   const logout = async () => {
     await account.deleteSession("current");
     setGlobalState(null);
   };
+  
+  const [loading, setloading] = useState(false)
+setTimeout(() => {
+    setloading(true)
+  }, 2000);
 
   console.log(globalState);
 
   return (
     <>
+    {!loading ? 
+    <Loading/> 
+    :
+      <> 
       <Navbar />
       <Sidebar />
       <div className="flex pt-[120px] w-10/12 m-auto px-10 flex-col">
@@ -90,8 +99,10 @@ const ProfilePage = () => {
         </h1>
         <div className="h-[10vh]"></div>
       </div>
+      </>
+      }
     </>
   );
 };
 
-export default ProfilePage;
+export default Profile;

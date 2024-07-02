@@ -18,14 +18,15 @@ const LoginPage = () => {
   const [name, setName] = useState("");
   const [Signup, setSignup] = useState(false)
   const {theme} = useTheme()
+
   // const [errors, errors = ] = useState("")
   let errors : string | null = null;
   const router = useRouter();
 
 
   // const notify = () => toast("Wow so easy !");
-
-
+  
+  
   useEffect(() => {
     async function getUser() {
       setGlobalState(await account.get());
@@ -85,13 +86,15 @@ const LoginPage = () => {
   if (globalState) {
     const handlePush = () => {
     if (globalState) {
-    router.push("/Login")
+        router.push("/Login")
     }
     handlePush()
     }
     return (
       <div>
+
         <ProfilePage/>
+        
       </div>
     );
   }
