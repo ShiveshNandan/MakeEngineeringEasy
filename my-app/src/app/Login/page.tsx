@@ -8,6 +8,8 @@ import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useGlobalState } from '@/components/GlobalVariableProvider';
+import ProfilePage from "../Profile/page";
+import { useTheme } from "next-themes";
 
 const LoginPage = () => {
   const { globalState, setGlobalState } = useGlobalState();
@@ -15,6 +17,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [Signup, setSignup] = useState(false)
+  const {theme} = useTheme()
   // const [errors, errors = ] = useState("")
   let errors : string | null = null;
   const router = useRouter();
@@ -38,7 +41,7 @@ const LoginPage = () => {
       console.log("session :", session);
     } catch (error:any) {
 
-      alert(error.message)
+      // alert(error.message)
 
       if (error.message.includes("Invalid `email` param")) {
         errors = ("Enter a valid email address");
@@ -49,7 +52,7 @@ const LoginPage = () => {
       }else{
         errors = ("Enter Credentials");
       }
-      toast.error(`${errors}`,{theme: "dark"})
+      toast.error(`${errors}`,{theme: "dark", position: "top-center"})
     }
   };
 
@@ -58,7 +61,7 @@ const LoginPage = () => {
       await account.create(ID.unique(), email, password, name);
       login(email, password);
     } catch (error:any) {
-      // console.log("error register: ", error);
+      
       alert(error.message)
       if (error.message.includes("Invalid `email` param")) {
         errors = ("Enter a valid email address");
@@ -69,20 +72,15 @@ const LoginPage = () => {
       }else if (error.message.includes("A user with the same id, email, or phone already exists in this project.")) {
         errors = ("Email Already used");
       }else{
-        errors = ("Unexpected Error Occured. Please try after Sometime" !);
+        errors = ("Unexpected Error Occured. Please try after Sometime");
       }
       toast.error(`${errors}`,{theme: "dark"})
     }
   };
 
   const handleSignup = () => {
-    {Signup ? setSignup(false) : setSignup(true)}
+    {!Signup ? setSignup(true) : setSignup(false)}
   } 
-
-  const logout = async () => {
-    await account.deleteSession("current");
-    setGlobalState(null);
-  };
 
   if (globalState) {
     const handlePush = () => {
@@ -93,10 +91,7 @@ const LoginPage = () => {
     }
     return (
       <div>
-        <p onClick={() => {router.push("/")}}>Logged in as {(globalState.name)}</p>
-        <button type="button" onClick={logout}>
-          Logout
-        </button>
+        <ProfilePage/>
       </div>
     );
   }
@@ -104,6 +99,12 @@ const LoginPage = () => {
   return (
     <>
       <ToastContainer />
+      {theme === 'dark' ? 
+      <Image src={"/shape_dark.png"} height={100} width={1000} alt="" className="fixed bottom-0 right-0 w-[300px]"/> 
+      :
+      <Image src={"/shape.png"} height={100} width={1000} alt="" className="fixed bottom-0 right-0 w-[300px]"/>
+      }
+      
 
       <div style={{fontFamily : 'YourFont'}} className="flex">
 
@@ -123,55 +124,55 @@ const LoginPage = () => {
         </div>
 
         <div className="flex h-screen w-full ">
-          <div className="flex w-5/12 pt-10 bg-[#242424]">
+          <div className="flex w-5/12 pt-10 dark:bg-[#242424] ">
             <Image src={"/cuate.png"} height={100} width={1000} alt="" className="w-8/12 m-auto" />
           </div>
 
-          <div className="flex flex-col w-7/12 justify-center items-center ">
+          <div className="flex flex-col w-7/12 justify-center items-center bg-[#fff] dark:bg-[#191817]">
 
 
 
 
-              {Signup ? 
+              {!Signup ? 
             <div className="flex flex-col w-7/12 mx-auto ">
               <div className="flex flex-col">
               <h1 style={{fontFamily : 'YourFontMedium'}} className=" text-3xl font-[600] tracking-[0.4px] ">Create an account</h1>
               {/* <h1 className="text-sm pt-2 font-[100] text-[#a5a5a5] tracking-[0.5px] pb-1 ">Enter your email below to create your account</h1> */}
             </div> 
               <form className="flex flex-col mt-10">
-              <h1 className="text-sm pt-2 font-[100] text-[#a5a5a5] tracking-[0.5px] pb-1 ">Username </h1>
+              <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Username </h1>
                 <input
                   type="text"
                   placeholder="Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="p-3 mb-2 outline-none rounded bg-[#1e1c1a] border"
+                  className="p-3 mb-2 outline-none rounded dark:bg-[#1e1c1a] border"
                 />
-                <h1 className="text-sm pt-2 font-[100] text-[#a5a5a5] tracking-[0.5px] pb-1 ">Email Address </h1>
+                <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Email Address </h1>
                 <input
                   type="email"
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="p-3 mb-2 outline-none rounded bg-[#1e1c1a] border"
+                  className="p-3 mb-2 outline-none rounded dark:bg-[#1e1c1a] border"
                 />
-                <h1 className="text-sm pt-2 font-[100] text-[#a5a5a5] tracking-[0.5px] pb-1 ">Create Password </h1>
+                <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Create Password </h1>
                 <input
                   type="password"
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="p-3 mb-2 outline-none rounded bg-[#1e1c1a] border"
+                  className="p-3 mb-2 outline-none rounded dark:bg-[#1e1c1a] border"
                 />
                 <button
                   type="button"
                   onClick={register}
-                  className="p-2 my-2 rounded text-black bg-[#ffffff] text-[600] "
+                  className="p-2 my-2 rounded text-[#ffffff] bg-[#263238] dark:bg-[#ffffff] dark:text-[#263238] text-[600] "
                 >
                   Create Account
                 </button>
               </form>
-              <h1 onClick={() => handleSignup()} className="text-xs py-1 flex justify-end underline underline-offset-4 text-[#a5a5a5]  cursor-pointer">Already have an account?</h1>
+              <h1 onClick={() => handleSignup()} className="text-xs py-1 flex justify-end underline underline-offset-4 dark:text-[#a5a5a5] text-[#333]  cursor-pointer">Already have an account?</h1>
               {/* <button >Notify !</button> */}
               </div>
 
@@ -186,50 +187,50 @@ const LoginPage = () => {
               {/* <h1 className="text-sm pt-2 font-[100] text-[#a5a5a5] tracking-[0.5px] pb-1 ">Enter your email below to create your account</h1> */}
             </div> 
               <form className="flex flex-col mt-10">
-              <h1 className="text-sm pt-2 font-[100] text-[#a5a5a5] tracking-[0.5px] pb-1 ">Email Address </h1>
+              <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Email Address </h1>
               <input
                 type="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="p-3 mb-2 outline-none rounded bg-[#1e1c1a] border"
+                className="p-3 mb-2 outline-none rounded dark:bg-[#1e1c1a] border"
               />
-              <h1 className="text-sm pt-2 font-[100] text-[#a5a5a5] tracking-[0.5px] pb-1 ">Password </h1>
+              <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Password </h1>
               <input
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="p-3 mb-2 outline-none rounded bg-[#1e1c1a] border"
+                className="p-3 mb-2 outline-none rounded dark:bg-[#1e1c1a] border"
               />
 
               <button
                 type="button"
                 onClick={() => login(email, password)}
-                className="p-2 my-2 rounded text-black bg-[#ffffff] text-[600] "
+                className="p-2 my-2 rounded text-[#ffffff] bg-[#263238] dark:bg-[#ffffff] dark:text-[#263238] text-[600] "
               >
                 Login
               </button>
               
             </form> 
-            <h1 onClick={() => handleSignup()} className="text-xs py-1 flex justify-end underline underline-offset-4 text-[#a5a5a5]  cursor-pointer">dont have an account?</h1>
+            <h1 onClick={() => handleSignup()} className="text-xs py-1 flex justify-end underline underline-offset-4 dark:text-[#a5a5a5] text-[#333]  cursor-pointer">dont have an account?</h1>
             </div>
              }
 
 <div className="flex flex-col w-7/12 mx-auto ">
-              <h1 className="text-center text-[#a5a5a5] p-4">or continue with</h1>
+              <h1 className="text-center dark:text-[#a5a5a5] text-[#333] p-4">or continue with</h1>
               <div className="flex flex-col">
               <button
                   type="button"
                   // onClick={register}
-                  className="p-2 my-2 rounded text-black bg-[#ffffff] text-[600] flex justify-center"
+                  className="p-2 my-2 rounded bg-[#ffffff] dark:bg-[#191817] text-[600] flex justify-center border backdrop-blur-[10px] "
                 >
                   <Image src={'/google.png'} height={10} width={1000} alt="" className="h-6 w-6 mx-2"/> Google
                 </button>
                 <button
                   type="button"
                   // onClick={register}
-                  className="p-2 my-2 rounded text-black bg-[#ffffff] text-[600] flex justify-center"
+                  className="p-2 my-2 rounded bg-[#ffffff] dark:bg-[#191817] text-[600] flex justify-center border backdrop-blur-[10px] "
                 >
                   <Image src={'/GitHub.png'} height={10} width={1000} alt="" className="h-6 w-6 mx-2"/> Github
                 </button> 
