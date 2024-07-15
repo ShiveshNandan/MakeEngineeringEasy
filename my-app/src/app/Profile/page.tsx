@@ -29,7 +29,7 @@ setTimeout(() => {
       <> 
       <Navbar />
       <Sidebar />
-      <div className="flex pt-[120px] w-10/12 m-auto px-10 flex-col">
+      <div style={{fontFamily : 'YourFont'}} className="flex pt-[120px] w-10/12 m-auto px-10 flex-col">
         <div className="flex justify-end w-full">
           {/* <p className="dark:text-gray-300 text-gray-700 text-xl my-2 underline underline-offset-4">
             Logged in as {globalState.name}

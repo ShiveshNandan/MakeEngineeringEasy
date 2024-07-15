@@ -43,14 +43,14 @@ const Page = () => {
       }).catch((e) => {
         console.log("error",e);
         if(e.message.includes("Failed to fetch")){
-          toast.error("something went wrong. Please check your internet connection",{theme:"colored", position: "top-center",})
+          toast.error("something went wrong. Please check your internet connection",{theme:"colored", position: "top-center",autoClose: 2000})
         }else if(e.message.includes("User (role: guests)")){
-          toast.error("Login to access this feature",{theme:"colored", position: "top-center",})
+          toast.error("Login to access this feature",{theme:"colored", position: "top-center",autoClose: 2000})
           setTimeout(() => {
             router.push("/Login")
-          }, 5000);
+          }, 3000);
         }else{
-          toast.error("We are facing some issue. Sorry for the inconvenience.",{theme:"colored", position: "top-center",})
+          toast.error("We are facing some issue. Sorry for the inconvenience.",{theme:"colored", position: "top-center",autoClose: 2000})
         }
       })
       
