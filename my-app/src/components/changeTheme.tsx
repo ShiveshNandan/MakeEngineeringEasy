@@ -9,10 +9,10 @@ const ModeToggle = () => {
   const { theme, setTheme } = useTheme()
   const toggle = () => {
     {theme ==='dark' ? setTheme('light') : setTheme('dark')}
-    console.log(theme)
+    // console.log(theme)
   }
 
-  console.log("theme",theme)
+  // console.log("theme",theme)
   return (
     <>
     <div onClick={() => toggle()} className="flex cursor-pointer z-[10]">
