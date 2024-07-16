@@ -5,33 +5,33 @@ import Footer from "./footer";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import Sidebar from "./Sidebar";
+import { useRouter } from "next/navigation";
 
 const HeroSection = () => {
-  // const {theme,} = useTheme()
   const { theme, setTheme } = useTheme();
   useEffect(() => {
     {
       theme === "light" ? setTheme("light") : setTheme("dark");
     }
-    // setTheme('dark')
   }, []);
 
-  // console.log("first")
+  const router = useRouter();
+
 
   return (
     <>
       <div
         style={{ fontFamily: "YourFontBold" }}
-        className='h-[120vh] max-lg:h-[90vh] max-sm:h-[100vh] flex flex-col justify-center bg-[url("../../public/Background.png")] dark:bg-[url("../public/Background_dark.png")]'
+        className='h-[120vh] max-lg:h-[90vh] flex flex-col justify-center bg-[url("../../public/Background.png")] dark:bg-[url("../public/Background_dark.png")]'
       >
         <Image
           src={"/Plane 1.png"}
           height={1}
           width={100000}
           alt=""
-          className="w-[20vw] max-lg:w-[30vw] max-lg:mt-[-50vh] max-sm:w-[40vw] absolute mt-[-55vh] max-sm:mt-[-46vh]  dark:invert "
+          className="w-[20vw] max-lg:w-[30vw] max-lg:mt-[-50vh] max-sm:w-[40vw] absolute mt-[-55vh] dark:invert max-sm:mt-[-45vh]"
         />
-        <div className="flex flex-col text-center mt-[10vh] max-sm:mt-[12vh]">
+        <div className="flex flex-col text-center mt-[10vh] max-sm:mt-[5vh]">
           <h1 className="uppercase m-auto text-[4vw] tracking-[0.8px] w-7/12 text-[#333333] max-lg:w-10/12 max-lg:text-[6vw] leading-[5.5vw] max-lg:leading-[7vw] max-sm:w-11/12 max-sm:text-[9vw] max-sm:leading-[10vw] dark:text-[#fffaf5] ">
             unlock the{" "}
             <span className="inline-block">
@@ -69,7 +69,7 @@ const HeroSection = () => {
               learning
             </span>
           </h1>
-          <div className="flex m-auto bg-[#333333] w-fit mt-20 p-1 rounded-full dark:bg-[#fff4ec] max-sm:mt-12">
+          <div onClick={() => router.push("/Course")} className="flex m-auto bg-[#333333] w-fit mt-20 p-1 rounded-full dark:bg-[#fff4ec] max-sm:mt-12 cursor-pointer">
             <h1 className="text-xl flex bg-[#333333] text-[#fff4ec] rounded-full px-6 py-3 capitalize border-dashed border-[#fff4ec] border-2 items-center dark:bg-[#fff4ec] dark:border-[#333333] dark:text-[#333333] max-sm:text-sm max-sm:px-3 max-sm:py-1 max-sm:border-[1.3px]">
               <span className="inline-block">
                 <Image
@@ -77,7 +77,7 @@ const HeroSection = () => {
                   height={1}
                   width={100000}
                   alt=""
-                  className="w-[30px] max-sm:w-[20px] justify-center mr-2 "
+                  className="w-[30px] max-sm:w-[20px] justify-center mr-2"
                 />
               </span>{" "}
               explore courses
@@ -89,7 +89,7 @@ const HeroSection = () => {
           height={1}
           width={100000}
           alt=""
-          className="w-[20vw] max-lg:w-[30vw] absolute right-0 mt-[60vh] dark:invert max-sm:w-[40vw] max-sm:mt-[70vh]"
+          className="w-[20vw] max-lg:w-[30vw] absolute right-0 mt-[60vh] dark:invert max-sm:w-[40vw] max-sm:mt-[60vh]"
         />
       </div>
       <div className=" max-sm:hidden ">
@@ -109,7 +109,7 @@ const HeroSection = () => {
         >
           <h1
             style={{ fontFamily: "YourFontbold" }}
-            className="uppercase text-4xl my-14 text-[#333333] font-bold dark:text-[#FFFFFF] max-sm:my-8"
+            className="uppercase text-5xl my-14 text-[#333333] font-bold dark:text-[#FFFFFF] max-sm:my-8 max-sm:text-2xl"
           >
             features
           </h1>

@@ -11,7 +11,9 @@ const About = () => {
   // console.log("themes " , theme)
   return (
     <>
+    <div className="max-sm:hidden">
     <Sidebar/>
+    </div>
       <div style={{ fontFamily: "yourFontThin" }}>
         <Navbar params="About" />
       </div>
@@ -25,9 +27,9 @@ const About = () => {
             height={1}
             width={100000}
             alt=""
-            className="w-[20vw] absolute mt-[13vh] dark:invert"
+            className="w-[20vw] max-lg:w-[30vw] absolute mt-[13vh] dark:invert max-sm:hidden"
           />
-          <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[40vh] shadow-xl dark:bg-[#242424]">
+          <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[40vh] shadow-xl dark:bg-[#242424] max-sm:w-11/12 max-sm:mt-[13rem]">
             <div>
             {theme === 'light' ? 
           <Image
@@ -35,7 +37,7 @@ const About = () => {
           height={1}
           width={100000}
           alt=""
-          className="w-[auto] h-[10vw] mt-[-6vw] ml-[-1.3vw]"
+          className="w-[auto] h-[10vw] mt-[-6vw] ml-[-1.3vw] max-lg:h-[13vw] max-lg:mt-[-8vw] max-sm:h-[6.5rem] max-sm:mt-[-4rem]"
         />
           :
           <Image
@@ -43,12 +45,12 @@ const About = () => {
                 height={1}
                 width={100000}
                 alt=""
-                className="w-[auto] h-[10vw] mt-[-6vw] ml-[-1.3vw]"
+                className="w-[auto] h-[10vw] mt-[-6vw] ml-[-1.3vw] max-lg:h-[13vw]"
               />
          }
             </div>
             <div className="flex">
-              <p className="px-[4vw] pb-10 pt-5 text-[1.5vw] text-[#89847f] tracking-wide dark:text-[#dbdbdb]">
+              <p className="px-[4vw] pb-10 pt-5 text-[1.5vw] text-[#89847f] tracking-wide dark:text-[#dbdbdb] max-lg:text-xl max-sm:pt-0 max-sm:text-lg">
                 Welcome to{" "}
                 <span className="text-[#706d69] dark:text-white font-semibold">
                   Make Engineering Easy
@@ -70,9 +72,9 @@ const About = () => {
             height={1}
             width={100000}
             alt=""
-            className="w-[20vw] absolute right-0 mt-[6vh] dark:invert"
+            className="w-[20vw] absolute right-0 mt-[6vh] dark:invert max-lg:w-[30vw] max-sm:hidden"
           />
-          <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[40vh] shadow-xl dark:bg-[#242424]">
+          <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[40vh] shadow-xl dark:bg-[#242424] max-sm:mt-[10rem] max-sm:w-11/12">
             <div>
             {theme === 'light' ? 
           <Image
@@ -80,7 +82,7 @@ const About = () => {
           height={1}
           width={100000}
           alt=""
-          className="w-[auto] h-[10vw] mt-[-6.5vw]  ml-[-1vw]"
+          className="w-[auto] h-[10vw] mt-[-6.5vw] ml-[-1vw] max-lg:mt-[-9vw] max-lg:h-[14vw] max-sm:h-[6rem] max-sm:mt-[-4rem]"
         />
           :
           <Image
@@ -88,13 +90,13 @@ const About = () => {
                 height={1}
                 width={100000}
                 alt=""
-                className="w-[auto] h-[10vw] mt-[-6.5vw]  ml-[-1vw]"
+                className="w-[auto] h-[10vw] mt-[-6.5vw]  ml-[-1vw] max-lg:mt-[-9vw] max-lg:h-[14vw] max-sm:h-[6rem] max-sm:mt-[-4rem]"
               />
          }
 
             </div>
             <div className="flex">
-              <p className="px-[4vw] pb-10 pt-5 text-[1.5vw] text-[#89847f] tracking-wide dark:text-[#dbdbdb]">
+              <p className="px-[4vw] pb-10 pt-5 text-[1.5vw] text-[#89847f] tracking-wide dark:text-[#dbdbdb] max-lg:text-xl max-sm:text-lg">
               At{" "}
           <span className="text-[#706d69] dark:text-white font-semibold">
             Make Engineering Easy
@@ -115,10 +117,10 @@ const About = () => {
             height={1}
             width={100000}
             alt=""
-            className="w-[20vw] absolute mt-[6vh] dark:invert"
+            className="w-[20vw] absolute mt-[6vh] dark:invert max-lg:w-[30vw] max-sm:hidden"
             // className="w-[20vw] absolute right-0 mt-[6vh]"
           />
-          <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[40vh] shadow-xl dark:bg-[#242424]">
+          <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[40vh] shadow-xl dark:bg-[#242424] max-sm:mt-[10rem] max-sm:w-11/12">
             <div>
             {theme === 'light' ? 
           <Image
@@ -126,7 +128,7 @@ const About = () => {
           height={1}
           width={100000}
           alt=""
-          className="w-[auto] h-[10vw] mt-[-6.5vw] ml-[-1vw] "
+          className="w-[auto] h-[10vw] mt-[-6.5vw] ml-[-1vw] max-lg:mt-[-8vw] max-lg:h-[13vw] max-sm:h-[5rem] max-sm:mt-[-3.5rem]"
         />
           :
           <Image
@@ -134,13 +136,13 @@ const About = () => {
                 height={1}
                 width={100000}
                 alt=""
-                className="w-[auto] h-[10vw] mt-[-6.5vw] ml-[-1vw] "
+                className="w-[auto] h-[10vw] mt-[-6.5vw] ml-[-1vw] max-lg:mt-[-8vw] max-lg:h-[13vw] max-sm:h-[5rem] max-sm:mt-[-3.5rem]"
               />
          }
 
             </div>
             <div className="flex flex-col">
-              <p className="px-[4vw] pb-10 pt-5 text-[1.5vw] text-[#89847f] tracking-wide dark:text-[#dbdbdb]">
+              <p className="px-[4vw] pb-10 pt-5 text-[1.5vw] text-[#89847f] tracking-wide dark:text-[#dbdbdb] max-lg:text-xl max-sm:text-lg">
               <span className="text-[#706d69] dark:text-white font-semibold">
             Past Year Question Papers (PYQs):
           </span>{" "}
@@ -148,7 +150,7 @@ const About = () => {
           subjects and educational boards, enabling you to familiarize yourself
           with exam patterns and prepare effectively.
         </p>
-              <p className="px-[4vw] pb-10 pt-5 text-[1.5vw] text-[#89847f] tracking-wide dark:text-[#dbdbdb]">
+              <p className="px-[4vw] pb-10 pt-5 text-[1.5vw] text-[#89847f] tracking-wide dark:text-[#dbdbdb] max-lg:text-xl max-sm:text-lg">
               <span className="text-[#706d69] dark:text-white font-semibold">
             Comprehensive Study Notes:
           </span>{" "}
@@ -157,7 +159,7 @@ const About = () => {
           concepts and facilitate a deeper understanding of your course
           material.
         </p>
-              <p className="px-[4vw] pb-10 pt-5 text-[1.5vw] text-[#89847f] tracking-wide dark:text-[#dbdbdb]">
+              <p className="px-[4vw] pb-10 pt-5 text-[1.5vw] text-[#89847f] tracking-wide dark:text-[#dbdbdb] max-lg:text-xl max-sm:text-lg">
               <span className="text-[#706d69] dark:text-white font-semibold">Lecture Links:</span>{" "}
           Seamlessly integrate your learning experience with our carefully
           curated collection of lecture links from renowned educators, ensuring
@@ -175,9 +177,9 @@ const About = () => {
             width={100000}
             alt=""
             // className="w-[20vw] absolute mt-[15vh]"
-            className="w-[20vw] absolute right-0 mt-[6vh] dark:invert"
+            className="w-[20vw] absolute right-0 mt-[6vh] dark:invert max-lg:w-[30vw] max-sm:hidden"
           />
-          <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[40vh] shadow-xl mb-20 dark:bg-[#242424]">
+          <div className="flex flex-col bg-[#fff3e8] w-9/12 rounded-3xl m-auto mt-[40vh] shadow-xl mb-20 dark:bg-[#242424] max-sm:mt-[10rem] max-sm:w-11/12">
             <div>
 
             {theme === 'light' ? 
@@ -186,7 +188,7 @@ const About = () => {
           height={1}
           width={100000}
           alt=""
-          className="w-[auto] h-[13vw] mt-[-6.5vw] ml-[-1vw] "
+          className="w-[auto] h-[13vw] mt-[-6.5vw] ml-[-1vw] max-lg:h-[17vw] max-lg:mt-[-10vw] max-sm:h-[7rem] max-sm:mt-[-4rem]"
         />
           :
           <Image
@@ -194,13 +196,13 @@ const About = () => {
                 height={1}
                 width={100000}
                 alt=""
-                className="w-[auto] h-[13vw] mt-[-6.5vw] ml-[-1vw] "
+                className="w-[auto] h-[13vw] mt-[-6.5vw] ml-[-1vw] max-lg:h-[17vw] max-lg:mt-[-10vw] max-sm:h-[7rem] max-sm:mt-[-4rem]"
               />
          }
 
             </div>
             <div className="flex">
-              <p className="px-[4vw] pb-10 text-[1.5vw] text-[#89847f] tracking-wide dark:text-[#dbdbdb]">
+              <p className="px-[4vw] pb-10 text-[1.5vw] text-[#89847f] tracking-wide dark:text-[#dbdbdb] max-lg:text-xl max-sm:text-lg">
               We are passionate about fostering a learning environment that
           encourages
           <span className="text-[#706d69] dark:text-white font-semibold">

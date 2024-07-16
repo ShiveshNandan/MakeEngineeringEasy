@@ -63,7 +63,7 @@ const reviewSection = () => {
 
   return (
     <>
-<h1 style={{fontFamily : "YourFontBold"}} className='uppercase text-4xl my-[10vh] text-[#333931] dark:text-[#FFFFFF] max-sm:my-[1rem]'>Testimonials</h1>
+<h1 style={{fontFamily : "YourFontBold"}} className='uppercase text-4xl my-[10vh] text-[#333931] dark:text-[#FFFFFF] max-sm:my-[1rem] max-sm:text-2xl'>Testimonials</h1>
 <div style={{fontFamily : "YourFont"}} className="relative z-10">
   
       <div className="flex w-12/12 overflow-x-hidden m-auto pt-10 ">
@@ -78,8 +78,8 @@ const reviewSection = () => {
                 </div>
                 <div className='flex flex-col w-10/12 m-auto text-xl max-sm:w-11/12'>
                   
-                <p style={{color : `${index === activeIndex ?  `${slide.font}` : " #adadad "}`}} className={`${index === activeIndex ?  "text-[1.2vw] max-md:text-[2.5vw]" : "text-[1vw] max-md:text-[2.3vw]"}  leading-[1.8vw] max-md:leading-[2.9vw] transition-all duration-500 ease-in-out `} >{slide.review}</p>
-                <p style={{color : `${index === activeIndex ?  `${slide.comma}` : `${slide.comma}`}`}}  className={` ${index === activeIndex ?  "font-bold text-[1.2vw] tracking-wide max-md:text-[2.5vw]" : "text-[1.1vw] max-md:text-[2.3vw]"} flex justify-end my-5 capitalize transition-all duration-500 ease-in-out max-sm:my-1 max-sm:p-0`}>- {slide.author}</p>
+                <p style={{color : `${index === activeIndex ?  `${slide.font}` : " #adadad "}`}} className={`${index === activeIndex ?  "text-[1.2vw] max-md:text-[2.3vw]" : "text-[1vw] max-md:text-[2.5vw]"}  leading-[1.8vw] max-md:leading-[2.9vw] transition-all duration-500 ease-in-out `} >{slide.review}</p>
+                <p style={{color : `${index === activeIndex ?  `${slide.comma}` : `${slide.comma}`}`}}  className={` ${index === activeIndex ?  "font-bold text-[1.2vw] tracking-wide max-md:text-[2.2vw]" : "text-[1.1vw] max-md:text-[2.3vw]"} flex justify-end my-5 capitalize transition-all duration-500 ease-in-out max-sm:my-1 max-sm:p-0`}>- {slide.author}</p>
                 </div>
               </div>
               

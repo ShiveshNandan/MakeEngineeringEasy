@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { account, ID } from "@/components/appwrite";
 import { useRouter } from "next/navigation";
 import ChangeTheme from "@/components/changeTheme";
+import Loading from "@/app/Course/Loading"
 import Image from "next/image";
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,9 +11,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useGlobalState } from '@/components/GlobalVariableProvider';
 import ProfilePage from "../Profile/page";
 import { useTheme } from "next-themes";
+import Navbar from "@/components/navbar";
 
 const LoginPage = () => {
   const { globalState, setGlobalState } = useGlobalState();
+  const [loading, setloading] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -29,10 +32,15 @@ const LoginPage = () => {
   
   useEffect(() => {
     async function getUser() {
-      setGlobalState(await account.get());
-      console.log("loggedin user :", useGlobalState);
+    try {
+        setGlobalState(await account.get());
+      } catch (error) {
+        console.log(error);
+        setloading(false)
+      }
     }
     getUser();
+      
   }, []);
 
   const login = async (email: any, password: any) => {
@@ -102,17 +110,20 @@ const LoginPage = () => {
   return (
     <>
       <ToastContainer />
+      
+
+    {loading ? <Loading/> : 
+      <div style={{fontFamily : 'YourFont'}} className="flex">
+        <div>
       {theme === 'dark' ? 
       <Image src={"/shape_dark.png"} height={100} width={1000} alt="" className="fixed bottom-0 right-0 w-[300px]"/> 
       :
       <Image src={"/shape.png"} height={100} width={1000} alt="" className="fixed bottom-0 right-0 w-[300px]"/>
-      }
-      
-
-      <div style={{fontFamily : 'YourFont'}} className="flex">
+    }
+    </div>
 
 
-        <div className="flex justify-between px-7 py-14 fixed w-full">
+        {/* <div className="flex justify-between px-7 py-14 fixed w-full">
           <h1
             onClick={() => {
               router.push("/");
@@ -124,29 +135,31 @@ const LoginPage = () => {
             <span className="block-inline text-[#ffaa2b] "> easy</span>
           </h1>
           <ChangeTheme />
-        </div>
+        </div> */}
+
+        <Navbar params = "LogIn"/>
 
         <div className="flex h-screen w-full ">
-          <div className="flex w-5/12 pt-10 dark:bg-[#242424] ">
-            <Image src={"/cuate.png"} height={100} width={1000} alt="" className="w-8/12 m-auto" />
+          <div className="flex w-5/12 pt-10 dark:bg-[#242424] max-sm:hidden ">
+            <Image src={"/cuate.png"} height={100} width={1000} alt="" className="w-8/12 m-auto " />
           </div>
 
-          <div className="flex flex-col w-7/12 justify-center items-center bg-[#fff] dark:bg-[#191817]">
+          <div className="flex flex-col w-7/12 justify-center items-center bg-[#fff] dark:bg-[#191817] h-screen overflow-hidden  max-sm:w-full">
 
 
 
-
+           <div className="flex flex-col w-full h-screen overflow-y-scroll items-center mt-40 max-sm:mt-[7rem] ">
               {!Signup ? 
-            <div className="flex flex-col w-7/12 mx-auto ">
+            <div className="flex flex-col w-7/12 max-sm:w-10/12">
               <div className="flex flex-col">
-              <h1 style={{fontFamily : 'YourFontMedium'}} className=" text-3xl font-[600] tracking-[0.4px] ">Create an account</h1>
+              <h1 style={{fontFamily : 'YourFontMedium'}} className=" text-3xl font-[600] tracking-[0.4px] max-sm:text-center">Create an account</h1>
               {/* <h1 className="text-sm pt-2 font-[100] text-[#a5a5a5] tracking-[0.5px] pb-1 ">Enter your email below to create your account</h1> */}
             </div> 
-              <form className="flex flex-col mt-10">
+              <form className="flex flex-col mt-10 z-[200]">
               <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Username </h1>
                 <input
                   type="text"
-                  placeholder="Name"
+                  placeholder="JohnWick"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="p-3 mb-2 outline-none rounded dark:bg-[#1e1c1a] border"
@@ -154,7 +167,7 @@ const LoginPage = () => {
                 <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Email Address </h1>
                 <input
                   type="email"
-                  placeholder="Email"
+                  placeholder="example@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="p-3 mb-2 outline-none rounded dark:bg-[#1e1c1a] border"
@@ -162,7 +175,7 @@ const LoginPage = () => {
                 <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Create Password </h1>
                 <input
                   type="password"
-                  placeholder="Password"
+                  placeholder="********"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="p-3 mb-2 outline-none rounded dark:bg-[#1e1c1a] border"
@@ -175,7 +188,7 @@ const LoginPage = () => {
                   Create Account
                 </button>
               </form>
-              <h1 onClick={() => handleSignup()} className="text-xs py-1 flex justify-end underline underline-offset-4 dark:text-[#a5a5a5] text-[#333]  cursor-pointer">Already have an account?</h1>
+              <h1 onClick={() => handleSignup()} className="text-xs py-1 flex justify-end underline underline-offset-4 dark:text-[#a5a5a5] text-[#333]  cursor-pointer z-[200]">Already have an account?</h1>
               {/* <button >Notify !</button> */}
               </div>
 
@@ -184,16 +197,16 @@ const LoginPage = () => {
 
 
 
-              <div className="flex flex-col w-7/12 mx-auto my-0 ">
+              <div className="flex flex-col w-7/12 max-sm:w-10/12">
                 <div className="flex flex-col">
               <h1 style={{fontFamily : 'YourFontMedium'}} className=" text-3xl font-[600] tracking-[0.4px] ">Login</h1>
               {/* <h1 className="text-sm pt-2 font-[100] text-[#a5a5a5] tracking-[0.5px] pb-1 ">Enter your email below to create your account</h1> */}
             </div> 
-              <form className="flex flex-col mt-10">
+              <form className="flex flex-col mt-10 z-[200]">
               <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Email Address </h1>
               <input
                 type="email"
-                placeholder="Email"
+                placeholder="example@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="p-3 mb-2 outline-none rounded dark:bg-[#1e1c1a] border"
@@ -201,7 +214,7 @@ const LoginPage = () => {
               <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Password </h1>
               <input
                 type="password"
-                placeholder="Password"
+                placeholder="********"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="p-3 mb-2 outline-none rounded dark:bg-[#1e1c1a] border"
@@ -216,11 +229,11 @@ const LoginPage = () => {
               </button>
               
             </form> 
-            <h1 onClick={() => handleSignup()} className="text-xs py-1 flex justify-end underline underline-offset-4 dark:text-[#a5a5a5] text-[#333]  cursor-pointer">dont have an account?</h1>
+            <h1 onClick={() => handleSignup()} className="text-xs py-1 flex justify-end underline underline-offset-4 dark:text-[#a5a5a5] text-[#333]  cursor-pointer < z-[200]">dont have an account?</h1>
             </div>
              }
 
-<div className="flex flex-col w-7/12 mx-auto ">
+<div className="flex flex-col w-7/12 mb-10 max-sm:w-10/12">
               <h1 className="text-center dark:text-[#a5a5a5] text-[#333] p-4">or continue with</h1>
               <div className="flex flex-col">
               <button
@@ -240,8 +253,10 @@ const LoginPage = () => {
               </div>
             </div>
           </div>
+          </div>
         </div>
         </div>
+}
     </>
   );
 };

@@ -129,24 +129,28 @@ const CGPA = () => {
 
   return (
     <>
+    <div className='bg-[url("../../public/Background.png")] dark:bg-[url("../../public/Background_dark.png")] drop'>
       <ToastContainer />
-      <Navbar />
+      <Navbar params = "CGPA"/>
+
+      <div className="max-sm:hidden">
       <Sidebar />
-      <div style={{ fontFamily: "YourFont" }} className="flex flex-col py-40">
+      </div>
+      <div style={{ fontFamily: "YourFont" }} className='flex flex-col py-40 '>
         <h1 className="text-3xl m-auto">CGPA calculator</h1>
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center mt-10 max-sm:flex-col ">
           <div className="flex flex-col">
-            <div className="flex">
-              <div>
+            <div className="flex max-sm:justify-center max-sm:px-2 max-sm:m-auto">
+              <div className="">
                 <h1 className="capitalize text-sm dark:text-gray-300 text-gray-700 text-l my-2">
                   select your college
                 </h1>
-                <select className="p-2 w-[250px] rounded text-center mx-2 text-sm">
+                <select className="p-2 w-[250px] rounded text-center mx-2 text-sm max-sm:w-[210px]">
                   <option value="someOption">IPU</option>
                 </select>
               </div>
               <div>
-                <h1 className="capitalize text-sm dark:text-gray-300 text-gray-700 text-l my-2 px-3">
+                <h1 className="capitalize text-sm dark:text-gray-300 text-gray-700 text-l my-2 px-3 max-sm:px-0">
                   number of subjects
                 </h1>
                 <input
@@ -200,7 +204,8 @@ const CGPA = () => {
               ))}
             </div>
           </div>
-          <div className="flex flex-col w-3/12 pt-10">
+          <div className="flex flex-col w-3/12 pt-10 max-sm:justify-center max-sm:w-11/12 max-sm:m-auto max-lg:w-4/12">
+          <div className="flex flex-col my-auto">
             <button
               onClick={() => {
                 {
@@ -250,7 +255,7 @@ const CGPA = () => {
                 <h1>SGPA : </h1>
                 <h1 className="text-blue-500 px-1">{totalMarksgain}/{totalMarks}</h1>
             </div> */}
-                <div className="flex flex-col py-1 px-2 ">
+                <div className="flex flex-col py-1 px-2 max-sm:w-full">
                   <h1>Equivalent Percentage : </h1>
                   <h1 className="text-blue-500 px-1">
                     {(totalGrade / totalCredits) * 10} %
@@ -258,11 +263,12 @@ const CGPA = () => {
                 </div>
               </div>
             </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div style={{fontFamily : "yourfont"}} className="flex flex-col w-8/12 m-auto mb-10">
+      <div style={{fontFamily : "yourfont"}} className="flex flex-col w-8/12 m-auto mb-10 max-sm:w-11/12">
         <h1 className="text-3xl dark:text-gray-300 text-gray-700">
           How to calculate CGPA for IPUniversity?
         </h1>
@@ -311,7 +317,7 @@ const CGPA = () => {
           height={10}
           width={1000}
           alt=""
-          className="w-1/3 m-auto mb-10 opacity-75"
+          className="w-1/3 m-auto mb-10 opacity-75 max-sm:w-4/5"
         ></Image>
         </div>
         <p className="text-gray-500 pt-5">
@@ -337,7 +343,7 @@ const CGPA = () => {
           awarded the degree and be placed in Divisions as below:
         </p>
         <div >
-        <ul className="text-gray-500">
+        <ul className="text-gray-500 mb-10">
           <li>CGPA of 4.00 – 4.99 are to be placed in the Third Division.</li>
           <li>CGPA of 5.00 – 6.49 are to be placed in the Second Division.</li>
           <li>CGPA of 6.50 or above are to be placed in the First Division.</li>
@@ -357,6 +363,7 @@ const CGPA = () => {
         </ul>
         </div>
       </div>
+    </div>
       <Footer/>
     </>
   );
