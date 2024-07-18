@@ -45,7 +45,7 @@ const About = () => {
                 height={1}
                 width={100000}
                 alt=""
-                className="w-[auto] h-[10vw] mt-[-6vw] ml-[-1.3vw] max-lg:h-[13vw]"
+                className="w-[auto] h-[10vw] mt-[-6vw] ml-[-1.3vw] max-lg:h-[13vw] max-lg:mt-[-8vw] max-sm:h-[6.5rem] max-sm:mt-[-4rem]"
               />
          }
             </div>

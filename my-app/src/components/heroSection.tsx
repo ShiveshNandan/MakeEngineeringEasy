@@ -114,7 +114,7 @@ const HeroSection = () => {
             features
           </h1>
           <div className=" flex justify-between max-sm:flex-col">
-            <div className="flex relative overflow-hidden w-[32%] ml-[-4px] max-sm:w-[100%] max-sm:ml-0 max-sm:mb-3 max-sm:scale-[1.015]">
+            <div className="flex relative overflow-hidden w-[32%] ml-[-4px] max-sm:w-[100%] max-sm:ml-0 max-sm:mb-4 max-sm:scale-[1.015]">
               <div className="flex flex-col rounded-2xl bg-[#FAD85D]  text-left overflow-hidden ">
                 <Image
                   src={"/Highlights yellow.png"}
@@ -148,7 +148,7 @@ const HeroSection = () => {
               </div>
             </div>
 
-            <div className="flex relative overflow-hidden w-[32%] ml-[-4px] max-sm:w-[100%] max-sm:ml-0 max-sm:mb-3 max-sm:scale-[1.015]">
+            <div className="flex relative overflow-hidden w-[32%] ml-[-4px] max-sm:w-[100%] max-sm:ml-0 max-sm:mb-4 max-sm:scale-[1.015]">
               <div className="flex flex-col rounded-2xl bg-[#707eff]  text-left overflow-hidden ">
                 <Image
                   src={"/Highlights blue.png"}

@@ -25,6 +25,11 @@
     box-shadow: 4px 4px 30px 0px #00000080;
   }
   
+  .backdrop-blur8{
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
   
   @layer base {
     :root {

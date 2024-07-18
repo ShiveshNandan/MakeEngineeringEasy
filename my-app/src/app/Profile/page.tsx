@@ -19,7 +19,6 @@ const Profile = () => {
     setloading(true);
   }, 2000);
 
-  console.log(globalState);
 
   return (
     <>

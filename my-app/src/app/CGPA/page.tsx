@@ -136,7 +136,7 @@ const CGPA = () => {
       <div className="max-sm:hidden">
       <Sidebar />
       </div>
-      <div style={{ fontFamily: "YourFont" }} className='flex flex-col py-40 '>
+      <div style={{ fontFamily: "YourFont" }} className='flex flex-col py-40 max-sm:pb-20'>
         <h1 className="text-3xl m-auto">CGPA calculator</h1>
         <div className="flex justify-center mt-10 max-sm:flex-col ">
           <div className="flex flex-col">
@@ -222,7 +222,9 @@ const CGPA = () => {
               {!calculation ? "calculate" : `SGPA : ${GradePercentage}`}
             </button>
 
-            <div className="flex min-h-[12.5rem] ">
+            <div className={` ${
+                  calculation ? "flex" : "hidden"
+                } min-h-[12.5rem] `}>
               <div
                 className={`${
                   calculation ? "flex" : "hidden"
@@ -268,7 +270,7 @@ const CGPA = () => {
         </div>
       </div>
 
-      <div style={{fontFamily : "yourfont"}} className="flex flex-col w-8/12 m-auto mb-10 max-sm:w-11/12">
+      <div style={{fontFamily : "yourfont"}} className="flex flex-col w-8/12 m-auto max-sm:w-11/12">
         <h1 className="text-3xl dark:text-gray-300 text-gray-700">
           How to calculate CGPA for IPUniversity?
         </h1>
@@ -343,7 +345,7 @@ const CGPA = () => {
           awarded the degree and be placed in Divisions as below:
         </p>
         <div >
-        <ul className="text-gray-500 mb-10">
+        <ul className="text-gray-500 mb-20">
           <li>CGPA of 4.00 – 4.99 are to be placed in the Third Division.</li>
           <li>CGPA of 5.00 – 6.49 are to be placed in the Second Division.</li>
           <li>CGPA of 6.50 or above are to be placed in the First Division.</li>

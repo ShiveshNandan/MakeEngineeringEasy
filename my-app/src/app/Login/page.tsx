@@ -35,7 +35,7 @@ const LoginPage = () => {
     try {
         setGlobalState(await account.get());
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         setloading(false)
       }
     }
@@ -47,7 +47,7 @@ const LoginPage = () => {
     try {
       const session = await account.createEmailPasswordSession(email, password);
       setGlobalState(await account.get());
-      console.log("session :", session);
+      // console.log("session :", session);
     } catch (error:any) {
 
       // alert(error.message)

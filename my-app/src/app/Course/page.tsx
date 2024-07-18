@@ -34,14 +34,12 @@ const Page = () => {
   useEffect(() => {
     async function getUser() {
       await account.get().then((u) => {
-        console.log("hello ji 2")
         if(u){
           setGlobalState(u) 
         } else {
-          console.log("hello ji")
         }
       }).catch((e) => {
-        console.log("error",e);
+        // console.log("error",e);
         if(e.message.includes("Failed to fetch")){
           toast.error("something went wrong. Please check your internet connection",{theme:"colored", position: "top-center",autoClose: 2000})
         }else if(e.message.includes("User (role: guests)")){
@@ -66,7 +64,7 @@ const Page = () => {
         const response = allCourses(setAllCourses);
       }
     } catch (error) {
-      console.error("error Occured : ", error);
+      // console.error("error Occured : ", error);
     }
   };
 
@@ -88,13 +86,14 @@ const Page = () => {
   return (
     <>
       <ToastContainer />
-      <Navbar params="Courses" />
+      <Navbar params="Course" />
       {Object.keys(AllCourses).length === 0 ? (
         <Loading />
       ) : (
         <>
+        <div className="bg-[url('../../public/Background.png')] dark:bg-[url('../public/Background_dark.png')]">
           <div className="relative top-[8rem]">
-            <h1 className="text-4xl font-semibold text-gray-700 mx-auto w-8/12 max-[800px]:text-3xl max-[800px]:w-11/12">
+            <h1 className="text-4xl font-semibold dark:text-[#efefef] text-gray-700 mx-auto w-8/12 max-[800px]:text-3xl max-[800px]:w-11/12">
               CSE{" "}
               <span className="text-xs">(Computer Science Engineering)</span>
             </h1>
@@ -134,7 +133,7 @@ const Page = () => {
           </div>
 
           <div className="flex flex-col pt-40 mt-10">
-            <h1 className="text-4xl font-semibold text-gray-700 mx-auto w-8/12 max-[800px]:text-3xl max-[800px]:w-11/12">
+            <h1 className="text-4xl font-semibold text-gray-700 dark:text-[#efefef] mx-auto w-8/12 max-[800px]:text-3xl max-[800px]:w-11/12">
               IT <span className="text-xs">(Information Technology)</span>
             </h1>
 
@@ -172,7 +171,7 @@ const Page = () => {
           </div>
 
           <div className="flex flex-col py-[3.5rem]">
-            <h1 className="text-4xl font-semibold text-gray-700 mx-auto w-8/12 max-[800px]:text-3xl max-[800px]:w-11/12">
+            <h1 className="text-4xl font-semibold text-gray-700 dark:text-[#efefef] mx-auto w-8/12 max-[800px]:text-3xl max-[800px]:w-11/12">
               ECE{" "}
               <span className="text-xs">
                 (Electronics and Communication Engineering)
@@ -211,6 +210,7 @@ const Page = () => {
               </div>
             </div>
           </div>
+        </div>  
         </>
       )}
     </>
