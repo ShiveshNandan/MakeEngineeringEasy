@@ -1,23 +1,32 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "@/components/navbar";
 import { useGlobalState } from "@/components/GlobalVariableProvider";
 import { account, ID } from "@/components/appwrite";
 import Image from "next/image";
 import Sidebar from "@/components/Sidebar";
 import Loading from "@/app/Course/Loading";
+import { useRouter } from "next/navigation";
 
 const Profile = () => {
+  const router = useRouter();
   const { globalState, setGlobalState } = useGlobalState();
+
+
   const logout = async () => {
     await account.deleteSession("current");
     setGlobalState(null);
+    router.push("/")
   };
+  
 
   const [loading, setloading] = useState(false);
-  setTimeout(() => {
-    setloading(true);
-  }, 2000);
+  useEffect(() => {
+    if(globalState){
+      setloading(true);
+    }
+  }, [globalState])
+  
 
 
   return (

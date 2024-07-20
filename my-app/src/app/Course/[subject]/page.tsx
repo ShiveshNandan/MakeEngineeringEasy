@@ -5,6 +5,7 @@ import { allCourses } from "@/app/API/HandleApi";
 import Loading from "@/app/Course/Loading";
 import Link from "next/link";
 import "@/app/Course/styles.css";
+import Sidebar from "@/components/Sidebar";
 
 interface Course {
   id: number;
@@ -37,6 +38,7 @@ const page = ({ params }: any) => {
     (item) => item?.subject === subjectName
   );
 
+  
   // console.log(filteredData[0]?.pyq.minor)
   // console.log(filteredData[0]?.pyq.major)
   return (
@@ -47,6 +49,7 @@ const page = ({ params }: any) => {
       ) : (
         <>
           <div className="flex flex-col bg-gradient-to-b from-indigo-500 h-[30vh] max-[800px]:h-[38vh]">
+            <Sidebar/>
             <h1 className="m-auto pt-[15vh] text-4xl font-bold mb-10 max-[800px]:pt-[20vh] text-center max-[800px]:w-11/12 capitalize">
               {filteredData[0]?.subject.toLocaleLowerCase()}
             </h1>

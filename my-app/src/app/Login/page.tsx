@@ -12,14 +12,22 @@ import { useGlobalState } from '@/components/GlobalVariableProvider';
 import ProfilePage from "../Profile/page";
 import { useTheme } from "next-themes";
 import Navbar from "@/components/navbar";
+import Sidebar from "@/components/Sidebar";
+import CGPA from "../CGPA/page";
 
 const LoginPage = () => {
   const { globalState, setGlobalState } = useGlobalState();
   const [loading, setloading] = useState(true);
+  const [loadingBtn, setloadingBtn] = useState(false);
   const [email, setEmail] = useState("");
+  const [Erremail, setErrEmail] = useState(false);
   const [password, setPassword] = useState("");
+  const [Errpassword, setErrPassword] = useState(false);
   const [name, setName] = useState("");
+  const [Errname, setErrName] = useState(false);
   const [Signup, setSignup] = useState(false)
+  const [isDisabledLogin, setisDisabledLogin] = useState(true)
+  const [isDisabledSignup, setisDisabledSignup] = useState(true)
   const {theme} = useTheme()
 
   // const [errors, errors = ] = useState("")
@@ -37,6 +45,7 @@ const LoginPage = () => {
       } catch (error) {
         // console.log(error);
         setloading(false)
+        setloadingBtn(false)
       }
     }
     getUser();
@@ -50,18 +59,24 @@ const LoginPage = () => {
       // console.log("session :", session);
     } catch (error:any) {
 
-      // alert(error.message)
-
       if (error.message.includes("Invalid `email` param")) {
         errors = ("Enter a valid email address");
+        setErrEmail(true)
       } else if (error.message.includes("Invalid `password` param")) {
         errors = ("Password is wrong");
+        setErrPassword(true)
       } else if (error.message.includes("Invalid credentials.")) {
-        errors = ("Email and Password is wrong");
+        errors = ("Invalid credentials");
+        setErrEmail(true)
+        setErrPassword(true)
       }else{
         errors = ("Enter Credentials");
+        setErrEmail(true)
+        setErrPassword(true)
       }
       toast.error(`${errors}`,{theme: "dark", position: "top-center"})
+      setPassword("")
+      setloadingBtn(false)
     }
   };
 
@@ -74,16 +89,21 @@ const LoginPage = () => {
       alert(error.message)
       if (error.message.includes("Invalid `email` param")) {
         errors = ("Enter a valid email address");
+        setErrEmail(true)
       } else if (error.message.includes("Invalid `password` param")) {
         errors = ("Enter a Password");
+        setErrPassword(true)
       }else if (error.message.includes("Invalid `name` param")) {
         errors = ("Enter Username");
+        setErrName(true)
       }else if (error.message.includes("A user with the same id, email, or phone already exists in this project.")) {
         errors = ("Email Already used");
       }else{
         errors = ("Unexpected Error Occured. Please try after Sometime");
       }
-      toast.error(`${errors}`,{theme: "dark"})
+      toast.error(`${errors}`,{theme: "dark", position: "top-center"})
+      setPassword("")
+      setloadingBtn(false)
     }
   };
 
@@ -91,9 +111,25 @@ const LoginPage = () => {
     {!Signup ? setSignup(true) : setSignup(false)}
   } 
 
+  useEffect(() => { 
+    const allFieldsFilled = email !== "" && password !== "" ;
+
+    setisDisabledLogin(!allFieldsFilled);
+  }, [password,email]);
+
+
+  useEffect(() => {
+    const allFieldsFilled = name !== "" && password !== "" && name !== "";
+   
+    setisDisabledSignup(!allFieldsFilled);
+  }, [password,email,name]);
+
+
   if (globalState) {
     const handlePush = () => {
     if (globalState) {
+        setloadingBtn(false)
+        setPassword("")
         router.push("/Login")
     }
     handlePush()
@@ -110,6 +146,9 @@ const LoginPage = () => {
   return (
     <>
       <ToastContainer />
+      <div className="max-sm:hidden">
+      <Sidebar/>
+      </div>
       
 
     {loading ? <Loading/> : 
@@ -148,7 +187,7 @@ const LoginPage = () => {
 
 
 
-           <div className="flex flex-col w-full h-screen overflow-y-scroll items-center mt-40 max-sm:mt-[7rem] ">
+           <div className="flex flex-col w-full h-screen overflow-y-scroll items-center mt-40 max-sm:mt-[7rem] scroll">
               {!Signup ? 
             <div className="flex flex-col w-7/12 max-sm:w-10/12">
               <div className="flex flex-col">
@@ -156,36 +195,37 @@ const LoginPage = () => {
               {/* <h1 className="text-sm pt-2 font-[100] text-[#a5a5a5] tracking-[0.5px] pb-1 ">Enter your email below to create your account</h1> */}
             </div> 
               <form className="flex flex-col mt-10 z-[200]">
-              <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Username </h1>
-                <input
-                  type="text"
-                  placeholder="JohnWick"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="p-3 mb-2 outline-none rounded dark:bg-[#1e1c1a] border"
-                />
                 <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Email Address </h1>
                 <input
                   type="email"
                   placeholder="example@gmail.com"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="p-3 mb-2 outline-none rounded dark:bg-[#1e1c1a] border"
+                  onChange={(e) => {setEmail(e.target.value), setErrEmail(false)}}
+                  className={`${Erremail? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border `}
                 />
                 <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Create Password </h1>
                 <input
                   type="password"
                   placeholder="********"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="p-3 mb-2 outline-none rounded dark:bg-[#1e1c1a] border"
+                  onChange={(e) => {setPassword(e.target.value),setErrPassword(false)}}
+                  className={`${Errpassword? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border `}
+                />
+                <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Username </h1>
+                <input
+                  type="text"
+                  placeholder="JohnWick"
+                  value={name}
+                  onChange={(e) => {setName(e.target.value),setErrName(false)}}
+                  className={`${Errname? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border `}
                 />
                 <button
                   type="button"
-                  onClick={register}
-                  className="p-2 my-2 rounded text-[#ffffff] bg-[#263238] dark:bg-[#ffffff] dark:text-[#263238] text-[600] "
+                  onClick={() => {register() ; setloadingBtn(true); setisDisabledSignup(true)}}
+                  disabled={isDisabledSignup}
+                  className={`${isDisabledSignup ? "cursor-not-allowed opacity-80 text-[#ffffff] bg-[#263238] dark:text-[#ffffff] dark:bg-[#263238]" : "text-[#ffffff] bg-[#263238] dark:bg-[#ffffff] dark:text-[#263238]"} p-2 my-2 rounded text-[600] transition-all duration-500`}
                 >
-                  Create Account
+                  {loadingBtn ? "Processing..." : "Create Account"}
                 </button>
               </form>
               <h1 onClick={() => handleSignup()} className="text-xs py-1 flex justify-end underline underline-offset-4 dark:text-[#a5a5a5] text-[#333]  cursor-pointer z-[200]">Already have an account?</h1>
@@ -199,7 +239,7 @@ const LoginPage = () => {
 
               <div className="flex flex-col w-7/12 max-sm:w-10/12">
                 <div className="flex flex-col">
-              <h1 style={{fontFamily : 'YourFontMedium'}} className=" text-3xl font-[600] tracking-[0.4px] ">Login</h1>
+              <h1 style={{fontFamily : 'YourFontMedium'}} className=" text-3xl font-[600] tracking-[0.4px] max-sm:text-center">Login</h1>
               {/* <h1 className="text-sm pt-2 font-[100] text-[#a5a5a5] tracking-[0.5px] pb-1 ">Enter your email below to create your account</h1> */}
             </div> 
               <form className="flex flex-col mt-10 z-[200]">
@@ -208,24 +248,25 @@ const LoginPage = () => {
                 type="email"
                 placeholder="example@gmail.com"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="p-3 mb-2 outline-none rounded dark:bg-[#1e1c1a] border"
+                onChange={(e) => {setEmail(e.target.value),setErrEmail(false)}}
+                className={`${Erremail? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border `}
               />
               <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Password </h1>
               <input
                 type="password"
                 placeholder="********"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="p-3 mb-2 outline-none rounded dark:bg-[#1e1c1a] border"
+                onChange={(e) => {setPassword(e.target.value),setErrPassword(false)}}
+                className={`${Errpassword? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border `}
               />
 
               <button
                 type="button"
-                onClick={() => login(email, password)}
-                className="p-2 my-2 rounded text-[#ffffff] bg-[#263238] dark:bg-[#ffffff] dark:text-[#263238] text-[600] "
+                onClick={() => {login(email, password);setloadingBtn(true); setisDisabledLogin(true)}}
+                disabled={isDisabledLogin}
+                className={`${isDisabledLogin ? "cursor-not-allowed opacity-80 text-[#ffffff] bg-[#263238]" : "text-[#ffffff] bg-[#263238] dark:bg-[#ffffff] dark:text-[#263238]"} p-2 my-2 rounded text-[600] transition-all duration-500`}
               >
-                Login
+                {loadingBtn ? "Processing..." : "Login"}
               </button>
               
             </form> 

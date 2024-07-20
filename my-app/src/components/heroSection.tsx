@@ -100,12 +100,12 @@ const HeroSection = () => {
 
       <div
         style={{ fontFamily: "YourFont" }}
-        className="flex flex-col text-center bg-[#fff3e8] rounded-[70px] justify-center dark:bg-[#242424] max-sm:rounded-[40px]"
+        className="flex flex-col text-center bg-[#fff3e8] rounded-[70px] justify-center dark:bg-[#242424] max-sm:rounded-[40px] shadow-xl"
       >
         <div
           className={`${
             theme === "dark" ? "drop" : ""
-          } flex flex-col w-10/12 border-4 border-b-0 justify-center border-dashed border-[#c1b9b2] rounded-[70px] my-20 mt-40 mx-auto dark:border-[#6f6a65] max-lg:w-11/12 max-sm:rounded-[40px] max-sm:border-[3.5px] max-sm:mt-16`}
+          } flex flex-col w-10/12 border-4 border-b-0 justify-center border-dashed border-[#c1b9b2] rounded-[70px] my-20 mt-40 mx-auto dark:border-[#6f6a65] max-lg:w-11/12 max-sm:rounded-[40px] max-sm:border-[3.5px] max-sm:mt-16 max-sm:pb-1 max-sm:rounded-b-2xl`}
         >
           <h1
             style={{ fontFamily: "YourFontbold" }}
@@ -114,7 +114,7 @@ const HeroSection = () => {
             features
           </h1>
           <div className=" flex justify-between max-sm:flex-col">
-            <div className="flex relative overflow-hidden w-[32%] ml-[-4px] max-sm:w-[100%] max-sm:ml-0 max-sm:mb-4 max-sm:scale-[1.015]">
+            <div className="flex relative overflow-hidden w-[32%] ml-[-4px] max-sm:w-[100%] max-sm:ml-0 max-sm:mb-4 max-sm:mx-2">
               <div className="flex flex-col rounded-2xl bg-[#FAD85D]  text-left overflow-hidden ">
                 <Image
                   src={"/Highlights yellow.png"}
@@ -132,7 +132,7 @@ const HeroSection = () => {
                     alt=""
                     className="w-[10vw] max-sm:mx-2 max-sm:w-1/5 "
                   />
-                  <div className="flex flex-col px-7 max-sm:px-2">
+                  <div className="flex flex-col px-7 max-sm:px-4">
                     <h1 className="mt-5 text-[2.3vw] text-[#1e1c1a] leading-[1.1] font-[700] tracking-[0.03vw] max-sm:text-lg max-sm:mt-0">
                       Past Year Question Papers
                     </h1>
@@ -148,7 +148,7 @@ const HeroSection = () => {
               </div>
             </div>
 
-            <div className="flex relative overflow-hidden w-[32%] ml-[-4px] max-sm:w-[100%] max-sm:ml-0 max-sm:mb-4 max-sm:scale-[1.015]">
+            <div className="flex relative overflow-hidden w-[32%] ml-[-4px] max-sm:w-[100%] max-sm:ml-0 max-sm:mb-4 max-sm:mx-2">
               <div className="flex flex-col rounded-2xl bg-[#707eff]  text-left overflow-hidden ">
                 <Image
                   src={"/Highlights blue.png"}
@@ -166,7 +166,7 @@ const HeroSection = () => {
                     alt=""
                     className="w-[10vw] max-sm:mx-2 max-sm:w-1/5 "
                   />
-                  <div className="flex flex-col px-7 max-sm:px-2">
+                  <div className="flex flex-col px-7 max-sm:px-4">
                     <h1
                       style={{ fontFamily: "YourFontThin" }}
                       className="mt-5 text-[2.3vw] leading-[1.1] font-[700] tracking-[0.03vw] max-sm:text-lg max-sm:mt-0"
@@ -184,7 +184,7 @@ const HeroSection = () => {
               </div>
             </div>
 
-            <div className="flex relative overflow-hidden w-[32%] mr-[-4px] max-sm:w-[100%] max-sm:ml-0 max-sm:mb-[-4px] max-sm:scale-[1.015]">
+            <div className="flex relative overflow-hidden w-[32%] mr-[-4px] max-sm:w-[100%] max-sm:ml-0 max-sm:mb-[-4px] max-sm:mx-2">
               <div className="flex flex-col rounded-2xl bg-[#f2a0ff] text-left overflow-hidden">
                 <Image
                   src={"/Highlights purple.png"}
@@ -202,7 +202,7 @@ const HeroSection = () => {
                     className="w-[10vw] max-sm:mx-2 max-sm:w-1/5 "
                   />
 
-                  <div className="flex flex-col px-7 max-sm:px-2">
+                  <div className="flex flex-col px-7 max-sm:px-4">
                     <h1 className="mt-5 text-[2.3vw] leading-[1.1] w-10/12 font-[700] tracking-[0.05vw] text-[#1E1C1A] max-sm:text-lg max-sm:mt-0">
                       Curated Lecture Links
                     </h1>

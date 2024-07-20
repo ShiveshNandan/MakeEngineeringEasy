@@ -19,7 +19,7 @@ const About = () => {
       </div>
       <div
         style={{ fontFamily: "yourFont" }}
-        className='flex flex-col bg-[#FFFAF5] dark:bg-[#191817] bg-[url("../../public/Background.png")] dark:bg-[url("../public/Background_dark.png")]'
+        className='flex flex-col bg-[#FFFAF5] dark:bg-[#191817] bg-[url("../../public/Background.png")] dark:bg-[url("../public/Background_dark.png")] shadow-xl'
       >
         <div className="flex">
           <Image

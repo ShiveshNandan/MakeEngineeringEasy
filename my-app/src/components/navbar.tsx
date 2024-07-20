@@ -72,23 +72,23 @@ const Navbar = (params:any) => {
       </div>  
         {/* =================== phone navbar =================== */}
         <div className={`${!menu? "translate-x-[110vw]" : "translate-x-[0vw]" } flex flex-col fixed w-full h-screen top-0 right-0 align-center justify-between backdrop-blur8 sm:hidden transition-all duration-300 z-[400] `}>
-        <div style={{fontFamily : 'YourFontThin'}} className={`${!menu? "translate-x-[110vw]" : "translate-x-[0vw]" } flex flex-col fixed w-9/12 h-screen top-0 right-0 align-center justify-between bg-[#afafafd8] dark:bg-[#333333d8] sm:hidden transition-all duration-700 z-[400] `}>
+        <div style={{fontFamily : 'YourFontThin'}} className={`${!menu? "translate-x-[110vw]" : "translate-x-[0vw]" } flex flex-col fixed w-9/12 h-screen top-0 right-0 align-center justify-between bg-[#FFF3E8d8] dark:bg-[#333333d8] sm:hidden transition-all duration-700 z-[400] `}>
           
           <Image onClick={()=> {setmenu(false)}} src={"/close.png"} height={100} width={1000} alt='' className='h-6 w-6 fixed right-4 top-8 dark:invert-[0.8] invert-[0.2]'></Image>
 
           <div className="flex flex-col w-full mt-16 text-base">
-            <h1 onClick={() => {router.push("/") , setselected("Home");setmenu(false)}} className={`${selected === "Home" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full text-center p-3`}>Home</h1>
-            <h1 onClick={() => {router.push("/Course") , setselected("Course");setmenu(false)}} className={`${selected === "Course" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full text-center p-3`}>Courses</h1>
-            <h1 onClick={() => {router.push("/About") , setselected("About");setmenu(false)}} className={`${selected === "About" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full text-center p-3 `}>About</h1>
-            <h1 onClick={() => {router.push("/Login") , setselected("LogIn");setmenu(false)}} className={`${selected === "LogIn" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full text-center p-3 `}>{globalState ? "Profile" : "LogIn"}</h1>
-            <h1 onClick={()=> {router.push("Contact");setmenu(false)}} className={`${selected === "Contact" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full text-center p-3 `}>Contact us</h1>
+            <h1 onClick={() => {router.push("/") , setselected("Home");setmenu(false)}} className={`${selected === "Home" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full p-3 px-10`}>Home</h1>
+            <h1 onClick={() => {router.push("/Course") , setselected("Course");setmenu(false)}} className={`${selected === "Course" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full p-3 px-10`}>Courses</h1>
+            <h1 onClick={() => {router.push("/About") , setselected("About");setmenu(false)}} className={`${selected === "About" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full p-3 px-10 `}>About</h1>
+            <h1 onClick={() => {router.push("/Login") , setselected("LogIn");setmenu(false)}} className={`${selected === "LogIn" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full p-3 px-10 `}>{globalState ? "Profile" : "LogIn"}</h1>
+            <h1 onClick={()=> {router.push("Contact");setmenu(false)}} className={`${selected === "Contact" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full p-3 px-10 `}>Contact us</h1>
           
 
-            <h1 className='w-full font-extrabold  p-3 uppercase mt-5 tracking-[1.5px] opacity-80 '>Features</h1>
+            <h1 className='w-11/12 font-extrabold  p-3 py-1 uppercase mt-5 tracking-[1.5px] opacity-80 border-b dark:border-white border-[#333333] mx-2'>Features</h1>
 
 
-            <h1 onClick={() => {toggle();setmenu(false)}} className='w-full text-center p-3'>Switch Mode</h1>
-            <h1 onClick={()=> {router.push("CGPA");setmenu(false)}} className={`${selected === "CGPA" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full text-center p-3 `}>CGPA Calculator</h1>
+            <h1 onClick={() => {toggle();setmenu(false)}} className='w-full p-3 pt-6 px-10'>Switch Mode</h1>
+            <h1 onClick={()=> {router.push("CGPA");setmenu(false)}} className={`${selected === "CGPA" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full p-3 px-10 `}>CGPA Calculator</h1>
           </div>
           
           <h1 style={{fontFamily : 'YourFontMedium'}} className={`mx-5 hover:cursor-pointer transition-all duration-300 capitalize font-bold text-[1.4rem] tracking-[0.5px] max-sm:mx-auto max-sm:mb-16`} >make engineering <span className='block-inline text-[#ffaa2b] '> easy</span></h1>
