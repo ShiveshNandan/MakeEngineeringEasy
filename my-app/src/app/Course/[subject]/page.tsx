@@ -7,6 +7,11 @@ import Loading from "@/app/Course/Loading";
 import Link from "next/link";
 import "@/app/Course/styles.css";
 import Sidebar from "@/components/Sidebar";
+import { useGlobalState } from "@/components/GlobalVariableProvider";
+import { account, ID } from "@/components/appwrite";
+import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface Course {
   id: number;
@@ -25,8 +30,35 @@ interface Course {
 }
 
 const page = ({ params }: any) => {
+  const router = useRouter();
+
+  // useEffect(() => {
+  //   async function getUser() {
+  //     await account.get().then((u) => {
+  //       if(u){
+  //         setGlobalState(u) 
+  //       } else {
+  //       }
+  //     }).catch((e) => {
+  //       if(e.message.includes("Failed to fetch")){
+  //         toast.error("something went wrong. Please check your internet connection",{theme:"colored", position: "top-center",autoClose: 2000})
+  //       }else if(e.message.includes("User (role: guests)")){
+  //         toast.error("Login to access this feature",{theme:"colored", position: "top-center",autoClose: 2000})
+  //         setTimeout(() => {
+  //           router.push("/Login")
+  //         }, 3000);
+  //       }else{
+  //         toast.error("We are facing some issue. Sorry for the inconvenience.",{theme:"colored", position: "top-center",autoClose: 2000})
+  //       }
+  //     })
+  //   }
+  //   getUser();
+  // }, []);
 
   const subjectName = params.subject.replace(/%20/g, " ").replace(/%2C/g, ",");
+
+  
+  const { globalState, setGlobalState } = useGlobalState();
 
 
   // const [AllCourses, setAllCourses] = useState<Course[]>([]);
@@ -41,9 +73,11 @@ const page = ({ params }: any) => {
   //   ss();
   // }, []);
 
+  console.log(globalState)
+
   const CSEfunc = async () => {
     try {
-        const response = await CSECourses(setCSECourses);
+        const response = await CSECourses(setCSECourses,globalState.$id);
       }
      catch (error) {
       console.error("error Occured : ", error);
@@ -51,7 +85,7 @@ const page = ({ params }: any) => {
   };
   const ITfunc = async () => {
     try {
-        const response = ITCourses(setITCourses);
+        const response = ITCourses(setITCourses,globalState.$id);
       }
      catch (error) {
       console.error("error Occured : ", error);
@@ -59,14 +93,13 @@ const page = ({ params }: any) => {
   };
   const ECEfunc = async () => {
     try {
-        const response = ECECourses(setECECourses);
+        const response = ECECourses(setECECourses,globalState.$id);
     } catch (error) {
       console.error("error Occured : ", error);
     }
   };
 
   useEffect(() => {
-    // func();
     ECEfunc();
     ITfunc();
     CSEfunc();
@@ -81,7 +114,7 @@ const page = ({ params }: any) => {
   // console.log(filteredData[0]?.pyq.major)
   return (
     <>
-      <Navbar params="Courses" />
+      <Navbar params= "Courses" />
       {Object.keys(CSECourse).length === 0 ? (
         <Loading />
       ) : (

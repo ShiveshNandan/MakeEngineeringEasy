@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useGlobalState } from "@/components/GlobalVariableProvider";
+import Sidebar from "@/components/Sidebar";
 
 interface Course {
   id: number;
@@ -45,17 +46,13 @@ const Page = () => {
           id = (u.$id)
           email = (u.email)
           username = (u.name)
-
           AddUser(id,email,username);
-          // ECEfunc();
           ECECourses(setECECourses,id);
           CSECourses(setCSECourses,id);
           ITCourses(setITCourses,id);
-          // CSEfunc();
         } else {
         }
       }).catch((e) => {
-        // console.log("error",e);
         if(e.message.includes("Failed to fetch")){
           toast.error("something went wrong. Please check your internet connection",{theme:"colored", position: "top-center",autoClose: 2000})
         }else if(e.message.includes("User (role: guests)")){
@@ -67,81 +64,22 @@ const Page = () => {
           toast.error("We are facing some issue. Sorry for the inconvenience.",{theme:"colored", position: "top-center",autoClose: 2000})
         }
       })
-      
     }
     getUser();
   }, []);
 
-  
-  // console.log("info : ", globalState)  
-  // setid(globalState); 
-  // setName(globalState); 
-  // setemail(globalState);  
-
-  // const [AllCourses, setAllCourses] = useState<Course[]>([]);
   const [CSECourse, setCSECourses] = useState<Course[]>([]);
   const [ECECourse, setECECourses] = useState<Course[]>([]);
   const [ITCourse, setITCourses] = useState<Course[]>([]);
 
-  // const func = async () => {
-  //   try {
-  //     if (globalState) {
-  //       const response = allCourses(setAllCourses);
-  //     }
-  //   } catch (error) {
-  //     console.error("error Occured : ", error);
-  //   }
-  // };
-  const CSEfunc = async () => {
-    try {
-      if (globalState) {
-        const response = CSECourses(setCSECourses,id);
-      }
-    } catch (error) {
-      console.error("error Occured : ", error);
-    }
-  };
-
-  const ITfunc = async () => {
-    try {
-      if (globalState) {
-        const response = ITCourses(setITCourses,id);
-      }
-    } catch (error) {
-      console.error("error Occured : ", error);
-    }
-  };
-  const ECEfunc = async () => {
-    try {
-      if (globalState) {
-        const response = ECECourses(setECECourses,id);
-      }
-    } catch (error) {
-      console.error("error Occured : ", error);
-    }
-  };
-
-
-  useEffect(() => {
-    // ECEfunc();
-    // ITfunc();
-    // CSEfunc();
-  }, [globalState]);
-
-  // const CSEData = AllCourses?.filter((item) =>
-  //   ["All", "all", "cse", "cseit"].includes(item?.course)
-  // );
-  // const ITData = AllCourses?.filter((item) =>
-  //   ["All", "all", "it", "cseit"].includes(item?.course)
-  // );
-  // const ECEData = AllCourses?.filter((item) =>
-  //   ["All", "all", "ece"].includes(item?.course)
-  // );
 
   return (
     <>
       <ToastContainer />
-      <Navbar params="Course" />
+      <Navbar params = "Courses" />
+      <div className="max-sm:hidden">
+        <Sidebar/>
+      </div>
       {Object.keys(CSECourse).length === 0 ? (
         <Loading />
       ) : (
