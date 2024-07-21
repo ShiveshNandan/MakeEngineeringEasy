@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Navbar from "../../components/navbar";
-import { allCourses } from "../API/HandleApi";
+import { CSECourses, ITCourses, ECECourses, AddUser } from "../API/HandleApi";
 import Loading from "@/app/Course/Loading";
 import "../Course/styles.css";
 import { account, ID } from "@/components/appwrite";
@@ -29,6 +29,12 @@ interface Course {
 
 const Page = () => {
   const { globalState, setGlobalState } = useGlobalState();
+  let username = "";
+  let email = "";
+  let id = "";
+  // const [email, setemail] = useState("");
+  // const [id, setid] = useState("");
+  // const [Name, setName] = useState("");
   const router = useRouter()
 
   useEffect(() => {
@@ -36,6 +42,16 @@ const Page = () => {
       await account.get().then((u) => {
         if(u){
           setGlobalState(u) 
+          id = (u.$id)
+          email = (u.email)
+          username = (u.name)
+
+          AddUser(id,email,username);
+          // ECEfunc();
+          ECECourses(setECECourses,id);
+          CSECourses(setCSECourses,id);
+          ITCourses(setITCourses,id);
+          // CSEfunc();
         } else {
         }
       }).catch((e) => {
@@ -56,38 +72,77 @@ const Page = () => {
     getUser();
   }, []);
 
-  const [AllCourses, setAllCourses] = useState<Course[]>([]);
+  
+  // console.log("info : ", globalState)  
+  // setid(globalState); 
+  // setName(globalState); 
+  // setemail(globalState);  
 
-  const func = async () => {
+  // const [AllCourses, setAllCourses] = useState<Course[]>([]);
+  const [CSECourse, setCSECourses] = useState<Course[]>([]);
+  const [ECECourse, setECECourses] = useState<Course[]>([]);
+  const [ITCourse, setITCourses] = useState<Course[]>([]);
+
+  // const func = async () => {
+  //   try {
+  //     if (globalState) {
+  //       const response = allCourses(setAllCourses);
+  //     }
+  //   } catch (error) {
+  //     console.error("error Occured : ", error);
+  //   }
+  // };
+  const CSEfunc = async () => {
     try {
       if (globalState) {
-        const response = allCourses(setAllCourses);
+        const response = CSECourses(setCSECourses,id);
       }
     } catch (error) {
-      // console.error("error Occured : ", error);
+      console.error("error Occured : ", error);
+    }
+  };
+
+  const ITfunc = async () => {
+    try {
+      if (globalState) {
+        const response = ITCourses(setITCourses,id);
+      }
+    } catch (error) {
+      console.error("error Occured : ", error);
+    }
+  };
+  const ECEfunc = async () => {
+    try {
+      if (globalState) {
+        const response = ECECourses(setECECourses,id);
+      }
+    } catch (error) {
+      console.error("error Occured : ", error);
     }
   };
 
 
   useEffect(() => {
-    func();
+    // ECEfunc();
+    // ITfunc();
+    // CSEfunc();
   }, [globalState]);
 
-  const CSEData = AllCourses?.filter((item) =>
-    ["All", "all", "cse", "cseit"].includes(item?.course)
-  );
-  const ITData = AllCourses?.filter((item) =>
-    ["All", "all", "it", "cseit"].includes(item?.course)
-  );
-  const ECEData = AllCourses?.filter((item) =>
-    ["All", "all", "ece"].includes(item?.course)
-  );
+  // const CSEData = AllCourses?.filter((item) =>
+  //   ["All", "all", "cse", "cseit"].includes(item?.course)
+  // );
+  // const ITData = AllCourses?.filter((item) =>
+  //   ["All", "all", "it", "cseit"].includes(item?.course)
+  // );
+  // const ECEData = AllCourses?.filter((item) =>
+  //   ["All", "all", "ece"].includes(item?.course)
+  // );
 
   return (
     <>
       <ToastContainer />
       <Navbar params="Course" />
-      {Object.keys(AllCourses).length === 0 ? (
+      {Object.keys(CSECourse).length === 0 ? (
         <Loading />
       ) : (
         <>
@@ -100,7 +155,7 @@ const Page = () => {
 
             <div className="scroll flex w-8/12 my-5 mx-auto overflow-x-auto max-[800px]:w-11/12">
               <div className="flex">
-                {CSEData?.map((items: any, index) => (
+                {CSECourse?.map((items: any, index) => (
                   // {AllCourses?.map((items: any, index) => (
 
                   <div
@@ -139,7 +194,7 @@ const Page = () => {
 
             <div className="scroll flex w-8/12 my-5 mx-auto overflow-x-auto max-[800px]:w-11/12">
               <div className="flex">
-                {ITData?.map((items: any, index) => (
+                {ITCourse?.map((items: any, index) => (
                   // {AllCourses?.map((items: any, index) => (
                   <div
                     key={index}
@@ -180,7 +235,7 @@ const Page = () => {
 
             <div className="scroll flex w-8/12 my-5 mx-auto overflow-x-auto max-[800px]:w-11/12">
               <div className="flex">
-                {ECEData?.map((items: any, index) => (
+                {ECECourse?.map((items: any, index) => (
                   // {AllCourses?.map((items: any, index) => (
                   <div
                     key={index}

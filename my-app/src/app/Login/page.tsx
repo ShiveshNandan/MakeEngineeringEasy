@@ -201,7 +201,7 @@ const LoginPage = () => {
                   placeholder="example@gmail.com"
                   value={email}
                   onChange={(e) => {setEmail(e.target.value), setErrEmail(false)}}
-                  className={`${Erremail? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border `}
+                  className={`${Erremail? "text-red-400 border-red-700 outline-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border dark:placeholder-slate-300`}
                 />
                 <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Create Password </h1>
                 <input
@@ -209,7 +209,7 @@ const LoginPage = () => {
                   placeholder="********"
                   value={password}
                   onChange={(e) => {setPassword(e.target.value),setErrPassword(false)}}
-                  className={`${Errpassword? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border `}
+                  className={`${Errpassword? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border dark:placeholder-slate-300`}
                 />
                 <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Username </h1>
                 <input
@@ -217,7 +217,7 @@ const LoginPage = () => {
                   placeholder="JohnWick"
                   value={name}
                   onChange={(e) => {setName(e.target.value),setErrName(false)}}
-                  className={`${Errname? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border `}
+                  className={`${Errname? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border dark:placeholder-slate-300`}
                 />
                 <button
                   type="button"
@@ -228,7 +228,11 @@ const LoginPage = () => {
                   {loadingBtn ? "Processing..." : "Create Account"}
                 </button>
               </form>
-              <h1 onClick={() => handleSignup()} className="text-xs py-1 flex justify-end underline underline-offset-4 dark:text-[#a5a5a5] text-[#333]  cursor-pointer z-[200]">Already have an account?</h1>
+              <h1 className="text-xs py-1 flex justify-end underline underline-offset-4 dark:text-[#a5a5a5] text-[#333] z-[200]">
+                <p onClick={() => handleSignup()} className="cursor-pointer">
+                  Already have an account?
+                  </p>
+                </h1>
               {/* <button >Notify !</button> */}
               </div>
 
@@ -249,7 +253,7 @@ const LoginPage = () => {
                 placeholder="example@gmail.com"
                 value={email}
                 onChange={(e) => {setEmail(e.target.value),setErrEmail(false)}}
-                className={`${Erremail? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border `}
+                className={`${Erremail? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border dark:placeholder-slate-300`}
               />
               <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Password </h1>
               <input
@@ -257,7 +261,7 @@ const LoginPage = () => {
                 placeholder="********"
                 value={password}
                 onChange={(e) => {setPassword(e.target.value),setErrPassword(false)}}
-                className={`${Errpassword? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border `}
+                className={`${Errpassword? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border dark:placeholder-slate-300`}
               />
 
               <button
@@ -270,7 +274,11 @@ const LoginPage = () => {
               </button>
               
             </form> 
-            <h1 onClick={() => handleSignup()} className="text-xs py-1 flex justify-end underline underline-offset-4 dark:text-[#a5a5a5] text-[#333]  cursor-pointer < z-[200]">dont have an account?</h1>
+            <h1 className="text-xs py-1 flex justify-end underline underline-offset-4 dark:text-[#a5a5a5] text-[#333] z-[200]">
+              <p onClick={() => handleSignup()} className="cursor-pointer">
+                dont have an account?
+                </p>
+                </h1>
             </div>
              }
 

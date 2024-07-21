@@ -169,7 +169,7 @@ const HeroSection = () => {
                   <div className="flex flex-col px-7 max-sm:px-4">
                     <h1
                       style={{ fontFamily: "YourFontThin" }}
-                      className="mt-5 text-[2.3vw] leading-[1.1] font-[700] tracking-[0.03vw] max-sm:text-lg max-sm:mt-0"
+                      className="mt-5 text-[2.3vw] leading-[1.1] text-white font-[700] tracking-[0.03vw] max-sm:text-lg max-sm:mt-0"
                     >
                       Comprehensive Study Notes
                     </h1>

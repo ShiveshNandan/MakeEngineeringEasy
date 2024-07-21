@@ -57,7 +57,7 @@ const Navbar = (params:any) => {
         <h1 onClick={() => {router.push("/") , setselected("Home")}} style={{fontFamily : 'YourFontMedium'}} className={`mx-5 hover:cursor-pointer transition-all duration-300 capitalize font-bold text-[1.4rem] tracking-[0.5px] max-sm:mx-0 max-sm:text-xl`} >make engineering <span className='block-inline text-[#ffaa2b] '> easy</span></h1>
 
         <h1 onClick={() => {router.push("/About"), setselected("About")}} className={`${selected === "About" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} capitalize mx-5 hover:cursor-pointer transition-all duration-300 max-sm:hidden`}>About</h1>
-        <h1 onClick={() => {router.push("/Login") , setselected("LogIn")}} className={`${selected === "LogIn" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} capitalize mx-5 hover:cursor-pointer transition-all duration-300 max-sm:hidden`}>{globalState ? "Profile" : "LogIn"}</h1>
+        <h1 onClick={() => {router.push("/Login") , setselected("LogIn")}} className={`${selected === "LogIn" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} mx-5 hover:cursor-pointer transition-all duration-300 max-sm:hidden`}>{globalState ? "Profile" : "Log in"}</h1>
 
 
 
@@ -71,7 +71,7 @@ const Navbar = (params:any) => {
 
       </div>  
         {/* =================== phone navbar =================== */}
-        <div className={`${!menu? "translate-x-[110vw]" : "translate-x-[0vw]" } flex flex-col fixed w-full h-screen top-0 right-0 align-center justify-between backdrop-blur8 sm:hidden transition-all duration-300 z-[400] `}>
+        <div onClick={()=> setmenu(false)}  className={`${!menu? "translate-x-[110vw]" : "translate-x-[0vw]" } flex flex-col fixed w-full h-screen top-0 right-0 align-center justify-between backdrop-blur8 sm:hidden transition-all duration-300 z-[400] `}>
         <div style={{fontFamily : 'YourFontThin'}} className={`${!menu? "translate-x-[110vw]" : "translate-x-[0vw]" } flex flex-col fixed w-9/12 h-screen top-0 right-0 align-center justify-between bg-[#FFF3E8d8] dark:bg-[#333333d8] sm:hidden transition-all duration-700 z-[400] `}>
           
           <Image onClick={()=> {setmenu(false)}} src={"/close.png"} height={100} width={1000} alt='' className='h-6 w-6 fixed right-4 top-8 dark:invert-[0.8] invert-[0.2]'></Image>
@@ -80,7 +80,7 @@ const Navbar = (params:any) => {
             <h1 onClick={() => {router.push("/") , setselected("Home");setmenu(false)}} className={`${selected === "Home" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full p-3 px-10`}>Home</h1>
             <h1 onClick={() => {router.push("/Course") , setselected("Course");setmenu(false)}} className={`${selected === "Course" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full p-3 px-10`}>Courses</h1>
             <h1 onClick={() => {router.push("/About") , setselected("About");setmenu(false)}} className={`${selected === "About" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full p-3 px-10 `}>About</h1>
-            <h1 onClick={() => {router.push("/Login") , setselected("LogIn");setmenu(false)}} className={`${selected === "LogIn" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full p-3 px-10 `}>{globalState ? "Profile" : "LogIn"}</h1>
+            <h1 onClick={() => {router.push("/Login") , setselected("LogIn");setmenu(false)}} className={`${selected === "LogIn" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full p-3 px-10 `}>{globalState ? "Profile" : "Log in"}</h1>
             <h1 onClick={()=> {router.push("Contact");setmenu(false)}} className={`${selected === "Contact" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full p-3 px-10 `}>Contact us</h1>
           
 

@@ -1,7 +1,8 @@
 "use client";
 import Navbar from "@/components/navbar";
 import React, { useEffect, useState } from "react";
-import { allCourses } from "@/app/API/HandleApi";
+// import { allCourses } from "@/app/API/HandleApi";
+import { CSECourses, ITCourses, ECECourses } from "@/app/API/HandleApi";
 import Loading from "@/app/Course/Loading";
 import Link from "next/link";
 import "@/app/Course/styles.css";
@@ -24,17 +25,54 @@ interface Course {
 }
 
 const page = ({ params }: any) => {
+
   const subjectName = params.subject.replace(/%20/g, " ").replace(/%2C/g, ",");
-  const [AllCourses, setAllCourses] = useState<Course[]>([]);
+
+
+  // const [AllCourses, setAllCourses] = useState<Course[]>([]);
+  const [CSECourse, setCSECourses] = useState<Course[]>([]);
+  const [ECECourse, setECECourses] = useState<Course[]>([]);
+  const [ITCourse, setITCourses] = useState<Course[]>([]);
+
+  // useEffect(() => {
+  //   const ss = async () => {
+  //     await allCourses(setAllCourses);
+  //   };
+  //   ss();
+  // }, []);
+
+  const CSEfunc = async () => {
+    try {
+        const response = await CSECourses(setCSECourses);
+      }
+     catch (error) {
+      console.error("error Occured : ", error);
+    }
+  };
+  const ITfunc = async () => {
+    try {
+        const response = ITCourses(setITCourses);
+      }
+     catch (error) {
+      console.error("error Occured : ", error);
+    }
+  };
+  const ECEfunc = async () => {
+    try {
+        const response = ECECourses(setECECourses);
+    } catch (error) {
+      console.error("error Occured : ", error);
+    }
+  };
 
   useEffect(() => {
-    const ss = async () => {
-      await allCourses(setAllCourses);
-    };
-    ss();
+    // func();
+    ECEfunc();
+    ITfunc();
+    CSEfunc();
   }, []);
 
-  const filteredData = AllCourses?.filter(
+  const filteredData = (CSECourse || ECECourse || ITCourse)?.filter(
     (item) => item?.subject === subjectName
   );
 
@@ -44,7 +82,7 @@ const page = ({ params }: any) => {
   return (
     <>
       <Navbar params="Courses" />
-      {Object.keys(AllCourses).length === 0 ? (
+      {Object.keys(CSECourse).length === 0 ? (
         <Loading />
       ) : (
         <>
