@@ -1,7 +1,6 @@
 import axios from "axios"
 
-const URL = process.env.NEXT_PUBLIC_URL 
-console.log(URL)
+const URL = process.env.URL
 
 // const allCourses = async (setCourses) => {
 //     try {
