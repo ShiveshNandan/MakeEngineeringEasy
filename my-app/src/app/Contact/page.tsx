@@ -23,6 +23,7 @@ const page = () => {
         const res = AddMessage(message,setmessage,email,setemail,username,setusername,setloading);
         res.then(result => {
           console.log(result);
+          
           if(result){
             toast.success("Thanks for your words!",{theme:"colored", position: "top-center",autoClose: 2000});          
           }else{

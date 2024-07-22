@@ -1,10 +1,11 @@
 import axios from "axios"
 
-const URL = process.env.URL
+const NURL = process.env.NEXT_PUBLIC_URL
+// console.log(NURL)
 
 // const allCourses = async (setCourses) => {
 //     try {
-//         const response = await axios.get(URL)
+//         const response = await axios.get(NURL)
 //         setCourses(response.data)
 //     } catch (error) {
 //         console.error("Error Occured : ",error)
@@ -13,7 +14,7 @@ const URL = process.env.URL
 
 const CSECourses = async (setCourses,id) => {
     try {
-        const response = await axios.post(`${URL}/cse`,{id})
+        const response = await axios.post(`${NURL}/cse`,{id})
         setCourses(response.data)
     } catch (error) {
         console.error("Error Occured : ",error)
@@ -21,7 +22,7 @@ const CSECourses = async (setCourses,id) => {
 }
 const ITCourses = async (setCourses,id) => {
     try {
-        const response = await axios.post(`${URL}/it`,{id})
+        const response = await axios.post(`${NURL}/it`,{id})
         setCourses(response.data)
     } catch (error) {
         console.error("Error Occured : ",error)
@@ -29,7 +30,7 @@ const ITCourses = async (setCourses,id) => {
 }
 const ECECourses = async (setCourses,id) => {
     try {
-        const response = await axios.post(`${URL}/ece`,{id})
+        const response = await axios.post(`${NURL}/ece`,{id})
         setCourses(response.data)
     } catch (error) {
         console.error("Error Occured : ",error)
@@ -39,7 +40,7 @@ const ECECourses = async (setCourses,id) => {
 const AddUser = async (id,email,username) => {
     try {
         const response = await axios
-        .post(`${URL}/user`,{id,email,username});
+        .post(`${NURL}/user`,{id,email,username});
         // console.log(id,email,username);
     } catch (error) {
         console.log(error);
@@ -49,7 +50,7 @@ const AddUser = async (id,email,username) => {
 const AddMessage = async (message,setmessage,email,setemail,username,setusername,setloading) => {
     try {
         const response = await axios
-        .post(`${URL}/message`,{message,email,username});
+        .post(`${NURL}/message`,{message,email,username});
         setmessage("")
         setemail("")
         setusername("")
