@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { account, ID } from "@/components/appwrite";
 import { useRouter } from "next/navigation";
-import ChangeTheme from "@/components/changeTheme";
 import Loading from "@/app/Course/Loading"
 import Image from "next/image";
 import React from 'react';
@@ -13,7 +12,6 @@ import ProfilePage from "../Profile/page";
 import { useTheme } from "next-themes";
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/Sidebar";
-import CGPA from "../CGPA/page";
 
 const LoginPage = () => {
   const { globalState, setGlobalState } = useGlobalState();
@@ -74,7 +72,7 @@ const LoginPage = () => {
         setErrEmail(true)
         setErrPassword(true)
       }
-      toast.error(`${errors}`,{theme: "dark", position: "top-center"})
+      toast.error(`${errors}`,{theme:"colored", position: "top-center"})
       setPassword("")
       setloadingBtn(false)
     }
@@ -101,7 +99,7 @@ const LoginPage = () => {
       }else{
         errors = ("Unexpected Error Occured. Please try after Sometime");
       }
-      toast.error(`${errors}`,{theme: "dark", position: "top-center"})
+      toast.error(`${errors}`,{theme:"colored", position: "top-center"})
       setPassword("")
       setloadingBtn(false)
     }
@@ -201,7 +199,7 @@ const LoginPage = () => {
                   placeholder="example@gmail.com"
                   value={email}
                   onChange={(e) => {setEmail(e.target.value), setErrEmail(false)}}
-                  className={`${Erremail? "text-red-400 border-red-700 outline-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border dark:placeholder-slate-300`}
+                  className={`${Erremail? "text-red-400 border-red-700 outline-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border `}
                 />
                 <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Create Password </h1>
                 <input
@@ -209,7 +207,7 @@ const LoginPage = () => {
                   placeholder="********"
                   value={password}
                   onChange={(e) => {setPassword(e.target.value),setErrPassword(false)}}
-                  className={`${Errpassword? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border dark:placeholder-slate-300`}
+                  className={`${Errpassword? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border `}
                 />
                 <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Username </h1>
                 <input
@@ -217,7 +215,7 @@ const LoginPage = () => {
                   placeholder="JohnWick"
                   value={name}
                   onChange={(e) => {setName(e.target.value),setErrName(false)}}
-                  className={`${Errname? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border dark:placeholder-slate-300`}
+                  className={`${Errname? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border `}
                 />
                 <button
                   type="button"
@@ -253,7 +251,7 @@ const LoginPage = () => {
                 placeholder="example@gmail.com"
                 value={email}
                 onChange={(e) => {setEmail(e.target.value),setErrEmail(false)}}
-                className={`${Erremail? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border dark:placeholder-slate-300`}
+                className={`${Erremail? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border `}
               />
               <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">Password </h1>
               <input
@@ -261,7 +259,7 @@ const LoginPage = () => {
                 placeholder="********"
                 value={password}
                 onChange={(e) => {setPassword(e.target.value),setErrPassword(false)}}
-                className={`${Errpassword? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border dark:placeholder-slate-300`}
+                className={`${Errpassword? "text-red-400 border-red-700" : "outline-none"} p-3 mb-2 rounded dark:bg-[#1e1c1a] border `}
               />
 
               <button

@@ -1,6 +1,7 @@
 import axios from "axios"
 
 const URL = process.env.NEXT_PUBLIC_URL 
+console.log(URL)
 
 // const allCourses = async (setCourses) => {
 //     try {
@@ -46,5 +47,22 @@ const AddUser = async (id,email,username) => {
     }
 }
 
-export {CSECourses, ITCourses, ECECourses, AddUser}
+const AddMessage = async (message,setmessage,email,setemail,username,setusername,setloading) => {
+    try {
+        const response = await axios
+        .post(`${URL}/message`,{message,email,username});
+        setmessage("")
+        setemail("")
+        setusername("")
+        setloading(false)
+        return(
+            false
+        )
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export {CSECourses, ITCourses, ECECourses, AddUser, AddMessage}
 // export {allCourses, CSECourses, ITCourses, ECECourses}

@@ -73,7 +73,7 @@ const page = ({ params }: any) => {
   //   ss();
   // }, []);
 
-  console.log(globalState)
+  // console.log(globalState)
 
   const CSEfunc = async () => {
     try {

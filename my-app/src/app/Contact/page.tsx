@@ -1,18 +1,47 @@
 "use client"
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Image from "next/image";
 import Sidebar from "../../components/Sidebar";
 import { useTheme } from "next-themes";
+import { AddMessage } from "../API/HandleApi";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const page = () => {
   const {theme} = useTheme()
+  const [loading,setloading] = useState(false)
+
+  const [username, setusername] = useState("")
+  const [email, setemail] = useState("")
+  const [message, setmessage] = useState("")
+
+  const messageSend = () => {
+    setTimeout(() => {
+      
+        const res = AddMessage(message,setmessage,email,setemail,username,setusername,setloading);
+        res.then(result => {
+          console.log(result);
+          if(result){
+            toast.success("Thanks for your words!",{theme:"colored", position: "top-center",autoClose: 2000});          
+          }else{
+          setloading(false);
+          toast.error("can't send message at the moment",{theme:"colored", position: "top-center",autoClose: 2000});
+          }
+        }).catch(error => {
+          console.error(error);
+        });
+      
+    }, 1000);
+    setloading(true);
+  }
   return (
     <>
     <div className="max-sm:hidden">
     <Sidebar/>
     </div>
+    <ToastContainer/>
     <div style={{fontFamily: "yourFontThin"}}>
       <Navbar params="Contact" />
     </div>
@@ -21,7 +50,7 @@ const page = () => {
         height={1}
         width={100000}
         alt=""
-        className="w-[20vw] absolute mt-[15vh] dark:invert max-lg:w-[30vw] max-sm:w-[40vw] "
+        className="w-[20vw] absolute mt-[15vh] dark:invert max-lg:w-[30vw] max-sm:w-[40vw] max-sm:mt-[12vh]"
       />
 
       <div style={{fontFamily: "yourFont"}} className='flex bg-[#FFFAF5] dark:bg-[#191817] bg-[url("../../public/Background.png")] dark:bg-[url("../../public/Background_dark.png")] drop'>
@@ -46,28 +75,35 @@ const page = () => {
             />
          }
           </div>
+          <p className="w-10/12 pl-[3.5rem] pt-4 max-sm:text-xs max-sm:w-11/12 max-sm:px-2 max-sm:m-auto">We're eager to hear from you! Your suggestions are invaluable in helping us improve. If you encounter any issues or have any feedback, please don't hesitate to let us know. We're here to listen and assist you with any concerns or ideas you may have.</p>
           <div className="flex">
-            <div className="flex flex-col w-9/12 pl-[3.5vw] py-10 max-md:w-11/12 max-md:m-auto max-md:px-2">
+            <div className="flex flex-col w-9/12 pl-[3.5vw] py-10 max-md:w-11/12 max-md:m-auto max-md:px-2 max-sm:py-5">
               <input
                 type="text"
                 className="w-full px-2 py-2 border-2 rounded border-[#3333] my-3 "
+                value={username}
+                onChange={(e) => setusername(e.target.value)}
                 placeholder="Full Name"
               />
               <input
                 type="email"
                 className="w-full px-2 py-2 border-2 rounded border-[#3333] my-3 "
+                value={email}
+                onChange={(e) => setemail(e.target.value)}
                 placeholder="Email Address"
               />
               <textarea
-                id="w3review"
+                id="review"
                 className="w-full border-2 border-[#3333] rounded-lg px-2 py-2 my-3 resize-none "
                 rows={9}
-                placeholder={`Message`}
+                value={message}
+                onChange={(e) => setmessage(e.target.value)}
+                placeholder={`Message / Suggestions`}
                 
               ></textarea>
               <div className="flex justify-end w-full mx-auto my-4">
-                <button className=" w-full bg-blue-500 rounded-md px-5 py-4 text-white max-[800px]:text-sm">
-                  Submit
+                <button onClick={() => {messageSend(), console.log("hello")}} disabled={loading} className={`${loading? "bg-blue-300 cursor-not-allowed" : "bg-blue-500"} w-full  rounded-md px-5 py-4 text-white max-[800px]:text-sm`}>
+                  {loading? "Processing..." : "Submit"}
                 </button>
               </div>
             </div>
