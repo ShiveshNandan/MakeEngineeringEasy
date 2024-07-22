@@ -84,7 +84,6 @@ const LoginPage = () => {
       login(email, password);
     } catch (error:any) {
       
-      alert(error.message)
       if (error.message.includes("Invalid `email` param")) {
         errors = ("Enter a valid email address");
         setErrEmail(true)
