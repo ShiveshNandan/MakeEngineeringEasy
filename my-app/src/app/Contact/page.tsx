@@ -17,23 +17,44 @@ const page = () => {
   const [email, setemail] = useState("")
   const [message, setmessage] = useState("")
 
+  function isValidEmail(email:any) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+  function isNameValid(username:String) {
+    return username.length > 3;
+  }
+
   const messageSend = () => {
     setTimeout(() => {
-      
-        const res = AddMessage(message,setmessage,email,setemail,username,setusername,setloading);
-        res.then(result => {
-          console.log(result);
-          
-          if(result){
-            toast.success("Thanks for your words!",{theme:"colored", position: "top-center",autoClose: 2000});          
+        if(isValidEmail(email)){
+          if(isNameValid(username)){
+            if(isNameValid(message)){
+                const res = AddMessage(message,setmessage,email,setemail,username,setusername,setloading);
+                res.then(result => {
+                  console.log(result);
+                  if(!result){
+                    toast.success("Thanks for your words!",{theme:"colored", position: "top-center",autoClose: 2000});          
+                  }else{
+                    setloading(false);
+                    toast.error("can't send message at the moment",{theme:"colored", position: "top-center",autoClose: 2000});
+                  }
+                }).catch(error => {
+                    console.error(error);
+                });
+            }else{
+              setloading(false);
+              toast.error("Message is too short to be send !",{theme:"colored", position: "top-center",autoClose: 2000});
+            }
           }else{
-          setloading(false);
-          toast.error("can't send message at the moment",{theme:"colored", position: "top-center",autoClose: 2000});
+            setloading(false);
+            toast.error("Enter Valid User Name",{theme:"colored", position: "top-center",autoClose: 2000});
           }
-        }).catch(error => {
-          console.error(error);
-        });
-      
+        }else{
+          setloading(false);
+          toast.error("Enter Valid email",{theme:"colored", position: "top-center",autoClose: 2000});
+        }
+          
     }, 1000);
     setloading(true);
   }
@@ -76,7 +97,7 @@ const page = () => {
             />
          }
           </div>
-          <p className="w-10/12 pl-[3.5rem] pt-4 max-sm:text-xs max-sm:w-11/12 max-sm:px-2 max-sm:m-auto">We're eager to hear from you! Your suggestions are invaluable in helping us improve. If you encounter any issues or have any feedback, please don't hesitate to let us know. We're here to listen and assist you with any concerns or ideas you may have.</p>
+          <p className="w-10/12 pl-[3.5rem] pt-4 max-sm:text-xs max-sm:w-11/12 max-sm:px-2 max-sm:m-auto dark:text-[#a5a5a5] text-[#333]">We're eager to hear from you! Your suggestions are invaluable in helping us improve. If you encounter any issues or have any feedback, please don't hesitate to let us know. We're here to listen and assist you with any concerns or ideas you may have.</p>
           <div className="flex">
             <div className="flex flex-col w-9/12 pl-[3.5vw] py-10 max-md:w-11/12 max-md:m-auto max-md:px-2 max-sm:py-5">
               <input
