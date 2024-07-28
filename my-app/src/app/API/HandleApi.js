@@ -14,7 +14,11 @@ const NURL = process.env.NEXT_PUBLIC_URL
 
 const CSECourses = async (setCourses,id) => {
     try {
-        const response = await axios.post(`${NURL}/cse`,{id})
+        const response = await axios.get(`${NURL}/cse`,
+            {headers : {
+                "matched" : id
+            }}
+        )
         setCourses(response.data)
     } catch (error) {
         console.error("Error Occured : ",error)
@@ -22,7 +26,11 @@ const CSECourses = async (setCourses,id) => {
 }
 const ITCourses = async (setCourses,id) => {
     try {
-        const response = await axios.post(`${NURL}/it`,{id})
+        const response = await axios.get(`${NURL}/it`,
+            {headers : {
+                "matched" : id
+            }}
+        )
         setCourses(response.data)
     } catch (error) {
         console.error("Error Occured : ",error)
@@ -30,7 +38,11 @@ const ITCourses = async (setCourses,id) => {
 }
 const ECECourses = async (setCourses,id) => {
     try {
-        const response = await axios.post(`${NURL}/ece`,{id})
+        const response = await axios.get(`${NURL}/ece`,
+            {headers : {
+                "matched" : id
+            }}
+        )
         setCourses(response.data)
     } catch (error) {
         console.error("Error Occured : ",error)
@@ -41,7 +53,6 @@ const AddUser = async (id,email,username) => {
     try {
         const response = await axios
         .post(`${NURL}/user`,{id,email,username});
-        // console.log(id,email,username);
     } catch (error) {
         console.log(error);
     }
