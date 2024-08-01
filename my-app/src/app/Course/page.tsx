@@ -11,6 +11,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useGlobalState } from "@/components/GlobalVariableProvider";
 import Sidebar from "@/components/Sidebar";
+import Footer from "@/components/footer";
 
 interface Course {
   id: number;
@@ -33,9 +34,6 @@ const Page = () => {
   let username = "";
   let email = "";
   let id = "";
-  // const [email, setemail] = useState("");
-  // const [id, setid] = useState("");
-  // const [Name, setName] = useState("");
   const router = useRouter()
 
   useEffect(() => {
@@ -47,9 +45,6 @@ const Page = () => {
           email = (u.email)
           username = (u.name)
           AddUser(id,email,username);
-          ECECourses(setECECourses,id);
-          CSECourses(setCSECourses,id);
-          ITCourses(setITCourses,id);
         } else {
         }
       }).catch((e) => {
@@ -68,9 +63,6 @@ const Page = () => {
     getUser();
   }, []);
 
-  const [CSECourse, setCSECourses] = useState<Course[]>([]);
-  const [ECECourse, setECECourses] = useState<Course[]>([]);
-  const [ITCourse, setITCourses] = useState<Course[]>([]);
 
 
   return (
@@ -80,130 +72,28 @@ const Page = () => {
       <div className="max-sm:hidden">
         <Sidebar/>
       </div>
-      {Object.keys(CSECourse).length === 0 ? (
+      {globalState === null ? (
         <Loading />
       ) : (
         <>
-        <div className="bg-[url('../../public/Background.png')] dark:bg-[url('../public/Background_dark.png')]">
-          <div className="relative top-[8rem]">
-            <h1 className="text-4xl font-semibold dark:text-[#efefef] text-gray-700 mx-auto w-8/12 max-[800px]:text-3xl max-[800px]:w-11/12">
-              CSE{" "}
-              <span className="text-xs">(Computer Science Engineering)</span>
-            </h1>
-
-            <div className="scroll flex w-8/12 my-5 mx-auto overflow-x-auto max-[800px]:w-11/12">
-              <div className="flex">
-                {CSECourse?.map((items: any, index) => (
-                  // {AllCourses?.map((items: any, index) => (
-
-                  <div
-                    key={index}
-                    className="flex flex-col w-[20rem] mx-2 rounded-lg shadow-md my-3 bg-blue-300 max-[800px]:w-[15rem]"
-                  >
-                    <Link href={`/Course/${items.subject}`}>
-                      <h1 className="text-4xl text-gray-700 p-3 min-h-[15rem]  border-b-2 w-full max-[800px]:text-2xl max-[800px]:min-h-[10rem] capitalize">
-                        {items.subject.toLowerCase()}
-                      </h1>
-                      <div className="flex text-gray-600 py-2 px-3 justify-between bg-gray-50 rounded-b-lg">
-                        <div className="flex flex-col">
-                          <p className="text-xs font-bold uppercase">
-                            subject code
-                          </p>
-                          <h1 className="text-2xl font-bold text-black">
-                            {items.id}
-                          </h1>
-                        </div>
-                        <div className="flex my-auto">
-                          <h1 className="text-sm pr-2">View More</h1>
-                          {/* <ArrowRightIcon className="flex h-4 w-4 my-auto ml-1" /> */}
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
+        <div className="bg-[url('../../public/Background.png')] dark:bg-[url('../public/Background_dark.png')] drop pb-[2rem]">
+            
+            <div className="h-screen my-auto flex flex-col w-8/12 max-[800px]:w-10/12 m-auto justify-center max-sm:pt-[6rem]">
+              <h1 className="text-2xl m-2">Select Your Course :</h1>
+              <div className="flex justify-center max-sm:flex-wrap max-sm:pt-[2rem]">
+              <div onClick={() => router.push("Course/CSE")} className="flex bg-blue-300 m-3 w-3/12 h-[10rem] rounded-2xl text-center justify-center flex-col cursor-pointer text-4xl text-gray-700 max-sm:w-8/12 max-sm:h-[7rem]">
+                CSE
+              </div>
+              <div onClick={() => router.push("Course/IT")} className="flex bg-green-300 m-3 w-3/12 h-[10rem] rounded-2xl text-center justify-center flex-col cursor-pointer text-4xl text-gray-700 max-sm:w-8/12 max-sm:h-[7rem]">
+                IT
+              </div>
+              <div onClick={() => router.push("Course/ECE")} className="flex bg-yellow-300 m-3 w-3/12 h-[10rem] rounded-2xl text-center justify-center flex-col cursor-pointer text-4xl text-gray-700 max-sm:w-8/12 max-sm:h-[7rem]">
+                ECE
+              </div>
               </div>
             </div>
-          </div>
-
-          <div className="flex flex-col pt-40 mt-10">
-            <h1 className="text-4xl font-semibold text-gray-700 dark:text-[#efefef] mx-auto w-8/12 max-[800px]:text-3xl max-[800px]:w-11/12">
-              IT <span className="text-xs">(Information Technology)</span>
-            </h1>
-
-            <div className="scroll flex w-8/12 my-5 mx-auto overflow-x-auto max-[800px]:w-11/12">
-              <div className="flex">
-                {ITCourse?.map((items: any, index) => (
-                  // {AllCourses?.map((items: any, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col w-[20rem] mx-2 rounded-lg shadow-md my-3 bg-green-300 max-[800px]:w-[15rem]"
-                  >
-                    <Link href={`/Course/${items.subject}`}>
-                      <h1 className="text-4xl text-gray-700 p-3 min-h-[15rem]  border-b-2 w-full max-[800px]:text-2xl max-[800px]:min-h-[10rem] capitalize">
-                        {items.subject.toLowerCase()}
-                      </h1>
-                      <div className="flex text-gray-600 py-2 px-3 justify-between bg-gray-50 rounded-b-lg">
-                        <div className="flex flex-col">
-                          <p className="text-xs font-bold uppercase">
-                            subject code
-                          </p>
-                          <h1 className="text-2xl font-bold text-black">
-                            {items.id}
-                          </h1>
-                        </div>
-                        <div className="flex my-auto">
-                          <h1 className="text-sm pr-2">View More</h1>
-                          {/* <ArrowRightIcon className="flex h-4 w-4 my-auto ml-1" /> */}
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col py-[3.5rem]">
-            <h1 className="text-4xl font-semibold text-gray-700 dark:text-[#efefef] mx-auto w-8/12 max-[800px]:text-3xl max-[800px]:w-11/12">
-              ECE{" "}
-              <span className="text-xs">
-                (Electronics and Communication Engineering)
-              </span>
-            </h1>
-
-            <div className="scroll flex w-8/12 my-5 mx-auto overflow-x-auto max-[800px]:w-11/12">
-              <div className="flex">
-                {ECECourse?.map((items: any, index) => (
-                  // {AllCourses?.map((items: any, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col w-[20rem] mx-2 rounded-lg shadow-md my-3 bg-yellow-300 max-[800px]:w-[15rem]"
-                  >
-                    <Link href={`/Course/${items.subject}`}>
-                      <h1 className="text-4xl text-gray-700 p-3 min-h-[15rem]  border-b-2 w-full max-[800px]:text-2xl max-[800px]:min-h-[10rem] capitalize">
-                        {items.subject.toLowerCase()}
-                      </h1>
-                      <div className="flex text-gray-600 py-2 px-3 justify-between bg-gray-50 rounded-b-lg">
-                        <div className="flex flex-col">
-                          <p className="text-xs font-bold uppercase">
-                            subject code
-                          </p>
-                          <h1 className="text-2xl font-bold text-black">
-                            {items.id}
-                          </h1>
-                        </div>
-                        <div className="flex my-auto">
-                          <h1 className="text-sm pr-2">View More</h1>
-                          {/* <ArrowRightIcon className="flex h-4 w-4 my-auto ml-1" /> */}
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>  
+        </div>
+        <Footer/>
         </>
       )}
     </>

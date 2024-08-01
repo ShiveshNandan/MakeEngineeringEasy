@@ -62,8 +62,8 @@ const page = ({ params }: any) => {
 
 
   // const [AllCourses, setAllCourses] = useState<Course[]>([]);
-  const [CSECourse, setCSECourses] = useState<Course[]>([]);
-  const [ECECourse, setECECourses] = useState<Course[]>([]);
+  // const [CSECourse, setCSECourses] = useState<Course[]>([]);
+  // const [ECECourse, setECECourses] = useState<Course[]>([]);
   const [ITCourse, setITCourses] = useState<Course[]>([]);
 
   // useEffect(() => {
@@ -75,14 +75,14 @@ const page = ({ params }: any) => {
 
   // console.log(globalState)
 
-  const CSEfunc = async () => {
-    try {
-        const response = await CSECourses(setCSECourses,globalState.$id);
-      }
-     catch (error) {
-      console.error("error Occured : ", error);
-    }
-  };
+  // const CSEfunc = async () => {
+  //   try {
+  //       const response = await CSECourses(setCSECourses,globalState.$id);
+  //     }
+  //    catch (error) {
+  //     console.error("error Occured : ", error);
+  //   }
+  // };
   const ITfunc = async () => {
     try {
         const response = ITCourses(setITCourses,globalState.$id);
@@ -91,21 +91,21 @@ const page = ({ params }: any) => {
       console.error("error Occured : ", error);
     }
   };
-  const ECEfunc = async () => {
-    try {
-        const response = ECECourses(setECECourses,globalState.$id);
-    } catch (error) {
-      console.error("error Occured : ", error);
-    }
-  };
+  // const ECEfunc = async () => {
+  //   try {
+  //       const response = ECECourses(setECECourses,globalState.$id);
+  //   } catch (error) {
+  //     console.error("error Occured : ", error);
+  //   }
+  // };
 
   useEffect(() => {
-    ECEfunc();
+    // ECEfunc();
     ITfunc();
-    CSEfunc();
+    // CSEfunc();
   }, []);
 
-  const filteredData = (CSECourse || ECECourse || ITCourse)?.filter(
+  const filteredData = (ITCourse)?.filter(
     (item) => item?.subject === subjectName
   );
 
@@ -115,7 +115,7 @@ const page = ({ params }: any) => {
   return (
     <>
       <Navbar params= "Courses" />
-      {Object.keys(CSECourse).length === 0 ? (
+      {Object.keys(ITCourse).length === 0 ? (
         <Loading />
       ) : (
         <>
