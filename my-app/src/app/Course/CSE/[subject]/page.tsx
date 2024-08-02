@@ -12,6 +12,7 @@ import { account, ID } from "@/components/appwrite";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "@/components/footer";
 
 interface Course {
   id: number;
@@ -113,14 +114,18 @@ const page = ({ params }: any) => {
   // console.log(filteredData[0]?.pyq.minor)
   // console.log(filteredData[0]?.pyq.major)
   return (
-    <>
+    <div>
       <Navbar params= "Courses" />
-      {Object.keys(CSECourse).length === 0 ? (
+      {
+      Object.keys(CSECourse).length === 0 ? (
         <Loading />
-      ) : (
+      ) : 
+      (
         <>
-          <div className="flex flex-col bg-gradient-to-b from-indigo-500 h-[30vh] max-[800px]:h-[38vh]">
-            <Sidebar/>
+          <div className="flex flex-col bg-[url('../../public/Background.png')] dark:bg-[url('../public/Background_dark.png')] drop pb-[2rem] ">
+          <div className="max-sm:hidden">
+        <Sidebar/>
+      </div>
             <h1 className="m-auto pt-[15vh] text-4xl font-bold mb-10 max-[800px]:pt-[20vh] text-center max-[800px]:w-11/12 capitalize">
               {filteredData[0]?.subject.toLocaleLowerCase()}
             </h1>
@@ -264,9 +269,10 @@ const page = ({ params }: any) => {
               </div>
             </div>
           </div>
+          <Footer/>
         </>
       )}
-    </>
+    </div>
   );
 };
 

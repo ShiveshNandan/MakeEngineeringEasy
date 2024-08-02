@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useGlobalState } from "@/components/GlobalVariableProvider";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/footer";
+import Image from "next/image";
 
 interface Course {
   id: number;
@@ -78,20 +79,50 @@ const Page = () => {
         <>
         <div className="bg-[url('../../public/Background.png')] dark:bg-[url('../public/Background_dark.png')] drop pb-[2rem]">
             
+        <Image
+        src={'/Plane 1.png'}
+        height={1}
+        width={100000}
+        alt=""
+        className="w-[20vw] absolute mt-[15vh] dark:invert max-lg:w-[30vw] max-sm:w-[40vw] max-sm:mt-[12vh]"
+      />
             <div className="h-screen my-auto flex flex-col w-8/12 max-[800px]:w-10/12 m-auto justify-center max-sm:pt-[6rem]">
-              <h1 className="text-2xl m-2">Select Your Course :</h1>
+              <h1 className="text-2xl m-2 my-7">Select Your Course :</h1>
               <div className="flex justify-center max-sm:flex-wrap max-sm:pt-[2rem]">
-              <div onClick={() => router.push("Course/CSE")} className="flex bg-blue-300 m-3 w-3/12 h-[10rem] rounded-2xl text-center justify-center flex-col cursor-pointer text-4xl text-gray-700 max-sm:w-8/12 max-sm:h-[7rem]">
+              <div onClick={() => router.push("Course/CSE")} className="m-3 p-1 rounded-2xl bg-blue-300 w-3/12 h-[10rem] max-sm:w-8/12 max-sm:h-[7rem]">
+                <div className="flex border-2 border-dotted bg-blue-300 rounded-2xl text-center justify-center flex-col cursor-pointer text-4xl text-gray-700 h-full">
                 CSE
+                <p className="text-sm pt-2">(Computer Science Engineering)</p>
+                </div>
               </div>
-              <div onClick={() => router.push("Course/IT")} className="flex bg-green-300 m-3 w-3/12 h-[10rem] rounded-2xl text-center justify-center flex-col cursor-pointer text-4xl text-gray-700 max-sm:w-8/12 max-sm:h-[7rem]">
+              <div onClick={() => router.push("Course/IT")} className="m-3 p-1 rounded-2xl bg-green-300 w-3/12 h-[10rem] max-sm:w-8/12 max-sm:h-[7rem]">
+                <div className="flex border-2 border-dotted bg-green-300 rounded-2xl text-center justify-center flex-col cursor-pointer text-4xl text-gray-700 h-full">
+                IT
+                <p className="text-sm pt-2">(Information Technology)</p>
+                </div>
+              </div>
+              <div onClick={() => router.push("Course/ECE")} className="m-3 p-1 rounded-2xl bg-yellow-300 w-3/12 h-[10rem] max-sm:w-8/12 max-sm:h-[7rem]">
+                <div className="flex border-2 border-dotted bg-yellow-300 rounded-2xl text-center justify-center flex-col cursor-pointer text-4xl text-gray-700 h-full">
+                ECE
+                <p className="text-sm pt-2">(Electronics and Communication Engineering)</p>
+                </div>
+              </div>
+              
+              {/* <div  className="flex bg-green-300 m-3 w-3/12 h-[10rem] rounded-2xl text-center justify-center flex-col cursor-pointer text-4xl text-gray-700 max-sm:w-8/12 max-sm:h-[7rem]">
                 IT
               </div>
               <div onClick={() => router.push("Course/ECE")} className="flex bg-yellow-300 m-3 w-3/12 h-[10rem] rounded-2xl text-center justify-center flex-col cursor-pointer text-4xl text-gray-700 max-sm:w-8/12 max-sm:h-[7rem]">
                 ECE
-              </div>
+              </div> */}
               </div>
             </div>
+        <Image
+        src={'/Plane 2.png'}
+        height={1}
+        width={100000}
+        alt=""
+        className="w-[20vw] absolute right-0 mt-[-27vh] dark:invert max-lg:w-[30vw] max-sm:w-[40vw] max-sm:mt-[-13vh]"
+      />
         </div>
         <Footer/>
         </>

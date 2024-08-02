@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/Shadcn components/theme-provider'
 import { GlobalStateProvider } from '@/components/GlobalVariableProvider';
+import Navbar from '@/components/navbar';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,9 +25,12 @@ export default function RootLayout({
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-          >
+            >
             <GlobalStateProvider>
-            {children}
+            {/* <Navbar></Navbar> */}
+              <main>
+                {children}
+              </main>
             </GlobalStateProvider>
           </ThemeProvider>
         </body>

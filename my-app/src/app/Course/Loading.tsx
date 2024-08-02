@@ -44,7 +44,7 @@ const loader = () => {
 
   // let number = 0;
   const [number, setnumber] = useState(0)
-  const max: number = shlok.length;
+  const max: number = shlok.length - 1;
 
 
   useEffect(() => {
@@ -65,11 +65,6 @@ const loader = () => {
         <div className="flex justify-center my-1">
       <Image src={'/loading.gif'} alt="ss" height={0} width={30} className=''/>
         </div>
-        {/* {shlok.map((items,index) => (
-          <>
-          
-          </>
-        ))} */}
         <div className='mx-auto pt-5 font-bold'>
         <p>{shlok[number]?.line1}</p>
         <p>{shlok[number]?.line2}</p>

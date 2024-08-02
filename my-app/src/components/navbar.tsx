@@ -88,7 +88,7 @@ const Navbar = (params:any) => {
 
 
             <h1 onClick={() => {toggle();setmenu(false)}} className='w-full p-3 pt-6 px-10'>Switch Mode</h1>
-            <h1 onClick={()=> {router.push("CGPA");setmenu(false)}} className={`${selected === "CGPA" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full p-3 px-10 `}>CGPA Calculator</h1>
+            <h1 onClick={()=> {router.push("/CGPA");setmenu(false)}} className={`${selected === "CGPA" ? "text-[#3b82f6] font-extrabold" : "font-[500]"} w-full p-3 px-10 `}>CGPA Calculator</h1>
           </div>
           
           <h1 style={{fontFamily : 'YourFontMedium'}} className={`mx-5 hover:cursor-pointer transition-all duration-300 capitalize font-bold text-[1.4rem] tracking-[0.5px] max-sm:mx-auto max-sm:mb-16`} >make engineering <span className='block-inline text-[#ffaa2b] '> easy</span></h1>
