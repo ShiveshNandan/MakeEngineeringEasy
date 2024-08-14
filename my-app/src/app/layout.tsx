@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/Shadcn components/theme-provider'
 import { GlobalStateProvider } from '@/components/GlobalVariableProvider';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import Navbar from '@/components/navbar';
 
 const inter = Inter({ subsets: ['latin'] })
@@ -30,6 +32,8 @@ export default function RootLayout({
             {/* <Navbar></Navbar> */}
               <main>
                 {children}
+                <Analytics />
+                <SpeedInsights />
               </main>
             </GlobalStateProvider>
           </ThemeProvider>
