@@ -16,24 +16,24 @@ const Footer = () => {
         </div>
        </div>
        <div className="flex justify-center dark:text-[#FFFFFF]">
-        <Image src={'/Facebook.png'} height={100} width={100} alt='' className='w-[2vw] mx-4 dark:invert max-sm:w-[1.8rem] max-sm:mx-2 ' />
+        {/* <Image src={'/Facebook.png'} height={100} width={100} alt='' className='w-[2vw] mx-4 dark:invert max-sm:w-[1.8rem] max-sm:mx-2 ' />
         <Image src={'/Instagram.png'} height={100} width={100} alt='' className='w-[2vw] mx-4 dark:invert max-sm:w-[1.8rem] max-sm:mx-2 ' />
         <Image src={'/Linkedin.png'} height={100} width={100} alt='' className='w-[2vw] mx-4 dark:invert max-sm:w-[1.8rem] max-sm:mx-2 ' />
-        <Image src={'/X.png'} height={100} width={100} alt='' className='w-[2vw] mx-4 dark:invert max-sm:w-[1.8rem] max-sm:mx-2 ' />
+        <Image src={'/X.png'} height={100} width={100} alt='' className='w-[2vw] mx-4 dark:invert max-sm:w-[1.8rem] max-sm:mx-2 ' /> */}
        </div>
 
        <div style={{fontFamily: "YourFontThin"}} className="flex justify-center m-auto capitalize py-10 max-sm:flex-col max-sm:pt-3 max-sm:pb-4">
         
         <div className='flex w-full justify-around sm:hidden mt-5 mb-3 text-xs'>
-        <h1 className='font-bold ' >Designed by Tejasva</h1>
-        <h1 className='font-bold ' >Developed by Shivesh</h1>
+        {/* <h1 className='font-bold ' >Designed by Tejasva</h1> */}
+        {/* <h1 className='font-bold ' >Developed by Shivesh</h1> */}
         </div>
 
-        <h1 className='font-bold mx-5 max-sm:hidden' >Designed by Tejasva</h1>
+        {/* <h1 className='font-bold mx-5 max-sm:hidden' >Designed by Tejasva</h1> */}
 
         <h1 className='font-bold mx-10 max-sm:mx-auto max-sm:text-xs ' >Copyright <span>&copy;</span> 2024 All rights reserved</h1>
 
-        <h1 className='font-bold mx-5 max-sm:hidden' >Developed by Shivesh</h1>
+        {/* <h1 className='font-bold mx-5 max-sm:hidden' >Developed by Shivesh</h1> */}
        </div>
     </div>
   )
