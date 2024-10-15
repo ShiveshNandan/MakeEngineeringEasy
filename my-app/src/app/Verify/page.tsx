@@ -47,6 +47,10 @@ const Verify = () => {
       <>
           
     <ToastContainer />
+    <div className="fixed w-full top-0">
+        <h1 onClick={()=> router.push("/")} style={{fontFamily : 'YourFontMedium'}} className={`mx-3 my-4 hover:cursor-pointer transition-all duration-300 capitalize font-bold text-[1.4rem] tracking-[0.5px] `} >make engineering <span className='block-inline text-[#ffaa2b] '> easy</span></h1>
+        </div>
+        
           {pause ? 
           <div className="flex m-auto w-full h-screen justify-center">
           <div
@@ -59,7 +63,7 @@ const Verify = () => {
           <button 
           onClick={()=>{verification(),setloading(true); setisDisabled(true)}} 
           disabled={isDisabled}
-          className="dark:text-gray-300 text-gray-700 text-xl border py-2 px-4 rounded items-center flex dark:bg-slate-900 bg-slate-300 max-sm:text-xs ml-3 w-fit h-fit my-auto">
+          className="dark:text-gray-100 text-gray-300 text-xl border py-2 px-4 rounded items-center flex dark:bg-green-500 bg-green-600 max-sm:text-xs ml-3 w-fit h-fit my-auto">
           {loading ? "Processing..." : "verify yourself!"}
           </button>
           </div>}

@@ -25,7 +25,7 @@ const Profile = () => {
       // const response = account.createVerification(
       //   "http://localhost:3000/verify"
       // );
-      const response = account.createVerification('https://make-engineering-easy.vercel.app/verify');
+      const response = account.createVerification('https://make-engineering-easy.vercel.app/Verify');
       toast.info(`Check your email for verification link`, {
         theme: "colored",
         position: "top-center",

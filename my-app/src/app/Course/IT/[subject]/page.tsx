@@ -142,13 +142,12 @@ const page = ({ params }: any) => {
                   </h1>
                 </div>
               ) : (
-                <div className="flex  flex-col mx-2 mt-3 overflow-x-scroll max-[800px]:mx-auto">
+                <div className="flex flex-wrap mx-2 mt-3 overflow-x-scroll max-[800px]:mx-auto">
                   {filteredData[0]?.book.map(
                           (item: any, index: any) => (
                             <>
                               <Link target="_blank" href={item}>
                                 <div className="flex mx-1 bg-gray-400 w-40 h-40 rounded-md">
-                      {/* <Image className="mx-auto" src={"book"} height={10} width={100} alt="book"></Image> */}
                       </div>
                               </Link>
                             </>
@@ -182,7 +181,7 @@ const page = ({ params }: any) => {
                 )}
               </div>
 
-              <div className="flex flex-col mx-2">
+              <div className="flex flex-col mx-2 max-[800px]:mx-auto">
                 <h1 className="font-semibold my-1 mt-3">Others :</h1>
                 <div className="flex overflow-x-scroll scroll pb-5">
                   {filteredData[0]?.playlist.other.length === 0 || filteredData[0]?.playlist.other.includes("") ? (
@@ -192,12 +191,12 @@ const page = ({ params }: any) => {
                       </h1>
                     </div>
                   ) : (
-                    <div className="flex flex-col overflow-x-scroll max-[800px]:mx-auto">
+                    <div className="flex flex-wrap max-[800px]:mx-auto">
                       {filteredData[0]?.playlist.other.map(
                           (item: any, index: any) => (
                             <>
                               <Link target="_blank" href={item}>
-                                <div className="flex mx-1 bg-gray-400 w-40 h-40 rounded-md">
+                                <div className="flex mx-1 my-1 bg-gray-400 w-40 h-40 rounded-md">
                       {/* <Image className="mx-auto" src={"book"} height={10} width={100} alt="book"></Image> */}
                       </div>
                               </Link>
@@ -213,9 +212,9 @@ const page = ({ params }: any) => {
               </h1>
 
               <div className="flex flex-col max-[800px]:mx-auto">
-                <div className="flex flex-col mx-2">
+                <div className="flex flex-col mx-2 max-[800px]:mx-auto">
                   <h1 className="font-semibold my-1 mt-3">Mid-sem :</h1>
-                  <div className="flex overflow-x-scroll scroll pb-5">
+                  <div className="flex flex-wrap pb-5">
                     {filteredData[0]?.pyq.minor.length === 0 || filteredData[0]?.pyq.minor.includes("") ? (
                       <div className="flex w-40 h-40 max-[800px]:mx-auto">
                         <h1 className="my-auto mx-auto h-fit w-fit flex text-sm italic">
@@ -223,13 +222,13 @@ const page = ({ params }: any) => {
                         </h1>
                       </div>
                     ) : (
-                      <div className="flex overflow-x-scroll max-[800px]:mx-auto">
+                      <div className="flex flex-wrap max-[800px]:mx-auto">
                         {filteredData[0]?.pyq.minor.map(
                           (item: any, index: any) => (
                             <>
                               <Link target="_blank" href={item}>
                                 {/* <Link target="_blank" href={`${filteredData[0]?.pyq.minor}`}> */}
-                                <div className="flex mx-1 bg-gray-400 w-40 h-40 rounded-md"></div>
+                                <div className="flex my-1 mx-1 bg-gray-400 w-40 h-40 rounded-md"></div>
                               </Link>
                             </>
                           )
@@ -241,7 +240,7 @@ const page = ({ params }: any) => {
 
                 <div className="flex flex-col mx-2 max-[800px]:mx-auto">
                   <h1 className="font-semibold my-1 mt-3">End-sem :</h1>
-                  <div className="flex overflow-x-scroll scroll pb-5">
+                  <div className="flex flex-wrap pb-5">
                     {filteredData[0]?.pyq.major.length === 0 || filteredData[0]?.pyq.major.includes("") ? (
                       <div className="flex w-40 h-40 max-[800px]:mx-auto">
                         <h1 className="my-auto mx-auto h-fit w-fit flex text-sm italic">
@@ -249,13 +248,12 @@ const page = ({ params }: any) => {
                         </h1>
                       </div>
                     ) : (
-                      <div className="flex flex-col overflow-x-scroll max-[800px]:mx-auto">
+                      <div className="flex flex-wrap my-1 max-[800px]:mx-auto">
                         {filteredData[0]?.pyq.major.map(
                           (item: any, index: any) => (
                             <>
                               <Link target="_blank" href={item}>
-                                {/* <Link target="_blank" href={`${filteredData[0]?.pyq.minor}`}> */}
-                                <div className="flex mx-1 bg-gray-400 w-40 h-40 rounded-md"></div>
+                                <div className="flex my-1 mx-1 bg-gray-400 w-40 h-40 rounded-md"></div>
                               </Link>
                             </>
                           )
