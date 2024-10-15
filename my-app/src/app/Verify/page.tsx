@@ -6,18 +6,27 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from "next/navigation";
 
 const Verify = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const secret = urlParams.get("secret");
-  const userId = urlParams.get("userId");
+  const [secret, setSecret] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string | null>(null);
   const [loading, setloading] = useState(false);
   const [pause, setpause] = useState(true);
   const [isDisabled, setisDisabled] = useState(false)
   const router = useRouter();
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      setSecret(urlParams.get("secret"));
+      setUserId(urlParams.get("userId"));
+    }
 
-  setTimeout(()=>{
-    setpause(false)
-  },1000)
+    const timeout = setTimeout(() => {
+      setpause(false);
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   const verification = () => {
     const promise = account.updateVerification(userId!, secret!);
     promise.then(()=>{
