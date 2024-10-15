@@ -25,15 +25,15 @@ const Footer = () => {
        <div style={{fontFamily: "YourFontThin"}} className="flex justify-center m-auto capitalize py-10 max-sm:flex-col max-sm:pt-3 max-sm:pb-4">
         
         <div className='flex w-full justify-around sm:hidden mt-5 mb-3 text-xs'>
-        {/* <h1 className='font-bold ' >Designed by Tejasva</h1> */}
-        {/* <h1 className='font-bold ' >Developed by Shivesh</h1> */}
+        <h1 className='font-bold ' >Designed by Tejasva</h1>
+        <h1 className='font-bold ' >Developed by Shivesh</h1>
         </div>
 
-        {/* <h1 className='font-bold mx-5 max-sm:hidden' >Designed by Tejasva</h1> */}
+        <h1 className='font-bold mx-5 max-sm:hidden' >Designed by Tejasva</h1>
 
         <h1 className='font-bold mx-10 max-sm:mx-auto max-sm:text-xs ' >Copyright <span>&copy;</span> 2024 All rights reserved</h1>
 
-        {/* <h1 className='font-bold mx-5 max-sm:hidden' >Developed by Shivesh</h1> */}
+        <h1 className='font-bold mx-5 max-sm:hidden' >Developed by Shivesh</h1>
        </div>
     </div>
   )

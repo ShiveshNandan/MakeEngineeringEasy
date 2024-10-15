@@ -7,30 +7,52 @@ import Image from "next/image";
 import Sidebar from "@/components/Sidebar";
 import Loading from "@/app/Course/Loading";
 import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Profile = () => {
   const router = useRouter();
   const { globalState, setGlobalState } = useGlobalState();
 
-
   const logout = async () => {
     await account.deleteSession("current");
     setGlobalState(null);
-    router.push("/")
+    router.push("/");
   };
-  
+
+  const verify = () => {
+    try {
+      const response = account.createVerification(
+        "http://localhost:3000/verify"
+      );
+      // const response = account.createVerification('https://make-engineering-easy.vercel.app/verify');
+      toast.info(`Check your email for verification link`, {
+        theme: "colored",
+        position: "top-center",
+      });
+      console.log(response);
+    } catch (error: any) {
+      console.log(error);
+    }
+  };
 
   const [loading, setloading] = useState(false);
   useEffect(() => {
-    if(globalState){
+    if (globalState) {
       setloading(true);
+      // console.log("globalState: ",globalState.emailVerification)
+      if (!globalState.emailVerification) {
+        toast.info(`Please verify yourself to use courses feature!`, {
+          theme: "colored",
+          position: "top-center",
+        });
+      }
     }
-  }, [globalState])
-  
-
+  }, [globalState]);
 
   return (
     <>
+      <ToastContainer />
       {!loading ? (
         <Loading />
       ) : (
@@ -50,10 +72,30 @@ const Profile = () => {
               <button
                 type="button"
                 onClick={logout}
-                className="dark:text-gray-300 text-gray-700 text-xl my-2 border py-2 px-4 rounded items-center flex dark:bg-slate-900 bg-slate-300 max-sm:text-xs"
+                className="dark:text-gray-300 text-gray-900 text-xl my-2 border py-2 px-4 rounded items-center flex dark:bg-red-900 bg-red-300 max-sm:text-xs"
               >
                 Logout
               </button>
+
+              {!globalState.emailVerification ? (
+                <div className="relative">
+                <div className="absolute top-0 left-0 text-xl border rounded animate-ping py-2 px-4 my-2 mx-3 max-sm:text-xs bg-slate-900 dark:bg-slate-300">verify</div>
+                <button
+                  type="button"
+                  onClick={verify}
+                  className="relative z-10  dark:text-gray-300 text-gray-900 text-xl my-2 border py-2 px-4 rounded items-center flex dark:bg-slate-900 bg-slate-300 max-sm:text-xs mx-3"
+                >
+                  verify
+                </button>
+              </div>
+              ) : (
+                <button
+                  type="button"
+                  className="dark:text-gray-300 text-gray-900 text-xl my-2 border py-2 px-4 rounded items-center flex dark:bg-green-700 bg-green-300 max-sm:text-xs ml-3"
+                >
+                  verified!
+                </button>
+              )}
             </div>
             <div className="flex flex-col px-2 py-10 max-sm:px-0">
               <div className="flex max-sm:flex-col">

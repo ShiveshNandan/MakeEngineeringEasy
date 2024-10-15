@@ -40,7 +40,14 @@ const Page = () => {
   useEffect(() => {
     async function getUser() {
       await account.get().then((u) => {
-        if(u){
+        // console.log("u : " , u)
+        if (!u.emailVerification) {
+          toast.error("Please verify yourself first",{theme:"colored", position: "top-center",autoClose: 2000})
+          setTimeout(() => {
+            router.push("/Login")
+          }, 3000);
+        }
+        if(u && u.emailVerification){
           setGlobalState(u) 
           id = (u.$id)
           email = (u.email)
@@ -73,7 +80,7 @@ const Page = () => {
       <div className="max-sm:hidden">
         <Sidebar/>
       </div>
-      {globalState === null ? (
+      {globalState === null || !globalState.emailVerification? (
         <Loading />
       ) : (
         <>

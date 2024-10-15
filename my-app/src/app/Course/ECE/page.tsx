@@ -39,7 +39,13 @@ const Page = () => {
 
   async function getUser() {
     await account.get().then((u) => {
-      if(u){
+      if (!u.emailVerification) {
+        toast.error("Please verify yourself first",{theme:"colored", position: "top-center",autoClose: 2000})
+        setTimeout(() => {
+          router.push("/Login")
+        }, 3000);
+      }
+      if(u && u.emailVerification){
         setGlobalState(u) 
         let id = (u.$id)
         ECECourses(setECECourses,id);
@@ -81,7 +87,7 @@ const Page = () => {
       <div className="max-sm:hidden">
         <Sidebar/>
       </div>
-    {loading ? (
+    {loading || !globalState.emailVerification? (
         <Loading />
       ) : (
         <div className="bg-[url('../../public/Background.png')] dark:bg-[url('../public/Background_dark.png')] drop pb-[2rem]">
