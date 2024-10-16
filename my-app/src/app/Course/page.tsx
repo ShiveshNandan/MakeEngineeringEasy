@@ -108,7 +108,7 @@ const Page = () => {
                 <p className="text-sm pt-2">(Information Technology)</p>
                 </div>
               </div>
-              <div onClick={() => router.push("Course/ECE")} className="m-3 p-1 rounded-2xl bg-yellow-300 w-3/12 h-[10rem] max-sm:w-8/12 max-sm:h-[7rem]">
+              <div onClick={() => router.push("Course/ECE")} className="m-3 p-1 rounded-2xl bg-yellow-300 w-3/12 h-[10rem] max-sm:w-8/12 max-sm:h-[7rem] z-[100]">
                 <div className="flex border-2 border-dotted bg-yellow-300 rounded-2xl text-center justify-center flex-col cursor-pointer text-4xl text-gray-700 h-full">
                 ECE
                 <p className="text-sm pt-2">(Electronics and Communication Engineering)</p>

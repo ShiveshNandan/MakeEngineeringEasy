@@ -54,7 +54,7 @@ const AddUser = async (id,email,username) => {
         const response = await axios
         .post(`${NURL}/user`,{id,email,username});
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
 }
 
@@ -71,7 +71,7 @@ const AddMessage = async (message,setmessage,email,setemail,username,setusername
         )
         
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
 }
 

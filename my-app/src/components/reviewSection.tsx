@@ -7,7 +7,7 @@ import Image from 'next/image';
 const reviews = [
     {
         review:"Make Engineering Easy's resources were instrumental in our success. The study materials provided clarity and confidence, leading to exam success. Highly recommended!",
-        author:"himesh bhaiya ji",
+        author:"anonymous",
     profileBorder:"#624cad",
     Border:"#bf83ff",
     bg:"#e0c5fd",
@@ -16,7 +16,7 @@ const reviews = [
 },
     {
         review:"Make Engineering Easy's support was invaluable. Past year question papers, study notes, and lecture links simplified learning. Passed exams with confidence and deeper understanding. Highly recommend!",
-    author:"haresh bhaiya ji",
+    author:"anonymous",
     profileBorder:"#FFF3E8",
     Border:"#fdd25c",
     bg:"#ffedab",
@@ -25,7 +25,7 @@ const reviews = [
 },
     {
         review:"Make Engineering Easy's support was invaluable. Past year question papers, study notes, and lecture links simplified learning. Passed exams with confidence and deeper understanding. Highly recommend!",
-    author:"bhaiya ji",
+    author:"anonymous",
     profileBorder:"#36b6f6",
     Border:"#36bafb",
     bg:"#c3cced",
@@ -34,7 +34,7 @@ const reviews = [
 },
     {
         review:" Make Engineering Easy's support was invaluable. Past year question papers, study notes, and lecture links simplified learning. Passed exams with confidence and deeper understanding. Highly recommend!",
-    author:"himesh bhaiya",
+    author:"anonymous",
     profileBorder:"#FFF3E8",
     Border:"#fdd25c",
     bg:"#ffedab",
@@ -78,8 +78,8 @@ const reviewSection = () => {
                 </div>
                 <div className='flex flex-col w-10/12 m-auto text-xl max-sm:w-11/12'>
                   
-                <p style={{color : `${index === activeIndex ?  `${slide.font}` : " #adadad "}`}} className={`${index === activeIndex ?  "text-[1.2vw] max-md:text-[2.3vw]" : "text-[1vw] max-md:text-[2.5vw]"}  leading-[1.8vw] max-md:leading-[2.9vw] transition-all duration-500 ease-in-out `} >{slide.review}</p>
-                <p style={{color : `${index === activeIndex ?  `${slide.comma}` : `${slide.comma}`}`}}  className={` ${index === activeIndex ?  "font-bold text-[1.2vw] tracking-wide max-md:text-[2.2vw]" : "text-[1.1vw] max-md:text-[2.3vw]"} flex justify-end my-5 capitalize transition-all duration-500 ease-in-out max-sm:my-1 max-sm:p-0`}>- {slide.author}</p>
+                <p style={{color : `${index === activeIndex ?  `${slide.font}` : " #adadad "}`}} className={`${index === activeIndex ?  "text-[1.2vw] max-md:text-[2.4vw]" : "text-[1vw] max-md:text-[2vw]"}  leading-[1.8vw] max-md:leading-[2.9vw] transition-all duration-500 ease-in-out `} >{slide.review}</p>
+                <p style={{color : `${index === activeIndex ?  `${slide.comma}` : `${slide.comma}`}`}}  className={` ${index === activeIndex ?  "font-bold text-[1.2vw] tracking-wide max-md:text-[2.2vw]" : "text-[1.1vw] max-md:text-[2vw]"} flex justify-end my-5 capitalize transition-all duration-500 ease-in-out max-sm:my-1 max-sm:p-0`}>- {slide.author}</p>
                 </div>
               </div>
               

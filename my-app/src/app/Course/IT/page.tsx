@@ -49,7 +49,7 @@ const Page = () => {
       }
       if(u && u.emailVerification){
         setGlobalState(u) 
-        console.log(u)
+        // console.log(u)
         id = (u.$id)
         ITCourses(setITCourses,id);
         setloading(false)
@@ -82,7 +82,7 @@ const Page = () => {
         }
 }, []);
 
-console.log(globalState)
+// console.log(globalState)
 
   return (
     <>

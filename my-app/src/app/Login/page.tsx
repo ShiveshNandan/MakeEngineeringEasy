@@ -12,6 +12,7 @@ import ProfilePage from "../Profile/page";
 import { useTheme } from "next-themes";
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/Sidebar";
+import { OAuthProvider } from "appwrite";
 
 const LoginPage = () => {
   const { globalState, setGlobalState } = useGlobalState();
@@ -33,6 +34,23 @@ const LoginPage = () => {
   const router = useRouter();
 
   // const notify = () => toast("Wow so easy !");
+
+  const handleGoogle =()=> {
+    account.createOAuth2Session(
+      OAuthProvider.Google,
+      "https://make-engineering-easy.vercel.app/Login",
+      "https://make-engineering-easy.vercel.app/Login"
+  
+    )
+  }
+  const handleGithub =()=> {
+    account.createOAuth2Session(
+      OAuthProvider.Github,
+      "https://make-engineering-easy.vercel.app/Login",
+      "https://make-engineering-easy.vercel.app/Login"
+  
+    )
+  }
 
   useEffect(() => {
     async function getUser() {
@@ -390,7 +408,7 @@ const LoginPage = () => {
                   <div className="flex flex-col">
                     <button
                       type="button"
-                      // onClick={register}
+                      onClick={handleGoogle}
                       className="p-2 my-2 rounded bg-[#ffffff] dark:bg-[#191817] text-[600] flex justify-center border backdrop-blur-[10px] "
                     >
                       <Image
@@ -404,7 +422,7 @@ const LoginPage = () => {
                     </button>
                     <button
                       type="button"
-                      // onClick={register}
+                      onClick={handleGithub}
                       className="p-2 my-2 rounded bg-[#ffffff] dark:bg-[#191817] text-[600] flex justify-center border backdrop-blur-[10px] "
                     >
                       <Image

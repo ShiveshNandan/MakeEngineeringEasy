@@ -32,7 +32,7 @@ const page = () => {
             if(isNameValid(message)){
                 const res = AddMessage(message,setmessage,email,setemail,username,setusername,setloading);
                 res.then(result => {
-                  console.log(result);
+                  // console.log(result);
                   if(!result){
                     toast.success("Thanks for your words!",{theme:"colored", position: "top-center",autoClose: 2000});          
                   }else{
@@ -124,7 +124,7 @@ const page = () => {
                 
               ></textarea>
               <div className="flex justify-end w-full mx-auto my-4">
-                <button onClick={() => {messageSend(), console.log("hello")}} disabled={loading} className={`${loading? "bg-blue-300 cursor-not-allowed" : "bg-blue-500"} w-full  rounded-md px-5 py-4 text-white max-[800px]:text-sm`}>
+                <button onClick={() => {messageSend()}} disabled={loading} className={`${loading? "bg-blue-300 cursor-not-allowed" : "bg-blue-500"} w-full  rounded-md px-5 py-4 text-white max-[800px]:text-sm`}>
                   {loading? "Processing..." : "Submit"}
                 </button>
               </div>

@@ -30,9 +30,9 @@ const Profile = () => {
         theme: "colored",
         position: "top-center",
       });
-      console.log(response);
+      // console.log(response);
     } catch (error: any) {
-      console.log(error);
+      // console.log(error);
     }
   };
 

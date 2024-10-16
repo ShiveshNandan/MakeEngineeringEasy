@@ -4,6 +4,7 @@ import { account, ID } from "@/components/appwrite";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
+import ChangeTheme from "@/components/changeTheme";
 const Forget = () => {
   const [secret, setSecret] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
@@ -58,9 +59,12 @@ const Forget = () => {
       <div className="flex m-auto w-full flex-col h-screen justify-center">
     <ToastContainer />
         <div className="fixed w-full top-0">
-        <h1 onClick={()=> router.push("/")} style={{fontFamily : 'YourFontMedium'}} className={`mx-3 my-4 hover:cursor-pointer transition-all duration-300 capitalize font-bold text-[1.4rem] tracking-[0.5px] `} >make engineering <span className='block-inline text-[#ffaa2b] '> easy</span></h1>
+        <div className="flex justify-between w-11/12 m-auto mt-8">
+    <h1 onClick={() => {router.push("/")}} style={{fontFamily : 'YourFontMedium'}} className={`mx-5 hover:cursor-pointer transition-all duration-300 capitalize font-bold text-[1.4rem] tracking-[0.5px] max-sm:mx-0 max-sm:text-xl `} >make engineering <span className='block-inline text-[#ffaa2b] '> easy</span></h1>
+    <ChangeTheme/>
         </div>
-          <p className="text-center text-2xl mt-[130px] mb-[-40px] px-1 dark:text-[#c0bfbf] text-[#333] ">Account Recovery</p>
+        </div>
+          <p className="w-3/12 max-md:w-10/12 mx-auto mt-[130px] mb-[-40px] px-1 text-3xl font-[600] tracking-[0.4px] max-sm:text-center">Account Recovery</p>
           <div className="m-auto flex flex-col w-3/12 max-md:w-10/12">
           <p className="px-1 flex dark:text-[#c0bfbf] text-[#333] mb-2">Enter the new password:</p>
         <input

@@ -4,6 +4,7 @@ import { account, ID } from "@/components/appwrite";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from "next/navigation";
+import ChangeTheme from "@/components/changeTheme";
 
 const Verify = () => {
   const [secret, setSecret] = useState<string | null>(null);
@@ -48,7 +49,10 @@ const Verify = () => {
           
     <ToastContainer />
     <div className="fixed w-full top-0">
-        <h1 onClick={()=> router.push("/")} style={{fontFamily : 'YourFontMedium'}} className={`mx-3 my-4 hover:cursor-pointer transition-all duration-300 capitalize font-bold text-[1.4rem] tracking-[0.5px] `} >make engineering <span className='block-inline text-[#ffaa2b] '> easy</span></h1>
+        <div className="flex justify-between w-11/12 m-auto mt-8">
+    <h1 onClick={() => {router.push("/")}} style={{fontFamily : 'YourFontMedium'}} className={`mx-5 hover:cursor-pointer transition-all duration-300 capitalize font-bold text-[1.4rem] tracking-[0.5px] max-sm:mx-0 max-sm:text-xl `} >make engineering <span className='block-inline text-[#ffaa2b] '> easy</span></h1>
+    <ChangeTheme/>
+        </div>
         </div>
         
           {pause ? 

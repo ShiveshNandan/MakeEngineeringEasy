@@ -53,7 +53,7 @@ const loader = () => {
       // number = (Math.floor(Math.random() * (max - 0 + 1)) + 0)
     }
    getRandomNumber();
-   console.log(number);
+  //  console.log(number);
   }, [])
   
   
