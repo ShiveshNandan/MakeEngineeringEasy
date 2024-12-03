@@ -35,22 +35,22 @@ const LoginPage = () => {
 
   // const notify = () => toast("Wow so easy !");
 
-  const handleGoogle =()=> {
-    account.createOAuth2Session(
-      OAuthProvider.Google,
-      "https://make-engineering-easy.vercel.app/Login",
-      "https://make-engineering-easy.vercel.app/Login"
+  // const handleGoogle =()=> {
+  //   account.createOAuth2Session(
+  //     OAuthProvider.Google,
+  //     "https://make-engineering-easy.vercel.app/Login",
+  //     "https://make-engineering-easy.vercel.app/Login"
   
-    )
-  }
-  const handleGithub =()=> {
-    account.createOAuth2Session(
-      OAuthProvider.Github,
-      "https://make-engineering-easy.vercel.app/Login",
-      "https://make-engineering-easy.vercel.app/Login"
+  //   )
+  // }
+  // const handleGithub =()=> {
+  //   account.createOAuth2Session(
+  //     OAuthProvider.Github,
+  //     "https://make-engineering-easy.vercel.app/Login",
+  //     "https://make-engineering-easy.vercel.app/Login"
   
-    )
-  }
+  //   )
+  // }
 
   useEffect(() => {
     async function getUser() {
@@ -97,6 +97,7 @@ const LoginPage = () => {
       await account.create(ID.unique(), email, password, name);
       login(email, password);
     } catch (error: any) {
+      console.log("error message : ",error)
       if (error.message.includes("Invalid `email` param")) {
         errors = "Enter a valid email address";
         setErrEmail(true);
@@ -107,7 +108,7 @@ const LoginPage = () => {
         errors = "Enter Username";
         setErrName(true);
       } else if (
-        error.message.includes(
+        error.includes(
           "A user with the same id, email, or phone already exists in this project."
         )
       ) {
@@ -402,7 +403,7 @@ const LoginPage = () => {
                 )}
 
                 <div className="flex flex-col w-7/12 mb-10 max-sm:w-10/12">
-                  <h1 className="text-center dark:text-[#a5a5a5] text-[#333] p-4">
+                  {/* <h1 className="text-center dark:text-[#a5a5a5] text-[#333] p-4">
                     or continue with
                   </h1>
                   <div className="flex flex-col">
@@ -434,7 +435,7 @@ const LoginPage = () => {
                       />{" "}
                       Github
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
