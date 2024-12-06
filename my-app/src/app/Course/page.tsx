@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Navbar from "../../components/navbar";
-import { CSECourses, ITCourses, ECECourses, AddUser } from "../API/HandleApi";
+import { CSECourses, ITCourses, ECECourses, AddUser, verify } from "../API/HandleApi";
 import Loading from "@/app/Course/Loading";
 import "../Course/styles.css";
 import { account, ID } from "@/components/appwrite";
@@ -39,7 +39,7 @@ const Page = () => {
 
   useEffect(() => {
     async function getUser() {
-      await account.get().then((u) => {
+      await verify().then((u) => {
         // console.log("u : " , u)
         if (!u.emailVerification) {
           toast.error("Please verify yourself first",{theme:"colored", position: "top-center",autoClose: 2000})
@@ -65,6 +65,9 @@ const Page = () => {
           }, 3000);
         }else{
           toast.error("We are facing some issue. Sorry for the inconvenience.",{theme:"colored", position: "top-center",autoClose: 2000})
+          setTimeout(() => {
+            router.push("/Login")
+          }, 3000);
         }
       })
     }

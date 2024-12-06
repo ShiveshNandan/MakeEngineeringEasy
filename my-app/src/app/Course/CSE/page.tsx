@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { CSECourses} from "../../API/HandleApi";
+import { CSECourses, verify} from "../../API/HandleApi";
 import Loading from "@/app/Course/Loading";
 import { account} from "@/components/appwrite";
 import { useRouter } from "next/navigation";
@@ -40,7 +40,7 @@ const Page = () => {
 
 
   async function getUser() {
-        await account.get().then((u) => {
+        await verify().then((u) => {
           if (!u.emailVerification) {
             toast.error("Please verify yourself first",{theme:"colored", position: "top-center",autoClose: 2000})
             setTimeout(() => {
@@ -65,6 +65,7 @@ const Page = () => {
           }else{
             toast.error("We are facing some issue. Sorry for the inconvenience.",{theme:"colored", position: "top-center",autoClose: 2000})
           }
+          console.log(e)
         })
   }
   

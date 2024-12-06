@@ -1,9 +1,8 @@
 "use client"
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { CSECourses, ITCourses, ECECourses, AddUser } from "../../API/HandleApi";
+import { CSECourses, ITCourses, ECECourses, AddUser, verify } from "../../API/HandleApi";
 import Loading from "@/app/Course/Loading";
-import { account, ID } from "@/components/appwrite";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -40,7 +39,7 @@ const Page = () => {
 
 
   async function getUser() {
-    await account.get().then((u) => {
+    await verify().then((u) => {
       if (!u.emailVerification) {
         toast.error("Please verify yourself first",{theme:"colored", position: "top-center",autoClose: 2000})
         setTimeout(() => {

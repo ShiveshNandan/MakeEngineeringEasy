@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import { account, ID } from "@/components/appwrite";
 import { useRouter } from "next/navigation";
 import Loading from "@/app/Course/Loading";
 import Image from "next/image";
@@ -12,7 +11,7 @@ import ProfilePage from "../Profile/page";
 import { useTheme } from "next-themes";
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/Sidebar";
-import { OAuthProvider } from "appwrite";
+import {tryLogin , tryRegister, verify} from "@/app/API/HandleApi"
 
 const LoginPage = () => {
   const { globalState, setGlobalState } = useGlobalState();
@@ -33,94 +32,72 @@ const LoginPage = () => {
   let errors: string | null = null;
   const router = useRouter();
 
-  // const notify = () => toast("Wow so easy !");
 
-  // const handleGoogle =()=> {
-  //   account.createOAuth2Session(
-  //     OAuthProvider.Google,
-  //     "https://make-engineering-easy.vercel.app/Login",
-  //     "https://make-engineering-easy.vercel.app/Login"
-  
-  //   )
-  // }
-  // const handleGithub =()=> {
-  //   account.createOAuth2Session(
-  //     OAuthProvider.Github,
-  //     "https://make-engineering-easy.vercel.app/Login",
-  //     "https://make-engineering-easy.vercel.app/Login"
-  
-  //   )
-  // }
 
-  useEffect(() => {
-    async function getUser() {
-      try {
-        setGlobalState(await account.get());
-      } catch (error) {
-        // console.log(error);
-        setloading(false);
-        setloadingBtn(false);
-      }
+  async function getUser() {
+    try {
+      setGlobalState(await verify());
+    } catch (error) {
+      setloading(false);
+      setloadingBtn(false);
     }
+  }
+  useEffect(() => {
     getUser();
   }, []);
+  
 
-  const login = async (email: any, password: any) => {
+  const login = async (email:string,password:string) => {
     try {
-      const session = await account.createEmailPasswordSession(email, password);
-      setGlobalState(await account.get());
-      // console.log("session :", session);
-    } catch (error: any) {
-      if (error.message.includes("Invalid `email` param")) {
-        errors = "Enter a valid email address";
-        setErrEmail(true);
-      } else if (error.message.includes("Invalid `password` param")) {
-        errors = "Password is wrong";
-        setErrPassword(true);
-      } else if (error.message.includes("Invalid credentials.")) {
-        errors = "Invalid credentials";
-        setErrEmail(true);
-        setErrPassword(true);
-      } else {
-        errors = "Enter Credentials";
-        setErrEmail(true);
-        setErrPassword(true);
+      const response = await tryLogin(email,password,setEmail,setPassword,setloadingBtn);
+      console.log(response);
+      if(response){
+        getUser();
       }
-      toast.error(`${errors}`, { theme: "colored", position: "top-center" });
-      setPassword("");
-      setloadingBtn(false);
+    } catch (error:any) {
+      const err = error.response.data.error;
+      if (err.includes("User not found")) {
+              errors = "Enter a valid email address";
+              setErrEmail(true);
+            } else if (err.includes("password")) {
+              errors = "Password is wrong";
+              setErrPassword(true);
+            } else {
+              errors = "Enter valid Credentials";
+              setErrEmail(true);
+              setErrPassword(true);
+            }
+            toast.error(`${errors}`, { theme: "colored", position: "top-center" });
+            setPassword("");
+            setloadingBtn(false);
+            console.log(error)
     }
-  };
+  }
 
-  const register = async () => {
+  const register = async (email:any,password:any,username:any) => {
     try {
-      await account.create(ID.unique(), email, password, name);
-      login(email, password);
-    } catch (error: any) {
-      console.log("error message : ",error)
-      if (error.message.includes("Invalid `email` param")) {
-        errors = "Enter a valid email address";
-        setErrEmail(true);
-      } else if (error.message.includes("Invalid `password` param")) {
-        errors = "Enter a Password";
-        setErrPassword(true);
-      } else if (error.message.includes("Invalid `name` param")) {
-        errors = "Enter Username";
-        setErrName(true);
-      } else if (
-        error.includes(
-          "A user with the same id, email, or phone already exists in this project."
-        )
-      ) {
-        errors = "Email Already used";
-      } else {
-        errors = "Unexpected Error Occured. Please try after Sometime";
+      const response = await tryRegister(email,password,username,setEmail,setPassword,setName,setloadingBtn) ;
+      if(response){
+        console.log("ready to log in")
+        login(email,password);
+      }else{
+        console.log("no")
       }
-      toast.error(`${errors}`, { theme: "colored", position: "top-center" });
-      setPassword("");
-      setloadingBtn(false);
+    } catch (error:any) {
+      const err = error.response.data.error;
+      if (err.includes("User")) {
+              errors = err;
+              setErrEmail(true);
+            }  else {
+              errors = "Unexpected Error Occured. Please try after Sometime";
+            }
+            toast.error(`${errors}`, { theme: "colored", position: "top-center" });
+            setPassword("");
+            setName("");
+            setloadingBtn(false);
     }
-  };
+  }
+
 
   const handleSignup = () => {
     {
@@ -128,19 +105,19 @@ const LoginPage = () => {
     }
   };
 
-  const handleForgetPassword = () => {
-    const promise = account.createRecovery(
-      email,
-      // "http://localhost:3000/ForgetPassword"
-      "https://make-engineering-easy.vercel.app/ForgetPassword"
-    );
-    promise.then(()=>{
-      toast.success(`Mail send successfully!`, { theme: "colored", position: "top-center" });
-    })
-    .catch((error)=>{
-      toast.error(`This email is not registered`, { theme: "colored", position: "top-center" });
-    })
-  };
+  // const handleForgetPassword = () => {
+  //   const promise = account.createRecovery(
+  //     email,
+  //     // "http://localhost:3000/ForgetPassword"
+  //     "https://make-engineering-easy.vercel.app/ForgetPassword"
+  //   );
+  //   promise.then(()=>{
+  //     toast.success(`Mail send successfully!`, { theme: "colored", position: "top-center" });
+  //   })
+  //   .catch((error)=>{
+  //     toast.error(`This email is not registered`, { theme: "colored", position: "top-center" });
+  //   })
+  // };
 
   useEffect(() => {
     const allFieldsFilled = email !== "" && password !== "";
@@ -154,6 +131,7 @@ const LoginPage = () => {
     setisDisabledSignup(!allFieldsFilled);
   }, [password, email, name]);
 
+  
   if (globalState) {
     const handlePush = () => {
       if (globalState) {
@@ -293,7 +271,7 @@ const LoginPage = () => {
                       <button
                         type="button"
                         onClick={() => {
-                          register();
+                          register(email,password,name);
                           setloadingBtn(true);
                           setisDisabledSignup(true);
                         }}
@@ -361,7 +339,7 @@ const LoginPage = () => {
                             : "outline-none"
                         } p-3 mb-2 rounded dark:bg-[#1e1c1a] border `}
                       />
-                      <h1
+                      {/* <h1
                         className={`${
                           Errpassword ? "" : "hidden"
                         } text-xs py-1 flex justify-end underline underline-offset-4 dark:text-[#a5a5a5] text-[#333] z-[200]`}
@@ -372,7 +350,7 @@ const LoginPage = () => {
                         >
                           forget password?
                         </p>
-                      </h1>
+                      </h1> */}
 
                       <button
                         type="button"

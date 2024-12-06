@@ -1,6 +1,10 @@
 import axios from "axios"
+import Cookies from 'universal-cookie';
+
 
 const NURL = process.env.NEXT_PUBLIC_URL
+const AuthURL = "http://localhost:5500"
+const cookies = new Cookies();
 // console.log(NURL)
 
 // const allCourses = async (setCourses) => {
@@ -54,7 +58,7 @@ const AddUser = async (id,email,username) => {
         const response = await axios
         .post(`${NURL}/user`,{id,email,username});
     } catch (error) {
-        // console.log(error);
+        throw error;
     }
 }
 
@@ -71,9 +75,58 @@ const AddMessage = async (message,setmessage,email,setemail,username,setusername
         )
         
     } catch (error) {
-        // console.log(error);
+        throw error;
     }
 }
 
-export {CSECourses, ITCourses, ECECourses, AddUser, AddMessage}
-// export {allCourses, CSECourses, ITCourses, ECECourses}
+const tryLogin = async (email,password,setEmail,setPassword,setloadingBtn) => {
+    try {
+        const response = await axios
+        .post(`${AuthURL}/login`,{email,password});
+        setEmail("")
+        setPassword("")
+        setloadingBtn(false)
+        if(response){
+            cookies.set('myCat', response.data.token);
+            // console.log(cookies.get('myCat'))
+            return true;
+        }
+    } catch (error) {
+        throw error;
+    }
+}
+
+const tryRegister = async (email,password,username,setEmail,setPassword,setName,setloadingBtn) => {
+    try {
+        const response = await axios
+        .post(`${AuthURL}/register`,{email,password,username});
+        setEmail("")
+        setPassword("")
+        setName("")
+        setloadingBtn(false)
+        return true        
+    } catch (error) {
+        // console.log(error)
+        throw error;
+    }
+}
+
+const verify = async () => {
+    try {
+        const token = await cookies.get("myCat")
+        const response = await axios
+        .post(`${AuthURL}/verify`,{token});
+        console.log(response)
+        if (response.data.message === null) {
+            cookies.remove("myCat");
+            throw error;
+        }else{
+            return response.data.message;        
+        }
+    } catch (error) {
+        console.log(error)
+        throw error;
+    }
+}
+
+export {CSECourses, ITCourses, ECECourses, AddUser, AddMessage, tryLogin, tryRegister, verify}
