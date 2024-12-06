@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "@/components/navbar";
 import { useGlobalState } from "@/components/GlobalVariableProvider";
-import { account, ID } from "@/components/appwrite";
 import Image from "next/image";
 import Sidebar from "@/components/Sidebar";
 import Loading from "@/app/Course/Loading";
@@ -10,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cookies from 'universal-cookie';
+import { verificationEmail } from "../API/HandleApi";
 
 const Profile = () => {
   const router = useRouter();
@@ -22,22 +22,17 @@ const Profile = () => {
     cookies.remove("myCat");
     router.push("/");
   };
-
-  // const verify = () => {
-  //   try {
-  //     // const response = account.createVerification(
-  //     //   "http://localhost:3000/verify"
-  //     // );
-  //     const response = account.createVerification('https://make-engineering-easy.vercel.app/Verify');
-  //     toast.info(`Check your email for verification link`, {
-  //       theme: "colored",
-  //       position: "top-center",
-  //     });
-  //     // console.log(response);
-  //   } catch (error: any) {
-  //     // console.log(error);
-  //   }
-  // };
+  
+  const verification = async (to:String,username:String) => {
+    try {
+      const response = await verificationEmail(to,username);
+      if (response) {
+        toast.success("verification email send!",{theme: "colored",position: "top-center"});
+      }
+    } catch (error) {
+      toast.error("something went wrong",{theme: "colored",position: "top-center"});
+    }
+  }
 
   useEffect(() => {
     if (globalState) {
@@ -83,7 +78,7 @@ const Profile = () => {
                 <div className="absolute top-0 left-0 text-xl border rounded animate-ping py-2 px-4 my-2 mx-3 max-sm:text-xs bg-slate-900 dark:bg-slate-300">verify</div>
                 <button
                   type="button"
-                  // onClick={verify}
+                  onClick={() => verification(globalState.email,globalState.username)}
                   className="relative z-10  dark:text-gray-300 text-gray-900 text-xl my-2 border py-2 px-4 rounded items-center flex dark:bg-slate-900 bg-slate-300 max-sm:text-xs mx-3"
                 >
                   verify

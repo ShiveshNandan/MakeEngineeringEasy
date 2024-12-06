@@ -3,7 +3,7 @@ import Cookies from 'universal-cookie';
 
 
 const NURL = process.env.NEXT_PUBLIC_URL
-const AuthURL = "http://localhost:5500"
+const AuthURL = process.env.NEXT_PUBLIC_AuthURL
 const cookies = new Cookies();
 // console.log(NURL)
 
@@ -116,7 +116,6 @@ const verify = async () => {
         const token = await cookies.get("myCat")
         const response = await axios
         .post(`${AuthURL}/verify`,{token});
-        console.log(response)
         if (response.data.message === null) {
             cookies.remove("myCat");
             throw error;
@@ -129,4 +128,25 @@ const verify = async () => {
     }
 }
 
-export {CSECourses, ITCourses, ECECourses, AddUser, AddMessage, tryLogin, tryRegister, verify}
+const verificationEmail = async (to,userName) => {
+    try {
+        const response = await axios.post(`${AuthURL}/send-verify-email`,{to,userName})
+        if (response) {
+            return true;
+        }
+    } catch (error) {
+        throw error;
+    }
+} 
+
+const verified = async (secret,to) => {
+    try{
+        const response = await axios.put(`${AuthURL}/verifing`,{secret,to});
+        console.log(response);
+
+    }catch(error){
+        return error;
+    }
+}
+
+export {CSECourses, ITCourses, ECECourses, AddUser, AddMessage, tryLogin, tryRegister, verify, verificationEmail, verified}

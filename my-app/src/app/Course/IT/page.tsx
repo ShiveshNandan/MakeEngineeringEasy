@@ -55,9 +55,10 @@ const Page = () => {
       } else {
       }
     }).catch((e) => {
-      if(e.message.includes("Failed to fetch")){
+      let err = e.response.data.error;
+      if(err.includes("Failed to fetch")){
         toast.error("something went wrong. Please check your internet connection",{theme:"colored", position: "top-center",autoClose: 2000})
-      }else if(e.message.includes("User (role: guests)")){
+      }else if(err.includes("Access denied")){
         toast.error("Login to access this feature",{theme:"colored", position: "top-center",autoClose: 2000})
         setTimeout(() => {
           router.push("/Login")

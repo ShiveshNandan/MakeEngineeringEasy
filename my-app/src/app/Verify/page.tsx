@@ -1,14 +1,14 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import { account, ID } from "@/components/appwrite";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from "next/navigation";
 import ChangeTheme from "@/components/changeTheme";
+import { verified } from "../API/HandleApi";
 
 const Verify = () => {
-  const [secret, setSecret] = useState<string | null>(null);
-  const [userId, setUserId] = useState<string | null>(null);
+  const [Email, setEmail] = useState<string | null>(null);
+  const [secret, setsecret] = useState<string | null>(null);
   const [loading, setloading] = useState(false);
   const [pause, setpause] = useState(true);
   const [isDisabled, setisDisabled] = useState(false)
@@ -17,8 +17,8 @@ const Verify = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const urlParams = new URLSearchParams(window.location.search);
-      setSecret(urlParams.get("secret"));
-      setUserId(urlParams.get("userId"));
+      setEmail(urlParams.get("to"));
+      setsecret(urlParams.get("secret"));
     }
 
     const timeout = setTimeout(() => {
@@ -28,8 +28,8 @@ const Verify = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const verification = () => {
-    const promise = account.updateVerification(userId!, secret!);
+  const verification = async () => {
+    const promise = verified(secret,Email);
     promise.then(()=>{
         toast.success(`Varification successful!`,{theme:"colored", position: "top-center"})
           setTimeout(()=>{
