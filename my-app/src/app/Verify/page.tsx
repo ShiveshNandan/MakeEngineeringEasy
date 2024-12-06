@@ -29,19 +29,25 @@ const Verify = () => {
   }, []);
 
   const verification = async () => {
-    const promise = verified(secret,Email);
-    promise.then(()=>{
+    try {
+      const response = await verified(secret,Email);
+      if(response){
         toast.success(`Varification successful!`,{theme:"colored", position: "top-center"})
           setTimeout(()=>{
             router.push("/Login")
           },3000)
-    })
-    .catch(()=>{
-        toast.error(`Varification failed, Please follow the procedure properly.`,{theme:"colored", position: "top-center"})
-          setTimeout(()=>{
-            router.push("/Login")
-          },3000)
-    })
+      }
+    } catch (error) {
+      toast.error(`Varification failed, Please follow the procedure properly.`,{theme:"colored", position: "top-center"})
+        setTimeout(()=>{
+          router.push("/Login")
+        },3000)
+      
+    }
+    // promise.then(()=>{
+    // })
+    // .catch(()=>{
+    // })
 };
 
   return (

@@ -15,6 +15,8 @@ const Profile = () => {
   const router = useRouter();
   const { globalState, setGlobalState } = useGlobalState();
   const [loading, setloading] = useState(true);
+  const [loadingBtn, setloadingBtn] = useState(false);
+
   const cookies = new Cookies();
 
   const logout = async () => {
@@ -24,13 +26,14 @@ const Profile = () => {
   };
   
   const verification = async (to:String,username:String) => {
+    setloadingBtn(true);
     try {
       const response = await verificationEmail(to,username);
       if (response) {
-        toast.success("verification email send!",{theme: "colored",position: "top-center"});
+        toast.success("Please check your inbox (and spam folder, just in case) for the verification link.",{theme: "colored",position: "top-center"});
       }
     } catch (error) {
-      toast.error("something went wrong",{theme: "colored",position: "top-center"});
+      toast.error("Please try again after some time. If the issue persists, feel free to contact.",{theme: "colored",position: "top-center"});
     }
   }
 
@@ -79,9 +82,10 @@ const Profile = () => {
                 <button
                   type="button"
                   onClick={() => verification(globalState.email,globalState.username)}
+                  disabled= {loadingBtn}
                   className="relative z-10  dark:text-gray-300 text-gray-900 text-xl my-2 border py-2 px-4 rounded items-center flex dark:bg-slate-900 bg-slate-300 max-sm:text-xs mx-3"
                 >
-                  verify
+                  {loadingBtn ? "Wait.." : "verify"}
                 </button>
               </div>
               ) : (

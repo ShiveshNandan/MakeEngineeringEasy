@@ -142,10 +142,10 @@ const verificationEmail = async (to,userName) => {
 const verified = async (secret,to) => {
     try{
         const response = await axios.put(`${AuthURL}/verifing`,{secret,to});
-        console.log(response);
-
+        if(response) return true;
+        else throw error;
     }catch(error){
-        return error;
+        throw error;
     }
 }
 
