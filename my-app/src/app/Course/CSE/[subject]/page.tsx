@@ -8,7 +8,6 @@ import Link from "next/link";
 import "@/app/Course/styles.css";
 import Sidebar from "@/components/Sidebar";
 import { useGlobalState } from "@/components/GlobalVariableProvider";
-import { account, ID } from "@/components/appwrite";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -62,19 +61,7 @@ const page = ({ params }: any) => {
   const { globalState, setGlobalState } = useGlobalState();
 
 
-  // const [AllCourses, setAllCourses] = useState<Course[]>([]);
   const [CSECourse, setCSECourses] = useState<Course[]>([]);
-  // const [ECECourse, setECECourses] = useState<Course[]>([]);
-  // const [ITCourse, setITCourses] = useState<Course[]>([]);
-
-  // useEffect(() => {
-  //   const ss = async () => {
-  //     await allCourses(setAllCourses);
-  //   };
-  //   ss();
-  // }, []);
-
-  // console.log(globalState)
 
   const CSEfunc = async () => {
     try {
@@ -84,25 +71,9 @@ const page = ({ params }: any) => {
       console.error("error Occured : ", error);
     }
   };
-  // const ITfunc = async () => {
-  //   try {
-  //       const response = ITCourses(setITCourses,globalState.$id);
-  //     }
-  //    catch (error) {
-  //     console.error("error Occured : ", error);
-  //   }
-  // };
-  // const ECEfunc = async () => {
-  //   try {
-  //       const response = ECECourses(setECECourses,globalState.$id);
-  //   } catch (error) {
-  //     console.error("error Occured : ", error);
-  //   }
-  // };
 
   useEffect(() => {
-    // ECEfunc();
-    // ITfunc();
+    
     CSEfunc();
   }, []);
 
@@ -111,8 +82,6 @@ const page = ({ params }: any) => {
   );
 
   
-  // console.log(filteredData[0]?.pyq.minor)
-  // console.log(filteredData[0]?.pyq.major)
   return (
     <div>
       <Navbar params= "Courses" />

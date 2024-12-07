@@ -32,7 +32,6 @@ const page = () => {
             if(isNameValid(message)){
                 const res = AddMessage(message,setmessage,email,setemail,username,setusername,setloading);
                 res.then(result => {
-                  // console.log(result);
                   if(!result){
                     toast.success("Thanks for your words!",{theme:"colored", position: "top-center",autoClose: 2000});          
                   }else{
@@ -40,7 +39,7 @@ const page = () => {
                     toast.error("can't send message at the moment",{theme:"colored", position: "top-center",autoClose: 2000});
                   }
                 }).catch(error => {
-                    console.error(error);
+                  toast.error("Somethig massive happen, contact the team!",{theme:"colored", position: "top-center",autoClose: 2000});
                 });
             }else{
               setloading(false);

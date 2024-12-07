@@ -5,16 +5,7 @@ import Cookies from 'universal-cookie';
 const NURL = process.env.NEXT_PUBLIC_URL
 const AuthURL = process.env.NEXT_PUBLIC_AuthURL
 const cookies = new Cookies();
-// console.log(NURL)
 
-// const allCourses = async (setCourses) => {
-//     try {
-//         const response = await axios.get(NURL)
-//         setCourses(response.data)
-//     } catch (error) {
-//         console.error("Error Occured : ",error)
-//     }
-// }
 
 const CSECourses = async (setCourses,id) => {
     try {
@@ -25,7 +16,7 @@ const CSECourses = async (setCourses,id) => {
         )
         setCourses(response.data)
     } catch (error) {
-        console.error("Error Occured : ",error)
+        throw error;
     }
 }
 const ITCourses = async (setCourses,id) => {
@@ -37,7 +28,7 @@ const ITCourses = async (setCourses,id) => {
         )
         setCourses(response.data)
     } catch (error) {
-        console.error("Error Occured : ",error)
+        throw error;
     }
 }
 const ECECourses = async (setCourses,id) => {
@@ -49,7 +40,7 @@ const ECECourses = async (setCourses,id) => {
         )
         setCourses(response.data)
     } catch (error) {
-        console.error("Error Occured : ",error)
+        throw error;
     }
 }
 
@@ -88,7 +79,6 @@ const tryLogin = async (email,password,setEmail,setPassword,setloadingBtn) => {
         setloadingBtn(false)
         if(response){
             cookies.set('myCat', response.data.token);
-            // console.log(cookies.get('myCat'))
             return true;
         }
     } catch (error) {
@@ -106,7 +96,6 @@ const tryRegister = async (email,password,username,setEmail,setPassword,setName,
         setloadingBtn(false)
         return true        
     } catch (error) {
-        // console.log(error)
         throw error;
     }
 }
@@ -124,7 +113,6 @@ const verify = async () => {
             return response.data.message;        
         }
     } catch (error) {
-        console.log(error)
         throw error;
     }
 }

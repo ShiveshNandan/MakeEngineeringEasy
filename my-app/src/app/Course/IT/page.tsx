@@ -47,8 +47,7 @@ const Page = () => {
         }, 3000);
       }
       if(u && u.emailVerification){
-        setGlobalState(u) 
-        // console.log(u)
+        setGlobalState(u)
         id = (u.$id)
         ITCourses(setITCourses,id);
         setloading(false)
@@ -82,7 +81,6 @@ const Page = () => {
         }
 }, []);
 
-// console.log(globalState)
 
   return (
     <>

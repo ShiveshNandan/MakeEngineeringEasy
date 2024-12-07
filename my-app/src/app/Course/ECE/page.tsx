@@ -3,7 +3,6 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { CSECourses, ITCourses, ECECourses, AddUser, verify } from "../../API/HandleApi";
 import Loading from "@/app/Course/Loading";
-import { account, ID } from "@/components/appwrite";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

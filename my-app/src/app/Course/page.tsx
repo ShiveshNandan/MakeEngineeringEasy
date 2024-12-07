@@ -5,7 +5,6 @@ import Navbar from "../../components/navbar";
 import { CSECourses, ITCourses, ECECourses, AddUser, verify } from "../API/HandleApi";
 import Loading from "@/app/Course/Loading";
 import "../Course/styles.css";
-import { account, ID } from "@/components/appwrite";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -37,27 +36,29 @@ const Page = () => {
   let id = "";
   const router = useRouter()
 
-  useEffect(() => {
-    async function getUser() {
-      await verify().then((u) => {
-        // console.log("u : " , u)
-        if (!u.emailVerification) {
-          toast.error("Please verify yourself first",{theme:"colored", position: "top-center",autoClose: 2000})
-          setTimeout(() => {
-            router.push("/Login")
-          }, 3000);
-        }
-        if(u && u.emailVerification){
-          setGlobalState(u) 
-          id = (u.$id)
-          email = (u.email)
-          username = (u.name)
-          AddUser(id,email,username);
-        } else {
-        }
-      }).catch((e) => {
-        let err = e.response.data.error;
-        console.log(err)
+  const getUsers = async () => {
+    try {
+      const u = await verify();
+      if(u){
+      if (!u.emailVerification) {
+        toast.error("Please verify yourself first",{theme:"colored", position: "top-center",autoClose: 2000})
+        setTimeout(() => {
+          router.push("/Login")
+        }, 3000);
+      }
+      if(u && u.emailVerification){
+        setGlobalState(u) 
+        id = (u.$id)
+        email = (u.email)
+        username = (u.name)
+        AddUser(id,email,username);
+      } else {
+        
+      }
+    }
+      
+    } catch (error:any) {
+      let err = error.response.data.error;
         if(err.includes("Failed to fetch")){
           toast.error("something went wrong. Please check your internet connection",{theme:"colored", position: "top-center",autoClose: 2000})
         }else if(err.includes("Access denied")){
@@ -67,11 +68,20 @@ const Page = () => {
           }, 3000);
         }else{
           toast.error("We are facing some issue. Sorry for the inconvenience.",{theme:"colored", position: "top-center",autoClose: 2000})
-          console.log(e)
           setTimeout(() => {
             router.push("/Login")
           }, 3000);
         }
+    }
+  }
+
+  useEffect(() => {
+    getUsers()
+    async function getUser() {
+      await verify().then((u) => {
+        
+      }).catch((e) => {
+        
       })
     }
     getUser();

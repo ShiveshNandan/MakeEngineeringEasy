@@ -8,7 +8,6 @@ import Sidebar from "../../components/Sidebar";
 
 const About = () => {
   const {theme} = useTheme()
-  // console.log("themes " , theme)
   return (
     <>
     <div className="max-sm:hidden">

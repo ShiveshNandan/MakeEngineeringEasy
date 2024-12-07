@@ -8,7 +8,6 @@ import Link from "next/link";
 import "@/app/Course/styles.css";
 import Sidebar from "@/components/Sidebar";
 import { useGlobalState } from "@/components/GlobalVariableProvider";
-import { account, ID } from "@/components/appwrite";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

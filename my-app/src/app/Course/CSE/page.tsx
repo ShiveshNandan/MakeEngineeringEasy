@@ -3,7 +3,6 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { CSECourses, verify} from "../../API/HandleApi";
 import Loading from "@/app/Course/Loading";
-import { account} from "@/components/appwrite";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -66,7 +65,6 @@ const Page = () => {
           }else{
             toast.error("We are facing some issue. Sorry for the inconvenience.",{theme:"colored", position: "top-center",autoClose: 2000})
           }
-          console.log(e)
         })
   }
   
@@ -84,8 +82,6 @@ useEffect(() => {
 }, []);
 
 
-
-// console.log(globalState)
 
   return (
     <>

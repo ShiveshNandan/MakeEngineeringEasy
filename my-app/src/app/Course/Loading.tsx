@@ -50,10 +50,8 @@ const loader = () => {
   useEffect(() => {
     function getRandomNumber() {
       setnumber(Math.floor(Math.random() * (max - 0 + 1)) + 0)
-      // number = (Math.floor(Math.random() * (max - 0 + 1)) + 0)
     }
    getRandomNumber();
-  //  console.log(number);
   }, [])
   
   

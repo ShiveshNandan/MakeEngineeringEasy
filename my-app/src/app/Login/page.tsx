@@ -51,7 +51,6 @@ const LoginPage = () => {
   const login = async (email:string,password:string) => {
     try {
       const response = await tryLogin(email,password,setEmail,setPassword,setloadingBtn);
-      console.log(response);
       if(response){
         getUser();
       }
@@ -71,7 +70,6 @@ const LoginPage = () => {
             toast.error(`${errors}`, { theme: "colored", position: "top-center" });
             setPassword("");
             setloadingBtn(false);
-            console.log(error)
     }
   }
 
@@ -79,10 +77,8 @@ const LoginPage = () => {
     try {
       const response = await tryRegister(email,password,username,setEmail,setPassword,setName,setloadingBtn) ;
       if(response){
-        console.log("ready to log in")
         login(email,password);
       }else{
-        console.log("no")
       }
     } catch (error:any) {
       const err = error.response.data.error;
@@ -116,7 +112,6 @@ const LoginPage = () => {
         }
       }
     } catch (error) {
-      console.log(error)
       toast.error(`This email is not registered`, { theme: "colored", position: "top-center" });
     }
   };

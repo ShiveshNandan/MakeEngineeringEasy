@@ -1,7 +1,6 @@
 "use client"
 import {useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
-// import { account, ID } from "@/components/appwrite";
 import "./navStyle.css"
 import { useGlobalState } from '@/components/GlobalVariableProvider';
 import { useTheme } from "next-themes";
@@ -13,14 +12,12 @@ const Navbar = (params:any) => {
   const { globalState, setGlobalState } = useGlobalState();
   const [selected, setselected] = useState(params.params)
   const router = useRouter()
-  // console.log(selected)
   const [isVisible, setIsVisible] = useState(false);
 
   
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY / window.innerHeight;
-      // console.log("position :",window.innerHeight)
       if (scrollPosition > 0.2945 ) {
         setIsVisible(true);
       } else {
@@ -40,7 +37,6 @@ const Navbar = (params:any) => {
   const { theme, setTheme } = useTheme()
   const toggle = () => {
     {theme ==='dark' ? setTheme('light') : setTheme('dark')}
-    // console.log(theme)
   }
 
   
