@@ -11,7 +11,7 @@ import ProfilePage from "../Profile/page";
 import { useTheme } from "next-themes";
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/Sidebar";
-import {tryLogin , tryRegister, verify} from "@/app/API/HandleApi"
+import {forgetPasswordEmail, tryLogin , tryRegister, verify} from "@/app/API/HandleApi"
 
 const LoginPage = () => {
   const { globalState, setGlobalState } = useGlobalState();
@@ -26,6 +26,7 @@ const LoginPage = () => {
   const [Signup, setSignup] = useState(false);
   const [isDisabledLogin, setisDisabledLogin] = useState(true);
   const [isDisabledSignup, setisDisabledSignup] = useState(true);
+  const [fbBtn, setfbBtn] = useState(true);
   const { theme } = useTheme();
 
   // const [errors, errors = ] = useState("")
@@ -105,19 +106,20 @@ const LoginPage = () => {
     }
   };
 
-  // const handleForgetPassword = () => {
-  //   const promise = account.createRecovery(
-  //     email,
-  //     // "http://localhost:3000/ForgetPassword"
-  //     "https://make-engineering-easy.vercel.app/ForgetPassword"
-  //   );
-  //   promise.then(()=>{
-  //     toast.success(`Mail send successfully!`, { theme: "colored", position: "top-center" });
-  //   })
-  //   .catch((error)=>{
-  //     toast.error(`This email is not registered`, { theme: "colored", position: "top-center" });
-  //   })
-  // };
+  const handleForgetPassword = async (to:string) => {
+    try {
+      if (email && fbBtn) {
+        const response = await forgetPasswordEmail(to);
+        setfbBtn(false);
+        if (response) {
+          toast.success(`Mail send successfully!`, { theme: "colored", position: "top-center" });
+        }
+      }
+    } catch (error) {
+      console.log(error)
+      toast.error(`This email is not registered`, { theme: "colored", position: "top-center" });
+    }
+  };
 
   useEffect(() => {
     const allFieldsFilled = email !== "" && password !== "";
@@ -179,20 +181,6 @@ const LoginPage = () => {
             )}
           </div>
 
-          {/* <div className="flex justify-between px-7 py-14 fixed w-full">
-          <h1
-            onClick={() => {
-              router.push("/");
-            }}
-            style={{ fontFamily: "YourFontMedium" }}
-            className={`mx-5 hover:cursor-pointer transition-all duration-300 capitalize font-bold text-[1.4rem] tracking-[0.5px]`}
-          >
-            make engineering{" "}
-            <span className="block-inline text-[#ffaa2b] "> easy</span>
-          </h1>
-          <ChangeTheme />
-        </div> */}
-
           <Navbar params="LogIn" />
 
           <div className="flex h-screen w-full ">
@@ -217,7 +205,7 @@ const LoginPage = () => {
                       >
                         Create an account
                       </h1>
-                      {/* <h1 className="text-sm pt-2 font-[100] text-[#a5a5a5] tracking-[0.5px] pb-1 ">Enter your email below to create your account</h1> */}
+                      <h1 className="text-sm pt-2 font-[100] text-[#a5a5a5] tracking-[0.5px] pb-1 ">Enter your email below to create your account</h1>
                     </div>
                     <form className="flex flex-col mt-10 z-[200]">
                       <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">
@@ -304,7 +292,7 @@ const LoginPage = () => {
                       >
                         Login
                       </h1>
-                      {/* <h1 className="text-sm pt-2 font-[100] text-[#a5a5a5] tracking-[0.5px] pb-1 ">Enter your email below to create your account</h1> */}
+                      <h1 className="text-sm pt-2 font-[100] text-[#a5a5a5] tracking-[0.5px] pb-1 ">Enter your email below to create your account</h1>
                     </div>
                     <form className="flex flex-col mt-10 z-[200]">
                       <h1 className="text-sm pt-2 font-[100] dark:text-[#a5a5a5] text-[#333] tracking-[0.5px] pb-1 ">
@@ -339,18 +327,18 @@ const LoginPage = () => {
                             : "outline-none"
                         } p-3 mb-2 rounded dark:bg-[#1e1c1a] border `}
                       />
-                      {/* <h1
+                      <h1
                         className={`${
                           Errpassword ? "" : "hidden"
                         } text-xs py-1 flex justify-end underline underline-offset-4 dark:text-[#a5a5a5] text-[#333] z-[200]`}
                       >
                         <p
-                          onClick={() => handleForgetPassword()}
+                          onClick={() => handleForgetPassword(email)}
                           className="cursor-pointer"
                         >
                           forget password?
                         </p>
-                      </h1> */}
+                      </h1>
 
                       <button
                         type="button"

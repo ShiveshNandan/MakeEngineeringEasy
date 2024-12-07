@@ -1,13 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { account, ID } from "@/components/appwrite";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
 import ChangeTheme from "@/components/changeTheme";
+import { passwordRecovered } from "../API/HandleApi";
 const Forget = () => {
   const [secret, setSecret] = useState<string | null>(null);
-  const [userId, setUserId] = useState<string | null>(null);
+  const [email, setEmail] = useState<string | null>(null);
   const [password, setpassword] = useState<string | null>(null);
   const [repassword, setrepassword] = useState<string | null>(null);
   const [loading, setloading] = useState(false);
@@ -19,16 +19,15 @@ const Forget = () => {
     if (typeof window !== "undefined") {
       const urlParams = new URLSearchParams(window.location.search);
       setSecret(urlParams.get("secret"));
-      setUserId(urlParams.get("userId"));
+      setEmail(urlParams.get("to"));
     }
   }, []);
 
-  const recovery = () => {
-    const promise = account.updateRecovery(userId!, secret!, password!);
-
-    promise
-      .then((response) => {
-        // console.log(response);
+  const recovery = async () => {
+    // const promise = account.updateRecovery(email, secret!, password!);
+    try {
+      const response = await passwordRecovered(secret,email,password);
+      if(response){
         toast.success(`Password reset successfully!`,{theme:"colored", position: "top-center"})
         setpassword("");
         setrepassword("");
@@ -36,20 +35,18 @@ const Forget = () => {
         setTimeout(() => {
             router.push("/Login")
         }, 4000);
-      })
-      .catch((error) => {
-        // console.log(error);
-        toast.error(`Recovery failed, Please follow the procedure properly.`,{theme:"colored", position: "top-center"})
+      }
+    } catch (error) {
+      toast.error(`Recovery failed, Please follow the procedure properly.`,{theme:"colored", position: "top-center"})
         setisDisabled(true);
         setloading(false);
         setpassword("");
         setrepassword("");
-      });
+    }
   };
 
   useEffect(() => {
     if(password == repassword && password!?.length >= 8){
-        // console.log("first")
         setisDisabled(false)
     }
   }, [repassword])

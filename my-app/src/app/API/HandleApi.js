@@ -111,6 +111,7 @@ const tryRegister = async (email,password,username,setEmail,setPassword,setName,
     }
 }
 
+// to check if there is any token if yes is it a valid token 
 const verify = async () => {
     try {
         const token = await cookies.get("myCat")
@@ -149,4 +150,28 @@ const verified = async (secret,to) => {
     }
 }
 
-export {CSECourses, ITCourses, ECECourses, AddUser, AddMessage, tryLogin, tryRegister, verify, verificationEmail, verified}
+const forgetPasswordEmail = async (to) => {
+    try {
+        const response = await axios.post(`${AuthURL}/send-recovery-email`,{to})
+        if (response) {
+            return true;
+        }
+    } catch (error) {
+        throw error;
+    }
+}
+
+const passwordRecovered = async (secret,to,password) => {
+    try{
+        const response = await axios.put(`${AuthURL}/recovering`,{secret,to,password});
+        if(response) return true;
+        else throw error;
+    }catch(error){
+        throw error;
+    }
+}
+
+const bioChange = () => {
+
+}
+export {CSECourses, ITCourses, ECECourses, AddUser, AddMessage, tryLogin, tryRegister, verify, verificationEmail, verified, forgetPasswordEmail,passwordRecovered, bioChange}
