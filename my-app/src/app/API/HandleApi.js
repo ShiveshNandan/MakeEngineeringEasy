@@ -4,6 +4,7 @@ import Cookies from 'universal-cookie';
 
 const NURL = process.env.NEXT_PUBLIC_URL
 const AuthURL = process.env.NEXT_PUBLIC_AuthURL
+const GAuthURL = process.env.NEXT_PUBLIC_GAuthURL
 const cookies = new Cookies();
 
 
@@ -70,10 +71,10 @@ const AddMessage = async (message,setmessage,email,setemail,username,setusername
     }
 }
 
-const tryLogin = async (email,password,setEmail,setPassword,setloadingBtn) => {
+const tryLogin = async (email,password,isVerified,setEmail,setPassword,setloadingBtn) => {
     try {
         const response = await axios
-        .post(`${AuthURL}/login`,{email,password});
+        .post(`${AuthURL}/login`,{email,password,isVerified});
         setEmail("")
         setPassword("")
         setloadingBtn(false)
@@ -86,14 +87,15 @@ const tryLogin = async (email,password,setEmail,setPassword,setloadingBtn) => {
     }
 }
 
-const tryRegister = async (email,password,username,setEmail,setPassword,setName,setloadingBtn) => {
+const tryRegister = async (email,password,username,isVerified,setEmail,setPassword,setName,setloadingBtn) => {
     try {
         const response = await axios
-        .post(`${AuthURL}/register`,{email,password,username});
+        .post(`${AuthURL}/register`,{email,password,username,isVerified});
         setEmail("")
         setPassword("")
         setName("")
         setloadingBtn(false)
+        // console.log(response);
         return true        
     } catch (error) {
         throw error;
@@ -159,7 +161,22 @@ const passwordRecovered = async (secret,to,password) => {
     }
 }
 
+
+const getInfo = async (gtoken) => {
+    try{
+        const response = await axios.get(`${GAuthURL}`,{
+            headers: {
+              Authorization: `Bearer ${gtoken}`,
+            }
+        });
+        if(response) return response;
+        else throw error;
+    }catch(error){
+        throw error;
+    }
+}
+
 const bioChange = () => {
 
 }
-export {CSECourses, ITCourses, ECECourses, AddUser, AddMessage, tryLogin, tryRegister, verify, verificationEmail, verified, forgetPasswordEmail,passwordRecovered, bioChange}
+export {CSECourses, ITCourses, ECECourses, AddUser, AddMessage, tryLogin, tryRegister, verify, verificationEmail, verified, forgetPasswordEmail,passwordRecovered, getInfo, bioChange}

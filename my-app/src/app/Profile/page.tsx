@@ -20,6 +20,7 @@ const Profile = () => {
   const cookies = new Cookies();
 
   const logout = async () => {
+    setloading(true)
     setGlobalState(null);
     cookies.remove("myCat");
     router.push("/");
@@ -38,6 +39,9 @@ const Profile = () => {
   }
 
   useEffect(() => {
+    if (!globalState) {
+      router.push("/Login")
+    }
     if (globalState) {
       setloading(false);
       if (!globalState.emailVerification) {
@@ -47,7 +51,7 @@ const Profile = () => {
         });
       }
     }
-  }, [globalState]);
+  }, []);
 
   return (
     <>

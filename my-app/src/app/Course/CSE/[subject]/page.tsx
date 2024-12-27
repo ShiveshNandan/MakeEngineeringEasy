@@ -68,7 +68,7 @@ const page = ({ params }: any) => {
         const response = await CSECourses(setCSECourses,globalState.$id);
       }
      catch (error) {
-      console.error("error Occured : ", error);
+      // console.error("error Occured : ", error);
     }
   };
 

@@ -11,7 +11,8 @@ import ProfilePage from "../Profile/page";
 import { useTheme } from "next-themes";
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/Sidebar";
-import {forgetPasswordEmail, tryLogin , tryRegister, verify} from "@/app/API/HandleApi"
+import {forgetPasswordEmail, tryLogin , tryRegister, verify, getInfo} from "@/app/API/HandleApi"
+import { useGoogleLogin } from '@react-oauth/google';
 
 const LoginPage = () => {
   const { globalState, setGlobalState } = useGlobalState();
@@ -29,29 +30,60 @@ const LoginPage = () => {
   const [fbBtn, setfbBtn] = useState(true);
   const { theme } = useTheme();
 
-  // const [errors, errors = ] = useState("")
   let errors: string | null = null;
   const router = useRouter();
 
 
+  useEffect(() => {
+    const allFieldsFilled = email !== "" && password !== "";
+
+    setisDisabledLogin(!allFieldsFilled);
+  }, [password, email]);
+
+  useEffect(() => {
+    const allFieldsFilled = name !== "" && password !== "" && name !== "";
+
+    setisDisabledSignup(!allFieldsFilled);
+  }, [password, email, name]);
+
 
   async function getUser() {
     try {
-      setGlobalState(await verify());
+      const very = await verify();
+      setGlobalState(very);
     } catch (error) {
       setloading(false);
       setloadingBtn(false);
     }
+  }
+
+  if (globalState) {
+    // console.log(globalState)
+    // const handlePush = () => {
+    //   if (globalState) {
+    //     setloadingBtn(false);
+    //     setPassword("");
+    //     router.push("/Login");
+    //   }
+    //   handlePush();
+    // };
+    // return (
+    //   <div>
+    //     <ProfilePage />
+    //   </div>
+    // );
+    router.push("/Profile")
   }
   useEffect(() => {
     getUser();
   }, []);
   
 
-  const login = async (email:string,password:string) => {
+  const login = async (email:string,password:string,isVerified:boolean) => {
     try {
-      const response = await tryLogin(email,password,setEmail,setPassword,setloadingBtn);
+      const response = await tryLogin(email,password,isVerified,setEmail,setPassword,setloadingBtn);
       if(response){
+        // console.log("here i am at login")
         getUser();
       }
     } catch (error:any) {
@@ -73,11 +105,11 @@ const LoginPage = () => {
     }
   }
 
-  const register = async (email:any,password:any,username:any) => {
+  const register = async (email:any,password:any,username:any,isVerified:boolean) => {
     try {
-      const response = await tryRegister(email,password,username,setEmail,setPassword,setName,setloadingBtn) ;
+      const response = await tryRegister(email,password,username,isVerified,setEmail,setPassword,setName,setloadingBtn) ;
       if(response){
-        login(email,password);
+        login(email,password,isVerified);
       }else{
       }
     } catch (error:any) {
@@ -116,34 +148,28 @@ const LoginPage = () => {
     }
   };
 
-  useEffect(() => {
-    const allFieldsFilled = email !== "" && password !== "";
-
-    setisDisabledLogin(!allFieldsFilled);
-  }, [password, email]);
-
-  useEffect(() => {
-    const allFieldsFilled = name !== "" && password !== "" && name !== "";
-
-    setisDisabledSignup(!allFieldsFilled);
-  }, [password, email, name]);
-
   
-  if (globalState) {
-    const handlePush = () => {
-      if (globalState) {
-        setloadingBtn(false);
-        setPassword("");
-        router.push("/Login");
-      }
-      handlePush();
-    };
-    return (
-      <div>
-        <ProfilePage />
-      </div>
-    );
+  // if (globalState) {
+  //   router.push("/profile"); // Redirect to the profile page once authenticated
+  //   return null; // Prevent rendering anything else
+  // }
+
+  const handleGoogle = useGoogleLogin({
+      onSuccess: (tokenResponse) => {
+        userInfo(tokenResponse.access_token); 
+      },
+      onError: (error) => {
+
+        toast.error("you are unique child, we cant make you login. Please try after sometime", { theme: "colored", position: "top-center" });
+        // console.error("Login Failed:", error);
+      },
+    });
+
+  const userInfo = async (gtoken:any) => {
+    const gg = await getInfo(gtoken)
+    register(gg.data.email,gg.data.sub,gg.data.name,true)
   }
+
 
   return (
     <>
@@ -254,7 +280,7 @@ const LoginPage = () => {
                       <button
                         type="button"
                         onClick={() => {
-                          register(email,password,name);
+                          register(email,password,name,false);
                           setloadingBtn(true);
                           setisDisabledSignup(true);
                         }}
@@ -338,7 +364,7 @@ const LoginPage = () => {
                       <button
                         type="button"
                         onClick={() => {
-                          login(email, password);
+                          login(email, password,false);
                           setloadingBtn(true);
                           setisDisabledLogin(true);
                         }}
@@ -364,13 +390,13 @@ const LoginPage = () => {
                 )}
 
                 <div className="flex flex-col w-7/12 mb-10 max-sm:w-10/12">
-                  {/* <h1 className="text-center dark:text-[#a5a5a5] text-[#333] p-4">
+                  <h1 className="text-center dark:text-[#a5a5a5] text-[#333] p-4">
                     or continue with
                   </h1>
                   <div className="flex flex-col">
                     <button
                       type="button"
-                      onClick={handleGoogle}
+                      onClick={() => handleGoogle()}
                       className="p-2 my-2 rounded bg-[#ffffff] dark:bg-[#191817] text-[600] flex justify-center border backdrop-blur-[10px] "
                     >
                       <Image
@@ -382,7 +408,7 @@ const LoginPage = () => {
                       />{" "}
                       Google
                     </button>
-                    <button
+                    {/* <button
                       type="button"
                       onClick={handleGithub}
                       className="p-2 my-2 rounded bg-[#ffffff] dark:bg-[#191817] text-[600] flex justify-center border backdrop-blur-[10px] "
@@ -395,8 +421,8 @@ const LoginPage = () => {
                         className="h-6 w-6 mx-2"
                       />{" "}
                       Github
-                    </button>
-                  </div> */}
+                    </button> */}
+                  </div>
                 </div>
               </div>
             </div>

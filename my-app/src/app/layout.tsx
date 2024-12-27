@@ -5,9 +5,11 @@ import { ThemeProvider } from '@/Shadcn components/theme-provider'
 import { GlobalStateProvider } from '@/components/GlobalVariableProvider';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import Navbar from '@/components/navbar';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const inter = Inter({ subsets: ['latin'] })
+
+const client = process.env.NEXT_PUBLIC_CLIENT;
 
 export const metadata: Metadata = {
   title: 'Make Engineering Easy',
@@ -22,6 +24,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
         <head />
         <body>
+        <GoogleOAuthProvider clientId={`${client}`}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -29,7 +32,6 @@ export default function RootLayout({
             disableTransitionOnChange
             >
             <GlobalStateProvider>
-            {/* <Navbar></Navbar> */}
               <main>
                 {children}
                 <Analytics />
@@ -37,10 +39,8 @@ export default function RootLayout({
               </main>
             </GlobalStateProvider>
           </ThemeProvider>
+          </GoogleOAuthProvider>
         </body>
       </html>
-    // <html lang="en">
-    //   <body className={inter.className}>{children}</body>
-    // </html>
   )
 }
