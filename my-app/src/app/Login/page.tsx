@@ -216,9 +216,47 @@ const LoginPage = () => {
             </div>
 
             <div className="flex flex-col w-7/12 justify-center items-center bg-[#fff] dark:bg-[#191817] h-screen overflow-hidden  max-sm:w-full">
+            
               <div className="flex flex-col w-full h-screen overflow-y-scroll items-center mt-40 max-sm:mt-[7rem] scroll">
+
+              <div className="flex flex-col w-7/12 mt-2 max-sm:w-10/12">
+                  <div className="flex flex-col">
+                    <button
+                      type="button"
+                      onClick={() => handleGoogle()}
+                      className="p-2 my-2 rounded bg-[#ffffff] dark:bg-[#191817] text-[600] flex justify-center border backdrop-blur-[10px] "
+                    >
+                      <Image
+                        src={"/google.png"}
+                        height={10}
+                        width={1000}
+                        alt=""
+                        className="h-6 w-6 mx-2"
+                      />{" "}
+                      Google
+                    </button>
+                    {/* <button
+                      type="button"
+                      onClick={handleGithub}
+                      className="p-2 my-2 rounded bg-[#ffffff] dark:bg-[#191817] text-[600] flex justify-center border backdrop-blur-[10px] "
+                    >
+                      <Image
+                        src={"/GitHub.png"}
+                        height={10}
+                        width={1000}
+                        alt=""
+                        className="h-6 w-6 mx-2"
+                      />{" "}
+                      Github
+                    </button> */}
+                  </div>
+                  <h1 className="text-center dark:text-[#a5a5a5] text-[#333] p-4">
+                    or continue with
+                  </h1>
+                </div>
+
                 {!Signup ? (
-                  <div className="flex flex-col w-7/12 max-sm:w-10/12">
+                  <div className="flex flex-col w-7/12 max-sm:w-10/12 mb-10">
                     <div className="flex flex-col">
                       <h1
                         style={{ fontFamily: "YourFontMedium" }}
@@ -389,41 +427,6 @@ const LoginPage = () => {
                   </div>
                 )}
 
-                <div className="flex flex-col w-7/12 mb-10 max-sm:w-10/12">
-                  <h1 className="text-center dark:text-[#a5a5a5] text-[#333] p-4">
-                    or continue with
-                  </h1>
-                  <div className="flex flex-col">
-                    <button
-                      type="button"
-                      onClick={() => handleGoogle()}
-                      className="p-2 my-2 rounded bg-[#ffffff] dark:bg-[#191817] text-[600] flex justify-center border backdrop-blur-[10px] "
-                    >
-                      <Image
-                        src={"/google.png"}
-                        height={10}
-                        width={1000}
-                        alt=""
-                        className="h-6 w-6 mx-2"
-                      />{" "}
-                      Google
-                    </button>
-                    {/* <button
-                      type="button"
-                      onClick={handleGithub}
-                      className="p-2 my-2 rounded bg-[#ffffff] dark:bg-[#191817] text-[600] flex justify-center border backdrop-blur-[10px] "
-                    >
-                      <Image
-                        src={"/GitHub.png"}
-                        height={10}
-                        width={1000}
-                        alt=""
-                        className="h-6 w-6 mx-2"
-                      />{" "}
-                      Github
-                    </button> */}
-                  </div>
-                </div>
               </div>
             </div>
           </div>
