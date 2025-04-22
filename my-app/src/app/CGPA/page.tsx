@@ -126,9 +126,9 @@ const CGPA = () => {
     0
   );
 
-  const Percentage = (totalMarksgain / totalMarks) * 100;
-  const CreditPercentage = totalProduct / totalCredits;
-  const GradePercentage = totalGrade / totalCredits;
+  const Percentage = ((totalMarksgain / totalMarks) * 100).toFixed(3);
+  const CreditPercentage = (totalProduct / totalCredits).toFixed(3);
+  const GradePercentage = (totalGrade / totalCredits).toFixed(3);
 
   return (
     <>
@@ -301,7 +301,7 @@ const CGPA = () => {
                       <div className="flex flex-col py-1 px-2 max-sm:w-full">
                         <h1>Equivalent Percentage : </h1>
                         <h1 className="text-blue-500 px-1">
-                          {(totalGrade / totalCredits) * 10} %
+                          {((totalGrade / totalCredits) * 10).toFixed(3)} %
                         </h1>
                       </div>
                     </div>
