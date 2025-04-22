@@ -28,6 +28,7 @@ const LoginPage = () => {
   const [isDisabledLogin, setisDisabledLogin] = useState(true);
   const [isDisabledSignup, setisDisabledSignup] = useState(true);
   const [fbBtn, setfbBtn] = useState(true);
+  const [Btn, setBtn] = useState(false);
   const { theme } = useTheme();
 
   let errors: string | null = null;
@@ -168,7 +169,11 @@ const LoginPage = () => {
   const userInfo = async (gtoken:any) => {
     const gg = await getInfo(gtoken)
     register(gg.data.email,gg.data.sub,gg.data.name,true)
+    setBtn(true);
   }
+
+  // console.log("userinflo :");
+  // const gg = true;
 
 
   return (
@@ -232,9 +237,20 @@ const LoginPage = () => {
                         width={1000}
                         alt=""
                         className="h-6 w-6 mx-2"
+                        onClick={() => console.log("clicked")}
                       />{" "}
-                      Google
+                      {!Signup  ? 
+                      <p>Sign up with Google</p>
+                      : 
+                      <p>Login with Google</p> 
+                      }
+                      
                     </button>
+
+
+                    <div className={`${Btn ? "w-full h-full bg-[#2d2d2da5] fixed left-0 top-0 z-[20000]" : ""}`}></div>
+
+
                     {/* <button
                       type="button"
                       onClick={handleGithub}
@@ -251,7 +267,7 @@ const LoginPage = () => {
                     </button> */}
                   </div>
                   <h1 className="text-center dark:text-[#a5a5a5] text-[#333] p-4">
-                    or continue with
+                    or
                   </h1>
                 </div>
 
