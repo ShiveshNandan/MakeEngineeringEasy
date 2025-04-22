@@ -248,12 +248,12 @@ const LoginPage = () => {
                     </button>
 
                     {Btn ? 
-                  //   <div className={`w-full h-[100vh] bg-[#2d2d2da5] fixed left-0 top-0 z-[20000] justify-center`}>
-                  //   <div className="h-full flex">
-                  //   <Image src={'/loading.gif'} alt="ss" height={0} width={70} className=' m-auto '/>
-                  //   </div>
-                  // </div>
-                  <Loading/>
+                    <div className={`w-full h-[100vh] bg-[#FFFAF5] dark:bg-[#191817] fixed left-0 top-0 z-[20000] justify-center`}>
+                    {/* <div className="h-full flex"> */}
+                    {/* <Image src={'/loading.gif'} alt="ss" height={0} width={70} className=' m-auto '/> */}
+                    <Loading/>
+                    {/* </div> */}
+                  </div>
                   : 
                   <p></p> }
                     
